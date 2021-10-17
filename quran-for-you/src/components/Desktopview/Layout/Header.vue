@@ -1,51 +1,23 @@
 <template>
   <mq-layout mq="desktop">
-    <c-box bg="palettes.primary" w="100%" p="4" color="white">
-      {{msg}}
-    </c-box>
+      <c-flex align="center" bg="palettes.background" boxShadow="md" w="100" h="80px" mb="1">
+        <c-heading fontSize="24px" m="5" fontWeight="400">Logo</c-heading>
+      </c-flex>
   </mq-layout>
 </template>
 
 <script>
 import {
-  CBox,
-  CButton,
-  CAvatarGroup,
-  CAvatar,
-  CAvatarBadge,
-  CModal,
-  CModalContent,
-  CModalOverlay,
-  CModalHeader,
-  CModalFooter,
-  CModalBody,
-  CModalCloseButton,
-  CIconButton,
   CFlex,
-  CHeading,
-  CLink,
+  CHeading
 } from "@chakra-ui/vue";
 
 export default {
-  name: "HelloWorld",
+  name: "Header",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   components: {
-    CBox,
-    CButton,
-    CAvatarGroup,
-    CAvatar,
-    CAvatarBadge,
-    CModal,
-    CModalContent,
-    CModalOverlay,
-    CModalHeader,
-    CModalFooter,
-    CModalBody,
-    CModalCloseButton,
-    CIconButton,
     CFlex,
     CHeading,
-    CLink,
   },
   data() {
     return {
