@@ -6,7 +6,7 @@
           <c-heading fontSize="36px">Login</c-heading>
           <c-text my="2"
             >New here?
-            <c-link as="router-link" to="/auth/signup"
+            <c-link color="palettes.primary" class="link" as="router-link" to="/auth/signup"
               >Create an Account</c-link
             ></c-text
           >
@@ -40,7 +40,7 @@
           <c-heading fontSize="18px">Login</c-heading>
           <c-text my="2" fontSize="12px"  
             >New here?
-            <c-link as="router-link" to="/auth/signup"
+             <c-link color="palettes.primary" class="link" as="router-link" to="/auth/signup"
               >Create an Account</c-link
             ></c-text
           >
@@ -70,6 +70,12 @@
     </mq-layout>
   </c-box>
 </template>
+
+<style>
+  .link {
+    text-decoration: underline;
+  }
+</style>
 
 <script>
 import { CFlex, CHeading } from "@chakra-ui/vue";

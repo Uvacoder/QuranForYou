@@ -9,7 +9,7 @@
         h="80px"
         mb="1"
       >
-        <c-heading fontSize="24px" m="5" fontWeight="400">Logo</c-heading>
+        <c-heading fontSize="24px" mx="5" fontWeight="400">Logo</c-heading>
       </c-flex>
     </mq-layout>
     <mq-layout mq="mobile">

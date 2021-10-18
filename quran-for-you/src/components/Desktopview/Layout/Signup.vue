@@ -2,26 +2,42 @@
   <c-box>
     <mq-layout mq="desktop">
       <c-simple-grid :columns="2" class="grid">
-        <c-box class="left-box" maxHeight="100vh" color="white">
-          <c-flex height="150px" borderTop="2px" borderColor="white" mt="30em">
-            <c-text mt="5" mx="3" fontWeight="700" fontSize="25px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </c-text>
+        <c-box class="left-box" color="white" height="100vh">
+          <c-flex direction="column">
+            <c-flex justify="center" align="center" my="1.5em">
+              <c-image
+                w="280px"
+                h="350px"
+                :src="require(`@/assets/book.png`)"
+                size="16.2px"
+                mx="2"
+              />
+            </c-flex>
+            <c-flex
+              borderTop="2px"
+              borderColor="white"
+              justify="center"
+              height="100vh"
+            >
+              <c-text
+                mt="1.5em"
+                fontWeight="700"
+                fontSize="25px"
+                align="center"
+              >
+                The Love Of Power And The Age For Love
+              </c-text>
+            </c-flex>
           </c-flex>
         </c-box>
-        <c-flex maxHeight="100vh" align="center" justify="center">
+        <c-flex justify="center">
           <SignupForm />
         </c-flex>
       </c-simple-grid>
     </mq-layout>
     <mq-layout mq="mobile">
       <c-flex direction="column">
-        <c-flex mt="2em" justify="center">
-          <c-text fontWeight="bold" fontSize="24px">
-            Logo
-          </c-text>
-        </c-flex>
-        <c-flex align="center" justify="center" mt="8em">
+        <c-flex align="center" justify="center" mt="2em">
           <SignupForm />
         </c-flex>
       </c-flex>

@@ -1,12 +1,18 @@
 <template>
   <c-box>
     <mq-layout mq="desktop">
-      <c-flex align="center" justify="center" m="20">
+      <c-flex align="center" justify="center" mx="10" my="5">
         <c-flex direction="column">
           <c-heading fontSize="36px">Create an account</c-heading>
           <c-text my="2"
             >Already have an account?
-            <c-link as="router-link" to="/auth/login">Login</c-link></c-text
+            <c-link
+              color="palettes.primary"
+              class="link"
+              as="router-link"
+              to="/auth/login"
+              >Login</c-link
+            ></c-text
           >
           <c-flex mt="2">
             <SocialButton link="google" text="Continue with Google" />
@@ -58,7 +64,11 @@
           <c-heading fontSize="18px">Create an account</c-heading>
           <c-text my="2" fontSize="12px"
             >Already have an account?
-            <c-link as="router-link" to="/auth/login"
+            <c-link
+              color="palettes.primary"
+              class="link"
+              as="router-link"
+              to="/auth/login"
               >Login</c-link
             ></c-text
           >
@@ -97,7 +107,7 @@
           <c-flex justify="center" mt="1.2em">
             <AuthButton text="Signup" />
           </c-flex>
-           <c-flex mt="1.2em">
+          <c-flex mt="1.2em">
             <c-text fontSize="12px">
               By clicking create account I agree that I have read and accepted
               the Terms of Use and Privacy Policy
@@ -109,6 +119,11 @@
   </c-box>
 </template>
 
+<style>
+.link {
+  text-decoration: underline;
+}
+</style>
 <script>
 import { CFlex, CHeading } from "@chakra-ui/vue";
 import SocialButton from "@/components/CustomComponents/SocialButton.vue";
