@@ -32,8 +32,6 @@
             >Logo</c-heading
           ></c-flex
         >
-
-        <HeaderButton text="Signin/Login" />
       </c-flex>
     </mq-layout>
   </c-box>

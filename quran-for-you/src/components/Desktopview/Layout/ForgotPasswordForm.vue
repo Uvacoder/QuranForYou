@@ -32,14 +32,13 @@
       </c-flex>
     </mq-layout>
     <mq-layout mq="mobile">
-      <c-flex align="center" justify="center" m="5">
+      <c-flex align="center" justify="center" mt="20%">
         <c-flex direction="column" w="20em">
           <c-heading fontSize="18px">Forgot password</c-heading>
           <c-text my="2" fontSize="12px"
             >Already have an account?
             <c-link
               color="palettes.primary"
-              class="link"
               as="router-link"
               to="/auth/login"
               >Login</c-link

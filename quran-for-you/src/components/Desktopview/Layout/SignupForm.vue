@@ -59,19 +59,18 @@
       </c-flex>
     </mq-layout>
     <mq-layout mq="mobile">
-      <c-flex justify="center" align="center" m="5">
+      <c-flex justify="center" align="center" mt="20%" mx="5">
         <c-flex direction="column">
           <c-heading fontSize="18px">Create an account</c-heading>
           <c-text my="2" fontSize="12px"
             >Already have an account?
             <c-link
               color="palettes.primary"
-              class="link"
               as="router-link"
               to="/auth/login"
               >Login</c-link
-            ></c-text
-          >
+            >
+          </c-text>
           <c-flex mt="0.5em">
             <SocialButton link="google" text="Continue with Google" />
             <SocialButton link="facebook" text="Continue with Facebook" />
@@ -121,9 +120,10 @@
 
 <style>
 .link {
-  text-decoration: underline;
+  text-decoration: underline !important;
 }
 </style>
+
 <script>
 import { CFlex, CHeading } from "@chakra-ui/vue";
 import SocialButton from "@/components/CustomComponents/SocialButton.vue";

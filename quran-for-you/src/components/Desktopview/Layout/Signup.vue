@@ -3,8 +3,8 @@
     <mq-layout mq="desktop">
       <c-simple-grid :columns="2" class="grid">
         <c-box class="left-box" color="white" height="100vh">
-          <c-flex direction="column">
-            <c-flex justify="center" align="center" my="1.5em">
+          <c-flex direction="column" height="100%">
+            <c-flex justify="center" align="center" my="1.5em" height="65%">
               <c-image
                 w="280px"
                 h="350px"
@@ -17,7 +17,7 @@
               borderTop="2px"
               borderColor="white"
               justify="center"
-              height="100vh"
+              height="35%"
             >
               <c-text
                 mt="1.5em"
@@ -30,14 +30,14 @@
             </c-flex>
           </c-flex>
         </c-box>
-        <c-flex justify="center">
+        <c-flex justify="center" align="center">
           <SignupForm />
         </c-flex>
       </c-simple-grid>
     </mq-layout>
     <mq-layout mq="mobile">
       <c-flex direction="column">
-        <c-flex align="center" justify="center" mt="2em">
+        <c-flex align="center" justify="center">
           <SignupForm />
         </c-flex>
       </c-flex>

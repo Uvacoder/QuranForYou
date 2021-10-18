@@ -35,12 +35,12 @@
       </c-flex>
     </mq-layout>
     <mq-layout mq="mobile">
-      <c-flex justify="center" align="center">
+      <c-flex justify="center" align="center" mt="20%">
         <c-flex direction="column">
           <c-heading fontSize="18px">Login</c-heading>
           <c-text my="2" fontSize="12px"  
             >New here?
-             <c-link color="palettes.primary" class="link" as="router-link" to="/auth/signup"
+             <c-link color="palettes.primary" as="router-link" to="/auth/signup"
               >Create an Account</c-link
             ></c-text
           >
