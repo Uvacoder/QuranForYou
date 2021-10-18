@@ -1,16 +1,47 @@
 <template>
-  <mq-layout mq="desktop">
-      <c-flex align="center" bg="palettes.background" boxShadow="md" w="100" h="80px" mb="1">
+  <c-box>
+    <mq-layout mq="desktop">
+      <c-flex
+        align="center"
+        bg="palettes.background"
+        boxShadow="md"
+        w="100"
+        h="80px"
+        mb="1"
+      >
         <c-heading fontSize="24px" m="5" fontWeight="400">Logo</c-heading>
       </c-flex>
-  </mq-layout>
+    </mq-layout>
+    <mq-layout mq="mobile">
+      <c-flex
+        bg="palettes.background"
+        boxShadow="md"
+        w="100"
+        h="40px"
+        mb="1"
+        justify="space-between"
+        align="center"
+      >
+        <c-flex maxWidth="5em" align="center">
+          <c-image
+            :src="require(`@/assets/hamburger.png`)"
+            size="32px"
+            mx="3"
+          />
+          <c-heading fontSize="18px" fontWeight="400"
+            >Logo</c-heading
+          ></c-flex
+        >
+
+        <HeaderButton text="Signin/Login" />
+      </c-flex>
+    </mq-layout>
+  </c-box>
 </template>
 
 <script>
-import {
-  CFlex,
-  CHeading
-} from "@chakra-ui/vue";
+import { CFlex, CHeading, CImage } from "@chakra-ui/vue";
+import HeaderButton from "@/components/CustomComponents/HeaderButton.vue";
 
 export default {
   name: "Header",
@@ -18,6 +49,8 @@ export default {
   components: {
     CFlex,
     CHeading,
+    HeaderButton,
+    CImage
   },
   data() {
     return {
@@ -35,7 +68,7 @@ export default {
     };
   },
   props: {
-    msg: ['msg']
+    msg: ["msg"],
   },
   computed: {
     colorMode() {
