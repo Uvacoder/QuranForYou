@@ -1,8 +1,8 @@
 <template>
-  <c-box>
-    <mq-layout mq="desktop">
-      <c-simple-grid :columns="2">
-        <c-box class="left-box" color="white" height="100vh">
+  <c-box height="90%">
+    <mq-layout mq="desktop" style="height:100%;">
+      <c-simple-grid :columns="2" height="100%">
+        <c-box class="left-box" color="white" height="100%">
           <c-flex direction="column" height="100%">
             <c-flex justify="center" align="center" my="1.5em" height="65%">
               <c-image
@@ -30,7 +30,7 @@
             </c-flex>
           </c-flex>
         </c-box>
-        <c-flex align="center" justify="center" height="100vh">
+        <c-flex align="center" justify="center" height="100%">
           <ForgotPasswordForm />
         </c-flex>
       </c-simple-grid>
@@ -46,10 +46,6 @@
 </template>
 
 <style>
-body {
-  overflow: hidden;
-}
-
 .left-box {
   background: linear-gradient(#27367b, #0272c4);
 }

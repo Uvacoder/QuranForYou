@@ -1,13 +1,12 @@
 <template>
-  <c-box>
-    <mq-layout mq="desktop">
+  <c-box height="10%">
+    <mq-layout mq="desktop" height="100%">
       <c-flex
         align="center"
         bg="palettes.background"
         boxShadow="md"
         w="100"
         h="80px"
-        mb="1"
       >
         <c-heading fontSize="24px" mx="5" fontWeight="400">Logo</c-heading>
       </c-flex>
@@ -28,9 +27,7 @@
             size="32px"
             mx="3"
           />
-          <c-heading fontSize="18px" fontWeight="400"
-            >Logo</c-heading
-          ></c-flex
+          <c-heading fontSize="18px" fontWeight="400">Logo</c-heading></c-flex
         >
       </c-flex>
     </mq-layout>
@@ -48,7 +45,7 @@ export default {
     CFlex,
     CHeading,
     HeaderButton,
-    CImage
+    CImage,
   },
   data() {
     return {
