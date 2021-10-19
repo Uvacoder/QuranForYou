@@ -3,7 +3,7 @@
     <mq-layout mq="desktop">
       <c-flex align="center" justify="center" mx="10" my="5">
         <c-flex direction="column">
-          <c-heading fontSize="36px">Create an account</c-heading>
+          <c-heading fontSize="36px">Create an Account</c-heading>
           <c-text my="2"
             >Already have an account?
             <c-link
@@ -35,7 +35,7 @@
             </c-flex>
             <c-input
               variant="flushed"
-              placeholder="Email address"
+              placeholder="Email Address"
               borderColor="black"
               mt="1.5em"
             />
@@ -61,13 +61,10 @@
     <mq-layout mq="mobile">
       <c-flex justify="center" align="center" mt="20%" mx="5">
         <c-flex direction="column">
-          <c-heading fontSize="18px">Create an account</c-heading>
+          <c-heading fontSize="18px">Create an Account</c-heading>
           <c-text my="2" fontSize="12px"
             >Already have an account?
-            <c-link
-              color="palettes.primary"
-              as="router-link"
-              to="/auth/login"
+            <c-link color="palettes.primary" as="router-link" to="/auth/login"
               >Login</c-link
             >
           </c-text>
@@ -92,7 +89,7 @@
             </c-flex>
             <c-input
               variant="flushed"
-              placeholder="Email address"
+              placeholder="Email Address"
               borderColor="black"
               mt="1em"
             />
@@ -117,12 +114,6 @@
     </mq-layout>
   </c-box>
 </template>
-
-<style>
-.link {
-  text-decoration: underline !important;
-}
-</style>
 
 <script>
 import { CFlex, CHeading } from "@chakra-ui/vue";

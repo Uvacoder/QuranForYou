@@ -4,26 +4,26 @@
       <c-simple-grid :columns="2" class="grid" height="100%">
         <c-box class="left-box" color="white" height="100%">
           <c-flex direction="column" height="100%">
-            <c-flex justify="center" align="center" my="1.5em" height="65%">
+            <c-flex justify="center" align="center" my="1.5em" height="75%">
               <c-image
                 w="280px"
                 h="350px"
                 :src="require(`@/assets/book.png`)"
                 size="16.2px"
-                mx="2"
               />
             </c-flex>
             <c-flex
               borderTop="2px"
               borderColor="white"
               justify="center"
-              height="35%"
+              height="25%"
             >
               <c-text
-                mt="1.5em"
                 fontWeight="700"
                 fontSize="25px"
                 align="center"
+                justify="center"
+                style="margin:auto;"
               >
                 The Love Of Power And The Age For Love
               </c-text>

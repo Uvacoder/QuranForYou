@@ -3,7 +3,7 @@
     <mq-layout mq="desktop">
       <c-flex align="center" justify="center" mx="10" my="5">
         <c-flex direction="column" w="35em">
-          <c-heading fontSize="36px">Forgot password</c-heading>
+          <c-heading fontSize="36px">Forgot Password</c-heading>
           <c-text my="2"
             >Already have an account?
             <c-link
@@ -16,7 +16,7 @@
           >
           <c-flex direction="column">
             <c-text fontSize="18px" fontColor="black" opacity="0.5"
-              >Verification sent to registered email id</c-text
+              >Verification will be sent to the email address</c-text
             >
             <c-input
               variant="flushed"
@@ -34,19 +34,16 @@
     <mq-layout mq="mobile">
       <c-flex align="center" justify="center" mt="20%">
         <c-flex direction="column" w="20em">
-          <c-heading fontSize="18px">Forgot password</c-heading>
+          <c-heading fontSize="18px">Forgot Password</c-heading>
           <c-text my="2" fontSize="12px"
             >Already have an account?
-            <c-link
-              color="palettes.primary"
-              as="router-link"
-              to="/auth/login"
+            <c-link color="palettes.primary" as="router-link" to="/auth/login"
               >Login</c-link
             ></c-text
           >
           <c-flex direction="column">
             <c-text fontSize="10px" fontColor="black" opacity="0.5" mt="1.5em"
-              >Verification sent to registered email id</c-text
+              >Verification will be sent to the email address</c-text
             >
             <c-input
               variant="flushed"
@@ -62,12 +59,6 @@
     </mq-layout>
   </c-box>
 </template>
-
-<style>
-.link {
-  text-decoration: underline;
-}
-</style>
 
 <script>
 import { CFlex, CHeading } from "@chakra-ui/vue";

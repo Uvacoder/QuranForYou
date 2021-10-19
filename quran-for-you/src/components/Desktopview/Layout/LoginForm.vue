@@ -6,7 +6,11 @@
           <c-heading fontSize="36px">Login</c-heading>
           <c-text my="2"
             >New here?
-            <c-link color="palettes.primary" class="link" as="router-link" to="/auth/signup"
+            <c-link
+              color="palettes.primary"
+              class="link"
+              as="router-link"
+              to="/auth/signup"
               >Create an Account</c-link
             ></c-text
           >
@@ -17,7 +21,7 @@
           <c-flex direction="column">
             <c-input
               variant="flushed"
-              placeholder="Email address"
+              placeholder="Email Address"
               borderColor="black"
               mt="1.5em"
             />
@@ -28,6 +32,16 @@
               mt="2em"
             />
           </c-flex>
+          <c-link
+            color="palettes.primary"
+            as="router-link"
+            to="/auth/forgotpassword"
+            justify="center"
+            align="center"
+            my="1em"
+            fontSize="18px"
+            >Forgot Password?</c-link
+          >
           <c-flex justify="flex-end" mt="1.2em">
             <AuthButton text="Login" />
           </c-flex>
@@ -38,9 +52,9 @@
       <c-flex justify="center" align="center" mt="20%">
         <c-flex direction="column">
           <c-heading fontSize="18px">Login</c-heading>
-          <c-text my="2" fontSize="12px"  
+          <c-text my="2" fontSize="12px"
             >New here?
-             <c-link color="palettes.primary" as="router-link" to="/auth/signup"
+            <c-link color="palettes.primary" as="router-link" to="/auth/signup"
               >Create an Account</c-link
             ></c-text
           >
@@ -51,7 +65,7 @@
           <c-flex direction="column">
             <c-input
               variant="flushed"
-              placeholder="Email address"
+              placeholder="Email Address"
               borderColor="black"
               mt="1em"
             />
@@ -62,7 +76,17 @@
               mt="1em"
             />
           </c-flex>
-          <c-flex justify="center" mt="1.2em">
+          <c-link
+            color="palettes.primary"
+            as="router-link"
+            to="/auth/forgotpassword"
+            justify="center"
+            align="center"
+            my="1.5em"
+            fontSize="12px"
+            >Forgot Password?</c-link
+          >
+          <c-flex justify="center" mt="0.5em">
             <AuthButton text="Login" />
           </c-flex>
         </c-flex>
@@ -70,12 +94,6 @@
     </mq-layout>
   </c-box>
 </template>
-
-<style>
-  .link {
-    text-decoration: underline;
-  }
-</style>
 
 <script>
 import { CFlex, CHeading } from "@chakra-ui/vue";
