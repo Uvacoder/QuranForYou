@@ -105,9 +105,9 @@
               mt="28px"
               align="center"
               justify="space-around"
-              p="5"
+              p="3"
             >
-              <c-input-group>
+              <c-input-group w="100%">
                 <c-input-left-element
                   ><c-image :src="require(`@/assets/search.png`)" size="16px"
                 /></c-input-left-element>
