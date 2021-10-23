@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import SignupPage from "../views/SignupPage.vue";
 import LoginPage from "../views/LoginPage.vue";
 import ForgotPasswordPage from "../views/ForgotPasswordPage.vue";
+import ReadChaptersPage from "../views/ReadChaptersPage.vue";
+import ReadChaptersVersePage from "../views/ReadChaptersVersePage.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +23,16 @@ const routes = [
     path: "/auth/forgotpassword",
     name: "ForgotPasswordPage",
     component: ForgotPasswordPage,
+  },
+  {
+    path: "/readchapters",
+    name: "ReadChaptersPage",
+    component: ReadChaptersPage
+  },
+  {
+    path: "/readchaptersverse",
+    name: "ReadChaptersVersePage",
+    component: ReadChaptersVersePage
   },
   {
     path: "/about",
