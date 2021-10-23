@@ -1,42 +1,28 @@
 <template>
   <c-box>
     <mq-layout mq="desktop">
-      <c-flex justify="start"
-        ><c-heading size="lg" fontSize="48px">Subscribe</c-heading></c-flex
-      >
-      <c-flex mt="1.5em">
-        <c-simple-grid :columns="2" :spacing="1">
-          <c-flex>
-            <c-text fontSize="18px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem
-              pretium convallis. Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Sem ipsum lorem pretium convallis.
-            </c-text>
-          </c-flex>
-          <c-flex direction="column" align="start" justify="start">
-            <c-flex justify="space-between">
-              <c-flex direction="column">
-                <c-text fontSize="14px">Name</c-text>
-                <c-input w="90%" size="md" borderColor="gray.400" />
-              </c-flex>
-              <c-flex direction="column">
-                <c-text fontSize="14px">Email</c-text>
-                <c-input w="90%" size="md" borderColor="gray.400" />
-              </c-flex>
+      <c-heading class="heading">Subscribe</c-heading>
+      <c-simple-grid :columns="2" :spacing="1">
+        <c-text pr="1vw" pt="1vw">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
+          dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium
+          convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Sem ipsum lorem pretium convallis.
+        </c-text>
+        <c-flex direction="column">
+          <c-flex justify="space-start" width="100%" mb="1vw">
+            <c-flex direction="column" width="45%" mr="1vw">
+              <c-text>Name</c-text>
+              <c-input size="md" borderColor="gray.400" />
             </c-flex>
-            <c-flex my="1em">
-              <CustomButton
-                text="Sign me up"
-                padding="2px"
-                borderRadius="4px"
-                fontSize="12px"
-                height="10px"
-              />
+            <c-flex direction="column" width="45%">
+              <c-text>Email</c-text>
+              <c-input size="md" borderColor="gray.400" />
             </c-flex>
           </c-flex>
-        </c-simple-grid>
-      </c-flex>
+          <CustomButton text="Subscribe" padding="1.5vw" fontSize="1.5vw" />
+        </c-flex>
+      </c-simple-grid>
     </mq-layout>
     <mq-layout mq="mobile"></mq-layout>
   </c-box>
@@ -52,7 +38,7 @@ export default {
   components: {
     CFlex,
     CHeading,
-    CustomButton
+    CustomButton,
   },
 };
 </script>

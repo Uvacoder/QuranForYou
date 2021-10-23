@@ -1,73 +1,46 @@
 <template>
   <mq-layout mq="desktop">
-    <c-flex direction="column" mt="1.5em" mx="8em">
-      <c-flex justify="start" my="1.2em">
-        <c-heading fontSize="48px">Read Quran</c-heading>
-      </c-flex>
+    <c-flex class="container">
+      <c-heading class="heading" mb="1.5vw">Read Quran</c-heading>
       <c-simple-grid :columns="3">
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
-        <c-flex height="80px">
-          <c-text fontSize="36px">Chapter 1</c-text>
-        </c-flex>
+        <c-text class="chapter-link">Chapter 1</c-text>
+        <c-text class="chapter-link">Chapter 2</c-text>
+        <c-text class="chapter-link">Chapter 3</c-text>
+        <c-text class="chapter-link">Chapter 4</c-text>
+        <c-text class="chapter-link">Chapter 5</c-text>
+        <c-text class="chapter-link">Chapter 6</c-text>
+        <c-text class="chapter-link">Chapter 7</c-text>
+        <c-text class="chapter-link">Chapter 8</c-text>
+        <c-text class="chapter-link">Chapter 9</c-text>
+        <c-text class="chapter-link">Chapter 10</c-text>
+        <c-text class="chapter-link">Chapter 11</c-text>
+        <c-text class="chapter-link">Chapter 12</c-text>
+        <c-text class="chapter-link">Chapter 13</c-text>
+        <c-text class="chapter-link">Chapter 14</c-text>
+        <c-text class="chapter-link">Chapter 15</c-text>
       </c-simple-grid>
-      <c-flex direction="column" w="100%" my="2em">
+      <c-flex class="subscribe-form-container">
         <SubscribeForm />
       </c-flex>
     </c-flex>
   </mq-layout>
 </template>
-
+<style>
+.chapter-link {
+  font-size: 1.675vw;
+  margin-bottom: 1vw;
+}
+</style>
 <script>
-import { Cflex } from "@chakra-ui/vue";
+import { CFlex } from "@chakra-ui/vue";
 import SubscribeForm from "@/components/Desktopview/Layout/SubscribeForm.vue";
 
 export default {
   name: "ReadingChapters",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   components: {
-    Cflex,
-    SubscribeForm
+    CFlex,
+    SubscribeForm,
   },
 };
 </script>

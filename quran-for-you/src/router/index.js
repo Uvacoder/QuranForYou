@@ -8,46 +8,45 @@ import ReadChaptersVersePage from "../views/ReadChaptersVersePage.vue";
 
 Vue.use(VueRouter);
 
-const routes = [
-  {
-    path: "/auth/signup",
-    name: "SignupPage",
-    component: SignupPage,
-  },
-  {
-    path: "/auth/login",
-    name: "LoginPage",
-    component: LoginPage,
-  },
-  {
-    path: "/auth/forgotpassword",
-    name: "ForgotPasswordPage",
-    component: ForgotPasswordPage,
-  },
-  {
-    path: "/readchapters",
-    name: "ReadChaptersPage",
-    component: ReadChaptersPage
-  },
-  {
-    path: "/readchaptersverse",
-    name: "ReadChaptersVersePage",
-    component: ReadChaptersVersePage
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
+const routes = [{
+        path: "/signup",
+        name: "SignupPage",
+        component: SignupPage,
+    },
+    {
+        path: "/login",
+        name: "LoginPage",
+        component: LoginPage,
+    },
+    {
+        path: "/forgotpassword",
+        name: "ForgotPasswordPage",
+        component: ForgotPasswordPage,
+    },
+    {
+        path: "/chapters",
+        name: "ReadChaptersPage",
+        component: ReadChaptersPage,
+    },
+    {
+        path: "/chapters/verse",
+        name: "ReadChaptersVersePage",
+        component: ReadChaptersVersePage,
+    },
+    {
+        path: "/about",
+        name: "About",
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import ( /* webpackChunkName: "about" */ "../views/About.vue"),
+    },
 ];
 
 const router = new VueRouter({
-  routes,
-  mode: "history",
+    routes,
+    mode: "history",
 });
 
 export default router;

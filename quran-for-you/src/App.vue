@@ -6,17 +6,27 @@
 </template>
 
 <style>
-html {
-  height: 100%;
-}
-body {
-  height: 100%;
-}
+html,
+#__chakra-app,
+body,
 .home {
   height: 100%;
 }
-#__chakra-app {
-  height: 100%;
+.heading {
+  font-size: 3vw;
+}
+.container {
+  flex-direction: column;
+  margin-left: 4vw;
+  margin-right: 4vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+.subscribe-form-container {
+  flex-direction: column;
+  width: 100%;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
 }
 </style>
 <script>
