@@ -43,13 +43,15 @@
             /></c-flex>
             <c-select
               class="filter-container custom-select"
-              placeholder="Al-Fatihah The Cow"
+              v-model="state.chapter"
             >
-              <option value="Al-Fatihah The Cow"
-                ><c-text class="filter-value"
-                  >Al-Fatihah The Cow</c-text
-                ></option
+              <option
+                v-for="chapter in state.allChapters"
+                v-bind:value="chapter"
+                v-bind:key="chapter"
               >
+                {{ chapter }}
+              </option>
             </c-select>
           </c-flex>
           <c-flex direction="column" mx="1" w="10%">
@@ -60,14 +62,14 @@
 
             <c-select
               class="filter-container custom-select"
-              placeholder="1 - 7"
+              v-model="state.verse"
             >
-              <option value="1 - 7">1 - 7</option>
-              <option value="1 - 7">1 - 7</option>
-              <option value="1 - 7">1 - 7</option>
-              <option value="1 - 7">1 - 7</option>
-              <option value="1 - 7">1 - 7</option>
-              <option value="1 - 7">1 - 7</option>
+              <option
+                v-for="verse in state.verses"
+                v-bind:value="verse"
+                v-bind:key="verse"
+                >{{ verse }}</option
+              >
             </c-select>
           </c-flex>
           <c-flex direction="column" mx="1" w="10%">
@@ -76,13 +78,16 @@
               ><c-icon name="chevron-down" size="18px" color="black"
             /></c-flex>
 
-            <c-select class="filter-container custom-select" placeholder="EN">
-              <option value="EN">EN</option>
-              <option value="EN">EN</option>
-              <option value="EN">EN</option>
-              <option value="EN">EN</option>
-              <option value="EN">EN</option>
-              <option value="EN">28</option>
+            <c-select
+              class="filter-container custom-select"
+              v-model="state.language"
+            >
+              <option
+                v-for="language in state.languages"
+                v-bind:value="language"
+                v-bind:key="language"
+                >{{ language }}</option
+              >
             </c-select>
           </c-flex>
           <c-flex direction="column" mx="1" w="10%">
@@ -92,12 +97,11 @@
             /></c-flex>
 
             <c-select class="filter-container custom-select" placeholder="18">
-              <option value="18">18</option>
               <option value="20">20</option>
-              <option value="20">22</option>
-              <option value="20">24</option>
-              <option value="20">26</option>
-              <option value="20">28</option>
+              <option value="22">22</option>
+              <option value="24">24</option>
+              <option value="26">26</option>
+              <option value="28">28</option>
             </c-select>
           </c-flex>
           <c-flex direction="column" mx="1" w="15%">
@@ -108,10 +112,15 @@
 
             <c-select
               class="filter-container custom-select"
-              placeholder="Parallel"
+              v-model="state.view"
+              style="text-transform :capitalize;"
             >
-              <option value="parallel">Parallel</option>
-              <option value="paragraph">Paragraph</option>
+              <option
+                v-for="viewOption in ['paragraph', 'parallel']"
+                v-bind:value="viewOption"
+                v-bind:key="viewOption"
+                >{{ viewOption }}</option
+              >
             </c-select>
           </c-flex>
           <c-flex direction="column" mx="1" w="42.5%">
@@ -131,7 +140,8 @@
             <c-flex class="filter-container" w="100%">
               <c-text class="filter-value">Audio</c-text>
               <c-text class="filter-value"
-                >EN <c-icon name="chevron-down" size="18px" color="black"
+                >{{ state.language }}
+                <c-icon name="chevron-down" size="18px" color="black"
               /></c-text>
               <c-icon
                 name="chevron-right"
@@ -152,13 +162,17 @@
       </c-flex>
 
       <c-flex direction="column" mt="2vw">
-        <c-flex justify="start"
-          ><c-heading class="heading">Verse 1 - 7</c-heading></c-flex
-        >
+        <c-heading class="heading">Verse 1 - 7</c-heading>
         <c-flex w="100%">
-          <c-flex direction="column" py="1vw" w="50%">
+          <c-flex
+            direction="column"
+            py="1vw"
+            :style="
+              state.view === 'parallel' ? { width: '50%' } : { width: '100%' }
+            "
+          >
             <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
-              EN
+              {{ state.language }}
             </c-text>
             <c-text>
               1 In the name of God, the Most Gracious, the Most Merciful 2 All
@@ -170,11 +184,18 @@
             </c-text>
           </c-flex>
           <c-divider
+            v-show="state.view === 'parallel'"
             orientation="vertical"
-            borderWidth="5px"
+            borderWidth="0.35vw"
             borderColor="palettes.primary"
           />
-          <c-flex direction="column" py="1vw" px="1.25vw" w="50%">
+          <c-flex
+            direction="column"
+            py="1vw"
+            px="1.25vw"
+            w="50%"
+            v-show="state.view === 'parallel'"
+          >
             <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
               EN
             </c-text>
@@ -202,21 +223,7 @@
               /></c-button>
             </c-accordion-header>
             <c-accordion-panel px="0">
-              <c-text mt="1em">
-                The best way to begin any task is in the name of God, the Lord,
-                the Being who is the source of all blessings, and whose
-                blessings and mercy are continually pouring upon His creation.
-                To commence any undertaking in His name is to pray that God, in
-                His infinite mercy, should come to one’s assistance and bring
-                one’s work to a successful conclusion. This is man’s
-                acknowledgement of the fact that he is God’s servant, and also
-                brings divine assurance of success. The Quran has a special and
-                characteristic way of expressing a believer’s inner sentiments
-                in the most appropriate words. The invocation of God, in the
-                opening chapter of the Quran, constitutes a supplication of this
-                nature. The feelings which are naturally aroused in one after
-                discovering the truth are expressed in these lines.
-              </c-text>
+              <c-text mt="1em">{{ state.commentary }} </c-text>
             </c-accordion-panel>
           </c-accordion-item>
         </c-accordion>
@@ -224,24 +231,14 @@
 
       <c-flex my="2vw" direction="column">
         <c-heading class="heading" my="1vw">Related Media</c-heading>
-        <c-simple-grid :columns="3" :spacing="5">
+        <c-simple-grid :columns="3" :spacing="30">
           <Tile
-            image="images/reading"
-            title="Title/ Article"
-            subTitle="Sub-text"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis."
-          />
-          <Tile
-            image="images/reading"
-            title="Title/ Article"
-            subTitle="Sub-text"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis."
-          />
-          <Tile
-            image="images/reading"
-            title="Title/ Article"
-            subTitle="Sub-text"
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis."
+            v-for="media in state.relatedMedia"
+            v-bind:key="media.title"
+            v-bind:image="media.image"
+            v-bind:title="media.title"
+            v-bind:subTitle="media.subTitle"
+            v-bind:content="media.content"
           />
         </c-simple-grid>
       </c-flex>
@@ -272,6 +269,7 @@
   padding-right: 0;
   height: 100%;
   border-radius: 1vw;
+  text-transform: capitalize;
 }
 .filter-value {
   font-size: 1.15vw;
@@ -320,6 +318,49 @@ import ShareModal from "@/components/CustomComponents/Modals/Share.vue";
 export default {
   name: "ReadingChapters",
   inject: ["$chakraColorMode", "$toggleColorMode"],
+  data: function() {
+    return {
+      state: {
+        language: "EN",
+        languages: ["EN", "EN", "EN"],
+        chapter: "Al-Fatihah The Cow",
+        verse: "1 - 7",
+        view: "paragraph",
+        verses: ["1 - 7", "1 - 7", "1 - 7", "1 - 7"],
+        allChapters: [
+          "Al-Fatihah The Cow",
+          "Al-Fatihah The Cow",
+          "Al-Fatihah The Cow",
+          "Al-Fatihah The Cow",
+        ],
+        commentary:
+          "The best way to begin any task is in the name of God, the Lord, the Being who is the source of all blessings, and whose blessings and mercy are continually pouring upon His creation. To commence any undertaking in His name is to pray that God, in His infinite mercy, should come to one’s assistance and bring one’s work to a successful conclusion. This is man’s acknowledgement of the fact that he is God’s servant, and also brings divine assurance of success. The Quran has a special and characteristic way of expressing a believer’s inner sentiments in the most appropriate words. The invocation of God, in the opening chapter of the Quran, constitutes a supplication of this nature. The feelings which are naturally aroused in one after discovering the truth are expressed in these lines.",
+        relatedMedia: [
+          {
+            image: "images/reading",
+            title: "Title / Article",
+            subTitle: "Sub-text",
+            content:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
+          },
+          {
+            image: "images/reading",
+            title: "Title / Article",
+            subTitle: "Sub-text",
+            content:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
+          },
+          {
+            image: "images/reading",
+            title: "Title / Article",
+            subTitle: "Sub-text",
+            content:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
+          },
+        ],
+      },
+    };
+  },
   components: {
     CFlex,
     SubscribeForm,
