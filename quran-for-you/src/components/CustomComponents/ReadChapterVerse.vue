@@ -96,12 +96,16 @@
               ><c-icon name="chevron-down" size="18px" color="black"
             /></c-flex>
 
-            <c-select class="filter-container custom-select" placeholder="18">
-              <option value="20">20</option>
-              <option value="22">22</option>
-              <option value="24">24</option>
-              <option value="26">26</option>
-              <option value="28">28</option>
+            <c-select
+              class="filter-container custom-select"
+              v-model="state.fontSize"
+            >
+              <option
+                v-for="fontSize in ['18', '20', '22', '24', '26', '28']"
+                :value="fontSize"
+                :key="fontSize"
+                >{{ fontSize }}</option
+              >
             </c-select>
           </c-flex>
           <c-flex direction="column" mx="1" w="15%">
@@ -163,7 +167,7 @@
       </c-flex>
 
       <c-flex direction="column" mt="2vw">
-        <c-heading class="heading">Verse 1 - 7</c-heading>
+        <c-heading class="heading">Verse {{ state.verse }}</c-heading>
         <c-flex w="100%">
           <c-flex
             direction="column"
@@ -212,7 +216,7 @@
         </c-flex>
       </c-flex>
 
-      <c-flex direction="column" mt="3vw">
+      <c-flex direction="column" mt="2vw">
         <c-accordion :allow-toggle="true">
           <c-accordion-item>
             <c-accordion-header px="0" py="1vw">
@@ -322,6 +326,7 @@ export default {
     return {
       isOpen: false,
       state: {
+        fontSize: "18",
         language: "EN",
         languages: ["EN", "EN", "EN"],
         chapter: "Al-Fatihah The Cow",
