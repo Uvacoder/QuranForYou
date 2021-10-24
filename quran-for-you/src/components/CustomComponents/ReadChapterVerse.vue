@@ -221,6 +221,30 @@
         </c-accordion>
       </c-flex>
 
+      <c-flex my="2vw" direction="column">
+        <c-heading class="heading" my="1vw">Related Media</c-heading>
+        <c-simple-grid :columns="3" :spacing="5">
+          <Tile
+            image="images/reading"
+            title="Title/ Article"
+            subTitle="Sub-text"
+            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis."
+          />
+          <Tile
+            image="images/reading"
+            title="Title/ Article"
+            subTitle="Sub-text"
+            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis."
+          />
+          <Tile
+            image="images/reading"
+            title="Title/ Article"
+            subTitle="Sub-text"
+            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis."
+          />
+        </c-simple-grid>
+      </c-flex>
+
       <c-flex class="subscribe-form-container">
         <SubscribeForm />
       </c-flex>
@@ -289,6 +313,7 @@
 <script>
 import { CFlex, CAccordionIcon } from "@chakra-ui/vue";
 import SubscribeForm from "@/components/Desktopview/Layout/SubscribeForm.vue";
+import Tile from "@/components/CustomComponents/Tile.vue";
 
 export default {
   name: "ReadingChapters",
@@ -297,6 +322,7 @@ export default {
     CFlex,
     SubscribeForm,
     CAccordionIcon,
+    Tile,
   },
 };
 </script>
