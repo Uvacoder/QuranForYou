@@ -56,7 +56,7 @@
               ><c-icon name="chevron-down" size="18px" color="black"
             /></c-flex>
 
-            <c-flex class="filter-container" w="98px">
+            <c-flex class="filter-container" w="7.5vw">
               <c-text class="filter-value">1 - 7</c-text>
             </c-flex>
           </c-flex>
@@ -66,7 +66,7 @@
               ><c-icon name="chevron-down" size="18px" color="black"
             /></c-flex>
 
-            <c-flex class="filter-container" w="98px" h="100px">
+            <c-flex class="filter-container" w="7.5vw">
               <c-text class="filter-value">EN</c-text>
             </c-flex>
           </c-flex>
@@ -76,7 +76,7 @@
               ><c-icon name="chevron-down" size="18px" color="black"
             /></c-flex>
 
-            <c-flex class="filter-container" w="98px" h="100px">
+            <c-flex class="filter-container" w="7.5vw">
               <c-text class="filter-value">18</c-text>
             </c-flex>
           </c-flex>
