@@ -8,10 +8,10 @@
             <c-switch color="black" size="lg" />
           </c-flex>
           <c-flex class="sbd-container">
-            <c-link @click="open">
+            <c-link @click="shareOpen">
               Share
             </c-link>
-            <ShareModal :isOpen="isOpen" :close="close" />
+            <ShareModal :isOpen="isShareOpen" :close="shareClose" />
             <c-image :src="require(`@/assets/share.png`)" class="icons-sbd" />
           </c-flex>
           <c-flex class="sbd-container">
@@ -24,9 +24,10 @@
             />
           </c-flex>
           <c-flex class="sbd-container">
-            <c-link as="router-link" to="/">
+            <c-link @click="downloadOpen">
               Download
             </c-link>
+            <DownloadModal :isOpen="isDownloadOpen" :close="downloadClose" />
             <c-image
               :src="require(`@/assets/download.png`)"
               class="icons-sbd"
@@ -318,13 +319,15 @@ import { CFlex, CAccordionIcon } from "@chakra-ui/vue";
 import SubscribeForm from "@/components/Desktopview/Layout/SubscribeForm.vue";
 import Tile from "@/components/CustomComponents/Tile.vue";
 import ShareModal from "@/components/CustomComponents/Modals/Share.vue";
+import DownloadModal from "@/components/CustomComponents/Modals/Download.vue";
 
 export default {
   name: "ReadingChapters",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   data: function() {
     return {
-      isOpen: false,
+      isShareOpen: false,
+      isDownloadOpen: false,
       state: {
         fontSize: "18",
         language: "EN",
@@ -373,14 +376,21 @@ export default {
     CAccordionIcon,
     ShareModal,
     Tile,
+    DownloadModal,
   },
 
   methods: {
-    open() {
-      this.isOpen = true;
+    shareOpen() {
+      this.isShareOpen = true;
     },
-    close() {
-      this.isOpen = false;
+    shareClose() {
+      this.isShareOpen = false;
+    },
+    downloadOpen() {
+      this.isDownloadOpen = true;
+    },
+    downloadClose() {
+      this.isDownloadOpen = false;
     },
   },
 };
