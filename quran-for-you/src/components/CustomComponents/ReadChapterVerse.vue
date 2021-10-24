@@ -8,9 +8,10 @@
             <c-switch color="black" size="lg" />
           </c-flex>
           <c-flex class="sbd-container">
-            <c-link as="router-link" to="/">
+            <c-link @click="open">
               Share
             </c-link>
+            <ShareModal :isOpen="isOpen" :close="close"/>
             <c-image :src="require(`@/assets/share.png`)" class="icons-sbd" />
           </c-flex>
           <c-flex class="sbd-container">
@@ -314,6 +315,7 @@
 import { CFlex, CAccordionIcon } from "@chakra-ui/vue";
 import SubscribeForm from "@/components/Desktopview/Layout/SubscribeForm.vue";
 import Tile from "@/components/CustomComponents/Tile.vue";
+import ShareModal from "@/components/CustomComponents/Modals/Share.vue";
 
 export default {
   name: "ReadingChapters",
@@ -322,7 +324,21 @@ export default {
     CFlex,
     SubscribeForm,
     CAccordionIcon,
+    ShareModal,
     Tile,
   },
+  data () {
+    return {
+      isOpen: false
+    }
+  },
+  methods: {
+    open() {
+      this.isOpen = true
+    },
+    close() {
+      this.isOpen = false
+    }
+  }
 };
 </script>
