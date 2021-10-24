@@ -12,6 +12,7 @@ body,
 .home {
   height: 100%;
 }
+
 .heading {
   font-size: 3vw;
 }

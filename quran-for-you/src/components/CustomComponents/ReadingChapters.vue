@@ -1,7 +1,7 @@
 <template>
   <mq-layout mq="desktop">
     <c-flex class="container">
-      <c-heading class="heading" mb="1.5vw">Read Quran</c-heading>
+      <c-heading class="heading" mb="0.75vw">Read Chapter</c-heading>
       <c-simple-grid :columns="3">
         <c-text class="chapter-link">Chapter 1</c-text>
         <c-text class="chapter-link">Chapter 2</c-text>
@@ -28,7 +28,9 @@
 <style>
 .chapter-link {
   font-size: 1.675vw;
-  margin-bottom: 1vw;
+  padding: 1vw;
+
+  text-align: center;
 }
 </style>
 <script>
