@@ -5,15 +5,15 @@
         :is-open="isOpen"
         :on-close="close"
         :closeOnOverlayClick="false"
-        size="md"
+        size="xl"
         padding="5"
       >
         <c-modal-content>
-          <c-modal-header>SHARE NOW</c-modal-header>
+          <c-modal-header>Download</c-modal-header>
           <c-modal-close-button />
           <c-modal-body>
             <c-flex direction="column" padding="5">
-              <c-simple-grid :columns="3" :spacing="10">
+              <c-simple-grid :columns="2" :spacing="50">
                 <c-image
                   class="share-icon"
                   v-for="icon in [
