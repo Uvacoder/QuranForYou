@@ -6,29 +6,26 @@
         :on-close="close"
         :closeOnOverlayClick="false"
         size="md"
-        padding="5"
       >
         <c-modal-content>
           <c-modal-header>SHARE NOW</c-modal-header>
           <c-modal-close-button />
           <c-modal-body>
-            <c-flex direction="column" padding="5">
-              <c-simple-grid :columns="3" :spacing="10">
-                <c-image
-                  class="share-icon"
-                  v-for="icon in [
-                    'facebook.png',
-                    'whatsapp.png',
-                    'twitter.png',
-                    'linkedin.png',
-                    'pinterest.png',
-                    'mail.png',
-                  ]"
-                  v-bind:src="require(`@/assets/share/${icon}`)"
-                  v-bind:key="icon"
-                />
-              </c-simple-grid>
-            </c-flex>
+            <c-simple-grid :columns="3" :spacing="10" px="2vw" pb="1vw">
+              <c-image
+                class="share-icon"
+                v-for="icon in [
+                  'facebook.png',
+                  'whatsapp.png',
+                  'twitter.png',
+                  'linkedin.png',
+                  'pinterest.png',
+                  'mail.png',
+                ]"
+                v-bind:src="require(`@/assets/share/${icon}`)"
+                v-bind:key="icon"
+              />
+            </c-simple-grid>
           </c-modal-body>
         </c-modal-content>
         <c-modal-overlay />
@@ -40,8 +37,8 @@
 
 <style>
 .share-icon {
-  width: 5vw;
-  height: 5vw;
+  width: 3.5vw;
+  height: 3.5vw;
   object-fit: contain;
   margin: auto;
   transition: 0.5s;
