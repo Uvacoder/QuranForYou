@@ -41,14 +41,18 @@
               ><c-icon name="chevron-down" size="1.35vw" color="black" mx="1"
             /></c-flex>
 
-            <c-flex
-              class="filter-container"
+            <c-select
+              class="filter-container custom-select"
               align="center"
               justify="space-around"
+              placeholder="Al-Fatihah The Cow"
             >
-              <c-text class="filter-value">Al-Fatihah</c-text>
-              <c-text fontSize="18px">The Cow</c-text>
-            </c-flex>
+              <option value="Al-Fatihah The Cow"
+                ><c-text class="filter-value"
+                  >Al-Fatihah The Cow</c-text
+                ></option
+              >
+            </c-select>
           </c-flex>
           <c-flex direction="column" mx="1">
             <c-flex align="center"
@@ -57,7 +61,16 @@
             /></c-flex>
 
             <c-flex class="filter-container" w="98px">
-              <c-text class="filter-value">1 - 7</c-text>
+              <c-select
+                class="filter-container custom-select"
+                align="center"
+                justify="space-around"
+                placeholder="1-7"
+              >
+                <option value="1-7"
+                  ><c-text class="filter-value">1-7</c-text></option
+                >
+              </c-select>
             </c-flex>
           </c-flex>
           <c-flex direction="column" mx="1">
@@ -67,7 +80,16 @@
             /></c-flex>
 
             <c-flex class="filter-container" w="98px" h="100px">
-              <c-text class="filter-value">EN</c-text>
+              <c-select
+                class="filter-container custom-select"
+                align="center"
+                justify="space-around"
+                placeholder="EN"
+              >
+                <option value="EN"
+                  ><c-text class="filter-value">EN</c-text></option
+                >
+              </c-select>
             </c-flex>
           </c-flex>
           <c-flex direction="column" mx="1">
@@ -77,7 +99,16 @@
             /></c-flex>
 
             <c-flex class="filter-container" w="98px" h="100px">
-              <c-text class="filter-value">18</c-text>
+              <c-select
+                class="filter-container custom-select"
+                align="center"
+                justify="space-around"
+                placeholder="18"
+              >
+                <option value="18"
+                  ><c-text class="filter-value">18</c-text></option
+                >
+              </c-select>
             </c-flex>
           </c-flex>
           <c-flex direction="column" mx="1" w="100%">
@@ -111,10 +142,18 @@
           </c-flex>
           <c-flex direction="column" mx="1" w="20%">
             <c-flex class="filter-container" w="100%">
-              <c-text class="filter-value"
-                >Read introduction
-                <c-icon name="chevron-down" size="18px" color="black" mx="1"
-              /></c-text>
+              <c-select
+                class="reading-select filter-container"
+                align="center"
+                justify="space-around"
+                placeholder="Read Introduction"
+              >
+                <option value="EN"
+                  ><c-text class="filter-value"
+                    >Read Introduction</c-text
+                  ></option
+                >
+              </c-select>
             </c-flex>
           </c-flex>
         </c-flex>
@@ -160,26 +199,35 @@
       </c-flex>
 
       <c-flex direction="column" mt="3vw">
-        <c-flex justify="space-between">
-          <c-heading class="heading">Commentary</c-heading>
-          <c-button fontSize="1.25vw" variant-color="white" color="black"
-            >Hide <c-icon name="chevron-down" color="black" mx="1"
-          /></c-button>
-        </c-flex>
-        <c-text mt="1em">
-          The best way to begin any task is in the name of God, the Lord, the
-          Being who is the source of all blessings, and whose blessings and
-          mercy are continually pouring upon His creation. To commence any
-          undertaking in His name is to pray that God, in His infinite mercy,
-          should come to one’s assistance and bring one’s work to a successful
-          conclusion. This is man’s acknowledgement of the fact that he is God’s
-          servant, and also brings divine assurance of success. The Quran has a
-          special and characteristic way of expressing a believer’s inner
-          sentiments in the most appropriate words. The invocation of God, in
-          the opening chapter of the Quran, constitutes a supplication of this
-          nature. The feelings which are naturally aroused in one after
-          discovering the truth are expressed in these lines.
-        </c-text>
+        <c-accordion :allow-toggle="true">
+          <c-accordion-item>
+            <c-accordion-header p="0">
+              <c-box flex="1" text-align="left">
+                <c-heading class="heading">Commentary</c-heading>
+              </c-box>
+              <c-button fontSize="1.25vw" variant-color="white" color="black"
+                >Hide <c-icon name="chevron-down" color="black" mx="1"
+              /></c-button>
+            </c-accordion-header>
+            <c-accordion-panel px="0">
+              <c-text mt="1em">
+                The best way to begin any task is in the name of God, the Lord,
+                the Being who is the source of all blessings, and whose
+                blessings and mercy are continually pouring upon His creation.
+                To commence any undertaking in His name is to pray that God, in
+                His infinite mercy, should come to one’s assistance and bring
+                one’s work to a successful conclusion. This is man’s
+                acknowledgement of the fact that he is God’s servant, and also
+                brings divine assurance of success. The Quran has a special and
+                characteristic way of expressing a believer’s inner sentiments
+                in the most appropriate words. The invocation of God, in the
+                opening chapter of the Quran, constitutes a supplication of this
+                nature. The feelings which are naturally aroused in one after
+                discovering the truth are expressed in these lines.
+              </c-text>
+            </c-accordion-panel>
+          </c-accordion-item>
+        </c-accordion>
       </c-flex>
 
       <c-flex class="subscribe-form-container">
@@ -215,6 +263,26 @@
   margin-left: 0.75vw;
   margin-right: 0.75vw;
   align-items: center;
+}
+
+.custom-select {
+  display: flex;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border-color: #fff;
+}
+
+.reading-select {
+  display: flex;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  border-color: #fff;
+}
+
+.custom-select .css-1oh9bp8 {
+  display: none;
 }
 </style>
 <script>
