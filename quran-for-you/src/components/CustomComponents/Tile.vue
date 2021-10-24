@@ -5,7 +5,7 @@
         <c-image
           :src="require(`@/assets/${image}.png`)"
           borderRadius="8px"
-          objectFit="contain"
+          objectFit="cover"
           height="15vw"
           width="100%"
         ></c-image>
