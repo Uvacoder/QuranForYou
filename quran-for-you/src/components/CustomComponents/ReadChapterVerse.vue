@@ -11,7 +11,7 @@
             <c-link @click="open">
               Share
             </c-link>
-            <ShareModal :isOpen="isOpen" :close="close"/>
+            <ShareModal :isOpen="isOpen" :close="close" />
             <c-image :src="require(`@/assets/share.png`)" class="icons-sbd" />
           </c-flex>
           <c-flex class="sbd-container">
@@ -113,8 +113,9 @@
             <c-select
               class="filter-container custom-select"
               v-model="state.view"
-              style="text-transform :capitalize;"
+              textTransform="capitalize"
             >
+              >
               <option
                 v-for="viewOption in ['paragraph', 'parallel']"
                 v-bind:value="viewOption"
@@ -269,7 +270,6 @@
   padding-right: 0;
   height: 100%;
   border-radius: 1vw;
-  text-transform: capitalize;
 }
 .filter-value {
   font-size: 1.15vw;
@@ -320,6 +320,7 @@ export default {
   inject: ["$chakraColorMode", "$toggleColorMode"],
   data: function() {
     return {
+      isOpen: false,
       state: {
         language: "EN",
         languages: ["EN", "EN", "EN"],
@@ -368,18 +369,14 @@ export default {
     ShareModal,
     Tile,
   },
-  data () {
-    return {
-      isOpen: false
-    }
-  },
+
   methods: {
     open() {
-      this.isOpen = true
+      this.isOpen = true;
     },
     close() {
-      this.isOpen = false
-    }
-  }
+      this.isOpen = false;
+    },
+  },
 };
 </script>

@@ -1,38 +1,31 @@
 <template>
   <c-box>
     <mq-layout mq="desktop">
-      <c-modal :is-open="isOpen" :on-close="close" :closeOnOverlayClick="false" size="xs">
+      <c-modal
+        :is-open="isOpen"
+        :on-close="close"
+        :closeOnOverlayClick="false"
+        size="md"
+        padding="5"
+      >
         <c-modal-content>
-          <c-modal-header class="heading" textTransform="uppercase" my="1vw"
-            >Share Now</c-modal-header
-          >
+          <c-modal-header>SHARE NOW</c-modal-header>
           <c-modal-close-button />
-          <c-modal-body p="1vh" my="1vh">
-            <c-flex direction="column" justify="center" align="space-between" pl="3vh">
-              <c-simple-grid :columns="3" :spacing="5">
+          <c-modal-body>
+            <c-flex direction="column" padding="5">
+              <c-simple-grid :columns="3" :spacing="10">
                 <c-image
-                  :src="require(`@/assets/share/facebook.png`)"
-                  size="10vh"
-                />
-                <c-image
-                  :src="require(`@/assets/share/whatsapp.png`)"
-                  size="10vh"
-                />
-                <c-image
-                  :src="require(`@/assets/share/twitter.png`)"
-                  size="10vh"
-                />
-                <c-image
-                  :src="require(`@/assets/share/linkedin.png`)"
-                  size="10vh"
-                />
-                <c-image
-                  :src="require(`@/assets/share/pinterest.png`)"
-                  size="10vh"
-                />
-                <c-image
-                  :src="require(`@/assets/share/mail.png`)"
-                  size="10vh"
+                  class="share-icon"
+                  v-for="icon in [
+                    'facebook.png',
+                    'whatsapp.png',
+                    'twitter.png',
+                    'linkedin.png',
+                    'pinterest.png',
+                    'mail.png',
+                  ]"
+                  v-bind:src="require(`@/assets/share/${icon}`)"
+                  v-bind:key="icon"
                 />
               </c-simple-grid>
             </c-flex>
@@ -45,8 +38,19 @@
   </c-box>
 </template>
 
-<style></style>
-
+<style>
+.share-icon {
+  width: 5vw;
+  height: 5vw;
+  object-fit: contain;
+  margin: auto;
+  transition: 0.5s;
+}
+.share-icon:hover {
+  transform: scale(1.25);
+  cursor: pointer;
+}
+</style>
 <script>
 import { CButton, CImage } from "@chakra-ui/vue";
 
