@@ -29,7 +29,7 @@ const routes = [{
         component: ReadChaptersPage,
     },
     {
-        path: "/chapters/verse",
+        path: "/chapters/:chapterId/verse/:groupId",
         name: "ReadChaptersVersePage",
         component: ReadChaptersVersePage,
     },

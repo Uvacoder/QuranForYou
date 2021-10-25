@@ -47,9 +47,9 @@
               v-model="state.chapter"
             >
               <option
-                v-for="chapter in state.allChapters"
-                v-bind:value="chapter"
-                v-bind:key="chapter"
+                v-for="(chapter, index) in state.allChapters"
+                :value="chapter"
+                :key="chapter + index"
               >
                 {{ chapter }}
               </option>
@@ -66,9 +66,9 @@
               v-model="state.verse"
             >
               <option
-                v-for="verse in state.verses"
-                v-bind:value="verse"
-                v-bind:key="verse"
+                v-for="(verse, index) in state.verses"
+                :value="verse"
+                :key="verse + index"
                 >{{ verse }}</option
               >
             </c-select>
@@ -84,9 +84,9 @@
               v-model="state.language"
             >
               <option
-                v-for="language in state.languages"
-                v-bind:value="language"
-                v-bind:key="language"
+                v-for="(language, index) in state.languages"
+                :value="language"
+                :key="language + index"
                 >{{ language }}</option
               >
             </c-select>
@@ -104,7 +104,7 @@
               <option
                 v-for="fontSize in state.fontSizes"
                 :value="fontSize.value"
-                :key="fontSize"
+                :key="fontSize.value"
                 >{{ fontSize.font }}</option
               >
             </c-select>
@@ -237,8 +237,8 @@
         <c-heading class="heading" my="1vw">Related Media</c-heading>
         <c-simple-grid :columns="3" :spacing="30">
           <Tile
-            v-for="media in state.relatedMedia"
-            v-bind:key="media.title"
+            v-for="(media, index) in state.relatedMedia"
+            v-bind:key="media.title + index"
             v-bind:image="media.image"
             v-bind:title="media.title"
             v-bind:subTitle="media.subTitle"

@@ -19,5 +19,8 @@ export default {
     ReadChapterVerse,
     Footer,
   },
+  mounted: () => {
+    console.log(this.$router.params);
+  },
 };
 </script>
