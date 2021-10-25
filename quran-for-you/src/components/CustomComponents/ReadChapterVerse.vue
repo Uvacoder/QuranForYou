@@ -102,10 +102,10 @@
               v-model="state.fontSize"
             >
               <option
-                v-for="fontSize in ['18', '20', '22', '24', '26', '28']"
-                :value="fontSize"
+                v-for="fontSize in state.fontSizes"
+                :value="fontSize.value"
                 :key="fontSize"
-                >{{ fontSize }}</option
+                >{{ fontSize.font }}</option
               >
             </c-select>
           </c-flex>
@@ -180,7 +180,7 @@
             <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
               {{ state.language }}
             </c-text>
-            <c-text>
+            <c-text :fontSize="state.fontSize">
               1 In the name of God, the Most Gracious, the Most Merciful 2 All
               praise is due to God, the Lord of the Universe; 3 the Beneficent,
               the Merciful; 4 Lord of the Day of Judgement. 5 You alone we
@@ -205,7 +205,7 @@
             <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
               EN
             </c-text>
-            <c-text>
+            <c-text :fontSize="state.fontSize">
               1 In the name of God, the Most Gracious, the Most Merciful 2 All
               praise is due to God, the Lord of the Universe; 3 the Beneficent,
               the Merciful; 4 Lord of the Day of Judgement. 5 You alone we
@@ -229,7 +229,9 @@
               /></c-button>
             </c-accordion-header>
             <c-accordion-panel px="0">
-              <c-text mt="1em">{{ state.commentary }} </c-text>
+              <c-text mt="1em" :fontSize="state.fontSize"
+                >{{ state.commentary }}
+              </c-text>
             </c-accordion-panel>
           </c-accordion-item>
         </c-accordion>
@@ -330,6 +332,14 @@ export default {
       isDownloadOpen: false,
       state: {
         fontSize: "18",
+        fontSizes: [
+          { value: "1vw", font: 16 },
+          { value: "1.2vw", font: 18 },
+          { value: "1.4vw", font: 20 },
+          { value: "1.6vw", font: 22 },
+          { value: "1.8vw", font: 24 },
+          { value: "2vw", font: 26 },
+        ],
         language: "EN",
         languages: ["EN", "EN", "EN"],
         chapter: "Al-Fatihah The Cow",
