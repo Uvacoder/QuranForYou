@@ -2,8 +2,8 @@
   <mq-layout mq="desktop">
     <c-flex class="container">
       <c-flex justify="space-between" mb="1vw">
-        <c-heading class="heading" mb="1.25vw">Quran Chapter 1</c-heading>
-        <c-flex justify="space-between">
+        <c-heading class="heading">Quran Chapter 1</c-heading>
+        <c-flex>
           <c-flex align="center" justify="center" mx="2">
             <c-switch color="black" size="lg" />
           </c-flex>
@@ -36,10 +36,10 @@
       </c-flex>
       <c-flex direction="column" w="100%">
         <c-flex w="100%">
-          <c-flex direction="column" mx="1" w="25%">
+          <c-flex direction="column" mx="2" w="25%">
             <c-flex w="100%"
               ><c-text class="filter-label">Chapters</c-text
-              ><c-icon name="chevron-down" size="1.35vw" color="black" mx="1"
+              ><c-icon name="chevron-down" size="1.35vw" color="black" mx="2"
             /></c-flex>
             <c-select
               class="filter-container custom-select"
@@ -54,7 +54,7 @@
               </option>
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="1" w="10%">
+          <c-flex direction="column" mx="2" w="10%">
             <c-flex align="center"
               ><c-text class="filter-label">Verse No</c-text
               ><c-icon name="chevron-down" size="18px" color="black"
@@ -72,7 +72,7 @@
               >
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="1" w="10%">
+          <c-flex direction="column" mx="2" w="10%">
             <c-flex align="center"
               ><c-text class="filter-label">Language</c-text
               ><c-icon name="chevron-down" size="18px" color="black"
@@ -90,7 +90,7 @@
               >
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="1" w="10%">
+          <c-flex direction="column" mx="2" w="10%">
             <c-flex align="center"
               ><c-text class="filter-label">Font Size</c-text
               ><c-icon name="chevron-down" size="18px" color="black"
@@ -108,7 +108,7 @@
               >
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="1" w="15%">
+          <c-flex direction="column" mx="2" w="15%">
             <c-flex align="center"
               ><c-text class="filter-label">View Options</c-text
               ><c-icon name="chevron-down" size="18px" color="black"
@@ -128,7 +128,7 @@
               >
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="1" w="42.5%">
+          <c-flex direction="column" mx="2" w="42.5%">
             <c-text class="filter-label">Search</c-text>
             <c-flex class="filter-container" w="100%" p="3">
               <c-input-group w="100%">
@@ -141,7 +141,7 @@
           </c-flex>
         </c-flex>
         <c-flex my="1vw" w="100%">
-          <c-flex direction="column" mx="1" w="80%">
+          <c-flex direction="column" mx="2" w="80%">
             <c-flex class="filter-container" w="100%">
               <c-text class="filter-value">Audio</c-text>
               <c-text class="filter-value"
@@ -158,15 +158,14 @@
               <c-divider border-color="gray.500" w="75%" borderWidth="5px" />
             </c-flex>
           </c-flex>
-          <c-flex direction="column" mx="1" w="20%">
+          <c-flex direction="column" mx="2" w="20%">
             <c-flex class="filter-container" w="100%">
               <c-text class="filter-value">Read Introduction</c-text>
             </c-flex>
           </c-flex>
         </c-flex>
       </c-flex>
-
-      <c-flex direction="column" mt="2vw">
+      <c-flex direction="column" mt="1.25vw">
         <c-heading class="heading">Verse {{ state.verse }}</c-heading>
         <c-flex w="100%">
           <c-flex
@@ -216,24 +215,21 @@
         </c-flex>
       </c-flex>
 
-      <c-flex direction="column" mt="2vw">
-        <c-accordion :allow-toggle="true">
-          <c-accordion-item>
-            <c-accordion-header px="0" py="1vw">
-              <c-box flex="1" text-align="left">
-                <c-heading class="heading">Commentary</c-heading>
-              </c-box>
-              <c-button fontSize="1.25vw" variant-color="white" color="black"
-                >Hide <c-accordion-icon
-              /></c-button>
-            </c-accordion-header>
-            <c-accordion-panel px="0">
-              <c-text mt="1em">{{ state.commentary }} </c-text>
-            </c-accordion-panel>
-          </c-accordion-item>
-        </c-accordion>
-      </c-flex>
-
+      <c-accordion :allow-toggle="true" mt="2vw">
+        <c-accordion-item>
+          <c-accordion-header px="0" py="1vw">
+            <c-box flex="1" text-align="left">
+              <c-heading class="heading">Commentary</c-heading>
+            </c-box>
+            <c-button fontSize="1.25vw" variant-color="white" color="black"
+              >Hide <c-accordion-icon
+            /></c-button>
+          </c-accordion-header>
+          <c-accordion-panel px="0">
+            <c-text mt="1em">{{ state.commentary }} </c-text>
+          </c-accordion-panel>
+        </c-accordion-item>
+      </c-accordion>
       <c-flex my="2vw" direction="column">
         <c-heading class="heading" my="1vw">Related Media</c-heading>
         <c-simple-grid :columns="3" :spacing="30">
@@ -256,12 +252,14 @@
 </template>
 <style>
 .filter-label {
-  font-size: 1vw;
+  font-size: 0.85vw;
   font-weight: 900;
+  margin-bottom: 2px;
 }
 .filter-container {
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-  height: 5vw;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  height: 4vw;
   align-items: center;
   justify-content: space-evenly;
   border-radius: 1vw;

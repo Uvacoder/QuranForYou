@@ -9,10 +9,10 @@
           height="15vw"
           width="100%"
         ></c-image>
-        <c-text fontWeight="bold" mt="0.5vw">{{ title }}</c-text>
-        <c-text fontSize="1.25vw" mt="0.15vw">{{ subTitle }}</c-text>
-        <c-text my="0.5vw">{{ content }}</c-text>
-        <CustomButton text="Read More" padding="0.1vw" />
+        <c-text fontWeight="bold" mt="0.35vw">{{ title }}</c-text>
+        <c-text fontSize="1.15vw" my="0.15vw">{{ subTitle }}</c-text>
+        <c-text mb="1vw">{{ content }}</c-text>
+        <CustomButton text="Read More" padding="0.25vw" fontSize="1vw" />
       </c-flex>
     </mq-layout>
     <mq-layout mq="mobile"> </mq-layout>

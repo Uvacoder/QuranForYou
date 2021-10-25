@@ -20,7 +20,7 @@ body,
   flex-direction: column;
   margin-left: 4vw;
   margin-right: 4vw;
-  margin-top: 2vw;
+  margin-top: 1.5vw;
   margin-bottom: 2vw;
 }
 .subscribe-form-container {
