@@ -32,6 +32,7 @@ const routes = [{
         path: "/chapters/:chapterId/verse/:groupId",
         name: "ReadChaptersVersePage",
         component: ReadChaptersVersePage,
+        params: true,
     },
     {
         path: "/about",
