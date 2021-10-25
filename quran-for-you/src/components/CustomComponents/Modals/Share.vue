@@ -47,6 +47,7 @@
   transform: scale(1.25);
   cursor: pointer;
 }
+
 </style>
 <script>
 import { CButton, CImage } from "@chakra-ui/vue";

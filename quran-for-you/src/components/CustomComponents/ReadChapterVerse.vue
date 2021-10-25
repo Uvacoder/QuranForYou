@@ -8,10 +8,10 @@
             <c-switch color="black" size="lg" />
           </c-flex>
           <c-flex class="sbd-container">
-            <c-link @click="open">
+            <c-link @click="shareOpen">
               Share
             </c-link>
-            <ShareModal :isOpen="isOpen" :close="close" />
+            <ShareModal :isOpen="isShareOpen" :close="shareClose" />
             <c-image :src="require(`@/assets/share.png`)" class="icons-sbd" />
           </c-flex>
           <c-flex class="sbd-container">
@@ -24,9 +24,10 @@
             />
           </c-flex>
           <c-flex class="sbd-container">
-            <c-link as="router-link" to="/">
+            <c-link @click="downloadOpen">
               Download
             </c-link>
+            <DownloadModal :isOpen="isDownloadOpen" :close="downloadClose" />
             <c-image
               :src="require(`@/assets/download.png`)"
               class="icons-sbd"
@@ -101,10 +102,10 @@
               v-model="state.fontSize"
             >
               <option
-                v-for="fontSize in ['18', '20', '22', '24', '26', '28']"
-                :value="fontSize"
+                v-for="fontSize in state.fontSizes"
+                :value="fontSize.value"
                 :key="fontSize"
-                >{{ fontSize }}</option
+                >{{ fontSize.font }}</option
               >
             </c-select>
           </c-flex>
@@ -178,7 +179,7 @@
             <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
               {{ state.language }}
             </c-text>
-            <c-text>
+            <c-text :fontSize="state.fontSize">
               1 In the name of God, the Most Gracious, the Most Merciful 2 All
               praise is due to God, the Lord of the Universe; 3 the Beneficent,
               the Merciful; 4 Lord of the Day of Judgement. 5 You alone we
@@ -203,7 +204,7 @@
             <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
               EN
             </c-text>
-            <c-text>
+            <c-text :fontSize="state.fontSize">
               1 In the name of God, the Most Gracious, the Most Merciful 2 All
               praise is due to God, the Lord of the Universe; 3 the Beneficent,
               the Merciful; 4 Lord of the Day of Judgement. 5 You alone we
@@ -217,7 +218,7 @@
 
       <c-accordion :allow-toggle="true" mt="2vw">
         <c-accordion-item>
-          <c-accordion-header px="0" py="1vw">
+          <c-accordion-header px="0" my="1vw">
             <c-box flex="1" text-align="left">
               <c-heading class="heading">Commentary</c-heading>
             </c-box>
@@ -226,7 +227,9 @@
             /></c-button>
           </c-accordion-header>
           <c-accordion-panel px="0">
-            <c-text mt="1em">{{ state.commentary }} </c-text>
+            <c-text mt="1em" :fontSize="state.fontSize"
+              >{{ state.commentary }}
+            </c-text>
           </c-accordion-panel>
         </c-accordion-item>
       </c-accordion>
@@ -316,15 +319,25 @@ import { CFlex, CAccordionIcon } from "@chakra-ui/vue";
 import SubscribeForm from "@/components/Desktopview/Layout/SubscribeForm.vue";
 import Tile from "@/components/CustomComponents/Tile.vue";
 import ShareModal from "@/components/CustomComponents/Modals/Share.vue";
+import DownloadModal from "@/components/CustomComponents/Modals/Download.vue";
 
 export default {
   name: "ReadingChapters",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   data: function() {
     return {
-      isOpen: false,
+      isShareOpen: false,
+      isDownloadOpen: false,
       state: {
-        fontSize: "18",
+        fontSize: "18px",
+        fontSizes: [
+          { value: "16px", font: 16 },
+          { value: "18px", font: 18 },
+          { value: "20px", font: 20 },
+          { value: "22px", font: 22 },
+          { value: "24px", font: 24 },
+          { value: "26px", font: 26 },
+        ],
         language: "EN",
         languages: ["EN", "EN", "EN"],
         chapter: "Al-Fatihah The Cow",
@@ -371,14 +384,21 @@ export default {
     CAccordionIcon,
     ShareModal,
     Tile,
+    DownloadModal,
   },
 
   methods: {
-    open() {
-      this.isOpen = true;
+    shareOpen() {
+      this.isShareOpen = true;
     },
-    close() {
-      this.isOpen = false;
+    shareClose() {
+      this.isShareOpen = false;
+    },
+    downloadOpen() {
+      this.isDownloadOpen = true;
+    },
+    downloadClose() {
+      this.isDownloadOpen = false;
     },
   },
 };
