@@ -15,7 +15,7 @@
             <c-image :src="require(`@/assets/share.png`)" class="icons-sbd" />
           </c-flex>
           <c-flex class="sbd-container">
-            <c-link as="router-link" to="/">
+            <c-link>
               Bookmark
             </c-link>
             <c-image
@@ -37,7 +37,7 @@
       </c-flex>
       <c-flex direction="column" w="100%">
         <c-flex w="100%">
-          <c-flex direction="column" mx="2" w="25%">
+          <c-flex direction="column" mx="2" w="25%" v-if="!searchFocus">
             <c-flex w="100%"
               ><c-text class="filter-label">Chapters</c-text
               ><c-icon name="chevron-down" size="1.35vw" color="black" mx="2"
@@ -55,7 +55,7 @@
               </option>
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="2" w="10%">
+          <c-flex direction="column" mx="2" w="10%" v-if="!searchFocus">
             <c-flex align="center"
               ><c-text class="filter-label">Verse No</c-text
               ><c-icon name="chevron-down" size="18px" color="black"
@@ -73,7 +73,7 @@
               >
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="2" w="10%">
+          <c-flex direction="column" mx="2" w="10%" v-if="!searchFocus">
             <c-flex align="center"
               ><c-text class="filter-label">Language</c-text
               ><c-icon name="chevron-down" size="18px" color="black"
@@ -91,7 +91,7 @@
               >
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="2" w="10%">
+          <c-flex direction="column" mx="2" w="10%" v-if="!searchFocus">
             <c-flex align="center"
               ><c-text class="filter-label">Font Size</c-text
               ><c-icon name="chevron-down" size="18px" color="black"
@@ -109,7 +109,7 @@
               >
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="2" w="15%">
+          <c-flex direction="column" mx="2" w="15%" v-if="!searchFocus">
             <c-flex align="center"
               ><c-text class="filter-label">View Options</c-text
               ><c-icon name="chevron-down" size="18px" color="black"
@@ -129,14 +129,24 @@
               >
             </c-select>
           </c-flex>
-          <c-flex direction="column" mx="2" w="42.5%">
+          <c-flex
+            direction="column"
+            mx="2"
+            :w="searchFocus ? '100%' : '42.5%'"
+            class="search-box"
+          >
             <c-text class="filter-label">Search</c-text>
             <c-flex class="filter-container" w="100%" p="3">
               <c-input-group w="100%">
                 <c-input-left-element
                   ><c-image :src="require(`@/assets/search.png`)" size="16px"
                 /></c-input-left-element>
-                <c-input type="text" placeholder="Search chapter, verse"  @focus="searchFocus = true"/>
+                <c-input
+                  @focus.native="changeFocus"
+                  @blur.native="removeFocus"
+                  type="text"
+                  placeholder="Search chapter, verse"
+                />
               </c-input-group>
             </c-flex>
           </c-flex>
@@ -259,6 +269,7 @@
   font-weight: 900;
   margin-bottom: 2px;
 }
+
 .filter-container {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
@@ -326,7 +337,7 @@ export default {
   inject: ["$chakraColorMode", "$toggleColorMode"],
   props: {
     chapterId: { type: Number },
-    groupId: { type: String },
+    groupId: { type: Number },
     chapter: { type: Object, default: {} },
   },
   data: function() {
@@ -408,6 +419,12 @@ export default {
     },
     downloadClose() {
       this.isDownloadOpen = false;
+    },
+    changeFocus() {
+      this.searchFocus = true;
+    },
+    removeFocus() {
+      this.searchFocus = false;
     },
   },
 };
