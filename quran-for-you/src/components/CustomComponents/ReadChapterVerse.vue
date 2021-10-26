@@ -136,7 +136,7 @@
                 <c-input-left-element
                   ><c-image :src="require(`@/assets/search.png`)" size="16px"
                 /></c-input-left-element>
-                <c-input type="text" placeholder="Search chapter, verse" />
+                <c-input type="text" placeholder="Search chapter, verse"  @focus="searchFocus = true"/>
               </c-input-group>
             </c-flex>
           </c-flex>
@@ -328,6 +328,7 @@ export default {
     return {
       isShareOpen: false,
       isDownloadOpen: false,
+      searchFocus: false,
       state: {
         fontSize: "18px",
         fontSizes: [
