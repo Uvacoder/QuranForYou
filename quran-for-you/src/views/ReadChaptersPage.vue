@@ -25,8 +25,13 @@ export default {
     ReadingChapters,
     Footer,
   },
-  mounted() {
-    getChapters().then((result) => (this.chaptersList = result.data.Chapters));
+  methods: {
+    async getChaptersList() {
+      this.chaptersList = await getChapters(1, 7);
+    }
+  },
+  created() {
+    this.getChaptersList();
   },
 };
 </script>

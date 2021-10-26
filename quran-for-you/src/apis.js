@@ -1,8 +1,9 @@
 import axios from "./axios";
 
-export const getChapters = (chapter, groupId) => {
+export const getChapters = async (chapter, groupId) => {
     const query = new URLSearchParams();
-    chapter && query.append({ chapter });
-    groupId && query.append({ group_id: groupId });
-    return axios.get(`/chapter?${query}`);
+    chapter && query.append('chapter', chapter );
+    groupId && query.append('group_id', groupId);
+    const { data } = await axios.get(`/chapter?${query}`);
+    return data?.chapters;
 };

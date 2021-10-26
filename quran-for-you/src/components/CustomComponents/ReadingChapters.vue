@@ -8,7 +8,7 @@
           p="1vw"
           class="chapter-link"
           v-for="(chapter, index) in chaptersList"
-          @click="routeToChapter($event, chapter)"
+          @click="routeToChapter(chapter)"
           :key="chapter.chapter_id"
           >{{ index + 1 }}. {{ chapter.name_english }}</c-link
         >
@@ -28,7 +28,7 @@ export default {
   inject: ["$chakraColorMode", "$toggleColorMode"],
   props: ["chaptersList"],
   methods: {
-    routeToChapter: function(e, chapter) {
+    routeToChapter(chapter) {
       console.log("Chapter here: ", chapter);
       this.$router.push({
         name: "ReadChaptersVersePage",

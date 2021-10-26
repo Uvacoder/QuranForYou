@@ -27,12 +27,13 @@ const routes = [{
         path: "/chapters",
         name: "ReadChaptersPage",
         component: ReadChaptersPage,
+        props: true
     },
     {
         path: "/chapters/:chapterId/verse/:groupId",
         name: "ReadChaptersVersePage",
         component: ReadChaptersVersePage,
-        params: true,
+        props: true,
     },
     {
         path: "/about",

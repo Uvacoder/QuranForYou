@@ -192,9 +192,10 @@
             <c-text :fontSize="state.fontSize">
               <span
                 v-for="(verse, index) in this.chapter.verses"
-                :key="index + verse.English_text"
+                :key="index + verse.english_text"
               >
-                <strong> {{ index }} </strong>{{ verse.English_text }}</span
+                <strong> {{ index + ". " }} </strong
+                >{{ verse.english_text }}</span
               >
             </c-text>
           </c-flex>
@@ -217,9 +218,10 @@
             <c-text :fontSize="state.fontSize">
               <span
                 v-for="(verse, index) in this.chapter.verses"
-                :key="index + verse.Arabic_text"
+                :key="index + verse.arabic_text"
               >
-                <strong> {{ index }} </strong>{{ verse.Arabic_text }}</span
+                <strong> {{ index + ". " }} </strong
+                >{{ verse.arabic_text }}</span
               >
             </c-text>
           </c-flex>
@@ -237,8 +239,11 @@
             /></c-button>
           </c-accordion-header>
           <c-accordion-panel px="0">
-            <c-text mt="1em" :fontSize="state.fontSize"
-              >{{ state.commentary }}
+            <c-text
+              mt="1em"
+              :fontSize="state.fontSize"
+              v-html="chapter.commentary[0].description"
+            >
             </c-text>
           </c-accordion-panel>
         </c-accordion-item>
@@ -336,9 +341,14 @@ export default {
   name: "ReadingChapters",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   props: {
-    chapterId: { type: Number },
-    groupId: { type: Number },
-    chapter: { type: Object, default: {} },
+    chapterId: { type: [String, Number] },
+    groupId: { type: String },
+    chapter: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
   data: function() {
     return {
@@ -367,8 +377,6 @@ export default {
           "Al-Fatihah The Cow",
           "Al-Fatihah The Cow",
         ],
-        commentary:
-          "The best way to begin any task is in the name of God, the Lord, the Being who is the source of all blessings, and whose blessings and mercy are continually pouring upon His creation. To commence any undertaking in His name is to pray that God, in His infinite mercy, should come to one’s assistance and bring one’s work to a successful conclusion. This is man’s acknowledgement of the fact that he is God’s servant, and also brings divine assurance of success. The Quran has a special and characteristic way of expressing a believer’s inner sentiments in the most appropriate words. The invocation of God, in the opening chapter of the Quran, constitutes a supplication of this nature. The feelings which are naturally aroused in one after discovering the truth are expressed in these lines.",
         relatedMedia: [
           {
             image: "images/reading",
@@ -404,7 +412,7 @@ export default {
     DownloadModal,
   },
   mounted: function() {
-    console.log(this.chapter);
+    console.log(this.chapter.verses);
   },
 
   methods: {
