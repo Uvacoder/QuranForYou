@@ -180,12 +180,12 @@
               {{ state.language }}
             </c-text>
             <c-text :fontSize="state.fontSize">
-              1 In the name of God, the Most Gracious, the Most Merciful 2 All
-              praise is due to God, the Lord of the Universe; 3 the Beneficent,
-              the Merciful; 4 Lord of the Day of Judgement. 5 You alone we
-              worship, and to You alone we turn for help. 6 Guide us to the
-              straight path: 7 the path of those You have blessed; not of those
-              who have incurred Your wrath, nor of those who have gone astray.
+              <span
+                v-for="(verse, index) in this.chapter.verses"
+                :key="index + verse.English_text"
+              >
+                <strong> {{ index }} </strong>{{ verse.English_text }}</span
+              >
             </c-text>
           </c-flex>
           <c-divider
@@ -202,15 +202,15 @@
             v-show="state.view === 'parallel'"
           >
             <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
-              EN
+              AR
             </c-text>
             <c-text :fontSize="state.fontSize">
-              1 In the name of God, the Most Gracious, the Most Merciful 2 All
-              praise is due to God, the Lord of the Universe; 3 the Beneficent,
-              the Merciful; 4 Lord of the Day of Judgement. 5 You alone we
-              worship, and to You alone we turn for help. 6 Guide us to the
-              straight path: 7 the path of those You have blessed; not of those
-              who have incurred Your wrath, nor of those who have gone astray.
+              <span
+                v-for="(verse, index) in this.chapter.verses"
+                :key="index + verse.Arabic_text"
+              >
+                <strong> {{ index }} </strong>{{ verse.Arabic_text }}</span
+              >
             </c-text>
           </c-flex>
         </c-flex>
@@ -324,6 +324,11 @@ import DownloadModal from "@/components/CustomComponents/Modals/Download.vue";
 export default {
   name: "ReadingChapters",
   inject: ["$chakraColorMode", "$toggleColorMode"],
+  props: {
+    chapterId: { type: Number },
+    groupId: { type: String },
+    chapter: { type: Object, default: {} },
+  },
   data: function() {
     return {
       isShareOpen: false,
@@ -386,6 +391,9 @@ export default {
     ShareModal,
     Tile,
     DownloadModal,
+  },
+  mounted: function() {
+    console.log(this.chapter);
   },
 
   methods: {

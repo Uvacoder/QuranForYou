@@ -22,18 +22,17 @@
 <style></style>
 <script>
 import SubscribeForm from "@/components/Desktopview/Layout/SubscribeForm.vue";
-import router from "../../router";
 
 export default {
   name: "ReadingChapters",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   props: ["chaptersList"],
   methods: {
-    routeToChapter: (e, chapter) => {
+    routeToChapter: function(e, chapter) {
       console.log("Chapter here: ", chapter);
-      router.push({
+      this.$router.push({
         name: "ReadChaptersVersePage",
-        params: { chapterId: chapter.chapter_id, groupId: "all" },
+        params: { chapterId: chapter.chapter_id, groupId: "all", chapter },
       });
     },
   },

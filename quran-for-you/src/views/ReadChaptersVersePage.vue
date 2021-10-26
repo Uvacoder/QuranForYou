@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <Header />
-    <ReadChapterVerse />
+    <ReadChapterVerse
+      :chapterId="this.$route.params.chapterId"
+      :groupId="this.$route.params.groupId"
+      :chapter="this.$route.params.chapter"
+    />
     <Footer />
   </div>
 </template>
@@ -18,9 +22,6 @@ export default {
     Header,
     ReadChapterVerse,
     Footer,
-  },
-  mounted: () => {
-    console.log(this.$router.params);
   },
 };
 </script>
