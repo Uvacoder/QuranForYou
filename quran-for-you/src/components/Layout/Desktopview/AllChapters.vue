@@ -21,7 +21,7 @@
 </template>
 <style></style>
 <script>
-import SubscribeForm from "@/components/Desktopview/Layout/SubscribeForm.vue";
+import SubscribeForm from "@/components/Layout/Desktopview/SubscribeForm.vue";
 
 export default {
   name: "AllChapters",

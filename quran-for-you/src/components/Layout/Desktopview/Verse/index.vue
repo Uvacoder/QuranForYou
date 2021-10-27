@@ -40,114 +40,151 @@
         </c-flex>
         <c-flex direction="column" w="100%">
           <c-flex w="100%">
-            <c-flex direction="column" mx="2" w="25%" v-if="!searchFocus">
-              <c-flex w="100%"
-                ><c-text class="filter-label">Chapters</c-text
-                ><c-icon name="chevron-down" size="1.35vw" color="black" mx="2"
-              /></c-flex>
-              <c-select
-                class="filter-container custom-select"
-                v-model="filters.chapterName"
-              >
-                <option
-                  v-for="(chapterFilter, index) in state.allChapters"
-                  :value="chapterFilter"
-                  :key="chapterFilter + index"
-                >
-                  {{ chapterFilter }}
-                </option>
-              </c-select>
-            </c-flex>
-            <c-flex direction="column" mx="2" w="10%" v-if="!searchFocus">
-              <c-flex align="center"
-                ><c-text class="filter-label">Verse No</c-text
-                ><c-icon name="chevron-down" size="18px" color="black"
-              /></c-flex>
-
-              <c-select class="filter-container custom-select" v-model="verse">
-                <option value="all">All</option>
-                <option
-                  v-for="(verse_end, index) in chapter.verse_group_list"
-                  :value="
-                    index === 0
-                      ? `1 - ${verse_end}`
-                      : `${chapter.verse_group_list[index - 1]} - ${verse_end}`
-                  "
-                  :key="verse_end + index"
-                  >{{
-                    index === 0
-                      ? `1 - ${verse_end}`
-                      : `${chapter.verse_group_list[index - 1]} - ${verse_end}`
-                  }}</option
-                >
-              </c-select>
-            </c-flex>
-            <c-flex direction="column" mx="2" w="10%" v-if="!searchFocus">
-              <c-flex align="center"
-                ><c-text class="filter-label">Language</c-text
-                ><c-icon name="chevron-down" size="18px" color="black"
-              /></c-flex>
-
-              <c-select
-                class="filter-container custom-select"
-                v-model="filters.language"
-              >
-                <option
-                  v-for="(language, index) in state.languages"
-                  :value="language"
-                  :key="language + index"
-                  >{{ language }}</option
-                >
-              </c-select>
-            </c-flex>
-            <c-flex direction="column" mx="2" w="10%" v-if="!searchFocus">
-              <c-flex align="center"
-                ><c-text class="filter-label">Font Size</c-text
-                ><c-icon name="chevron-down" size="18px" color="black"
-              /></c-flex>
-
-              <c-select
-                class="filter-container custom-select"
-                v-model="filters.fontSize"
-              >
-                <option
-                  v-for="fontSize in state.fontSizes"
-                  :value="fontSize.value"
-                  :key="fontSize.value"
-                  >{{ fontSize.font }}</option
-                >
-              </c-select>
-            </c-flex>
             <c-flex
-              direction="column"
-              mx="2"
-              w="15%"
-              v-if="!searchFocus && verse !== 'all'"
+              :w="searchFocus ? '0%' : '80%'"
+              :style="{
+                transition: searchFocus ? '0.85s' : '1s',
+              }"
             >
-              <c-flex align="center"
-                ><c-text class="filter-label">View Options</c-text
-                ><c-icon name="chevron-down" size="18px" color="black"
-              /></c-flex>
-
-              <c-select
-                class="filter-container custom-select"
-                v-model="view"
-                textTransform="capitalize"
+              <c-flex
+                direction="column"
+                mx="2"
+                w="40%"
+                :style="{ display: searchFocus ? 'none' : 'flex' }"
               >
+                <c-flex w="100%"
+                  ><c-text class="filter-label">Chapters</c-text
+                  ><c-icon name="chevron-down" size="1.45vw" color="black"
+                /></c-flex>
+                <c-select
+                  class="filter-container custom-select"
+                  v-model="filters.chapterName"
                 >
-                <option
-                  v-for="viewOption in ['paragraph', 'parallel']"
-                  v-bind:value="viewOption"
-                  v-bind:key="viewOption"
-                  >{{ viewOption }}</option
+                  <option
+                    v-for="(chapterFilter, index) in state.allChapters"
+                    :value="chapterFilter"
+                    :key="chapterFilter + index"
+                  >
+                    {{ chapterFilter }}
+                  </option>
+                </c-select>
+              </c-flex>
+              <c-flex
+                direction="column"
+                mx="2"
+                :w="verse === 'all' ? '20%' : '15%'"
+                :style="{ display: searchFocus ? 'none' : 'flex' }"
+              >
+                <c-flex align="center"
+                  ><c-text class="filter-label">Verse No</c-text
+                  ><c-icon name="chevron-down" size="1.45vw" color="black"
+                /></c-flex>
+
+                <c-select
+                  class="filter-container custom-select"
+                  v-model="verse"
                 >
-              </c-select>
+                  <option value="all">All</option>
+                  <option
+                    v-for="(verse_end, index) in chapter.verse_group_list"
+                    :value="
+                      index === 0
+                        ? `1 - ${verse_end}`
+                        : `${
+                            chapter.verse_group_list[index - 1]
+                          } - ${verse_end}`
+                    "
+                    :key="verse_end + index"
+                    >{{
+                      index === 0
+                        ? `1 - ${verse_end}`
+                        : `${
+                            chapter.verse_group_list[index - 1]
+                          } - ${verse_end}`
+                    }}</option
+                  >
+                </c-select>
+              </c-flex>
+              <c-flex
+                direction="column"
+                mx="2"
+                :w="verse === 'all' ? '20%' : '15%'"
+                :style="{ display: searchFocus ? 'none' : 'flex' }"
+              >
+                <c-flex align="center"
+                  ><c-text class="filter-label">Language</c-text
+                  ><c-icon name="chevron-down" size="1.45vw" color="black"
+                /></c-flex>
+
+                <c-select
+                  class="filter-container custom-select"
+                  v-model="filters.language"
+                >
+                  <option
+                    v-for="(language, index) in state.languages"
+                    :value="language"
+                    :key="language + index"
+                    >{{ language }}</option
+                  >
+                </c-select>
+              </c-flex>
+              <c-flex
+                direction="column"
+                mx="2"
+                :w="verse === 'all' ? '20%' : '15%'"
+                :style="{ display: searchFocus ? 'none' : 'flex' }"
+              >
+                <c-flex align="center"
+                  ><c-text class="filter-label">Font Size</c-text
+                  ><c-icon name="chevron-down" size="1.45vw" color="black"
+                /></c-flex>
+
+                <c-select
+                  class="filter-container custom-select"
+                  v-model="filters.fontSize"
+                >
+                  <option
+                    v-for="fontSize in state.fontSizes"
+                    :value="fontSize.value"
+                    :key="fontSize.value"
+                    >{{ fontSize.font }}</option
+                  >
+                </c-select>
+              </c-flex>
+              <c-flex
+                direction="column"
+                mx="2"
+                w="15%"
+                v-if="verse !== 'all'"
+                :style="{ display: searchFocus ? 'none' : 'flex' }"
+              >
+                <c-flex align="center"
+                  ><c-text class="filter-label">View Options</c-text
+                  ><c-icon name="chevron-down" size="1.45vw" color="black"
+                /></c-flex>
+
+                <c-select
+                  class="filter-container custom-select"
+                  v-model="view"
+                  textTransform="capitalize"
+                >
+                  >
+                  <option
+                    v-for="viewOption in ['paragraph', 'parallel']"
+                    v-bind:value="viewOption"
+                    v-bind:key="viewOption"
+                    >{{ viewOption }}</option
+                  >
+                </c-select>
+              </c-flex>
             </c-flex>
             <c-flex
               direction="column"
               mx="2"
-              :w="searchFocus ? '100%' : '42.5%'"
+              :w="searchFocus ? '100%' : '20%'"
+              :style="{ transition: searchFocus ? '0.2s' : '1s' }"
               class="search-box"
+              backgroundColor="red"
             >
               <c-text class="filter-label">Search</c-text>
               <c-flex class="filter-container" w="100%" p="3">
@@ -169,10 +206,7 @@
             <c-flex direction="column" mx="2" w="80%">
               <c-flex class="filter-container" w="100%">
                 <c-text class="filter-value">Audio</c-text>
-                <c-text class="filter-value"
-                  >{{ filters.language }}
-                  <c-icon name="chevron-down" size="18px" color="black"
-                /></c-text>
+                <c-text class="filter-value">{{ filters.language }} </c-text>
                 <c-icon
                   name="chevron-right"
                   bg="black"
@@ -197,29 +231,20 @@
 
           <c-flex w="100%">
             <c-flex
-              direction="column"
-              py="0.5vw"
               :style="
                 view === 'parallel' ? { width: '50%' } : { width: '100%' }
               "
             >
-              <c-text
-                fontSize="24px"
-                fontWeight="semibold"
-                py="0.5vw"
-                v-if="verse !== 'all'"
-              >
-                {{ filters.language }}
-              </c-text>
-              <c-text :fontSize="filters.fontSize">
-                <span
-                  v-for="(verse, index) in this.verses"
-                  :key="index + verse.english_text"
-                >
-                  <strong> {{ verse.id + ". " }} </strong
-                  >{{ verse.english_text }}</span
-                >
-              </c-text>
+              <VerseContent
+                :verses="verses"
+                :fontSize="filters.fontSize"
+                :languageKey="'english_text'"
+                :languageLabel="'EN'"
+                :verseGroupList="
+                  verse === 'all' ? this.chapter.verse_group_list : []
+                "
+                pr="1.25vw"
+              />
             </c-flex>
             <c-divider
               v-show="view === 'parallel'"
@@ -227,25 +252,14 @@
               borderWidth="0.35vw"
               borderColor="palettes.primary"
             />
-            <c-flex
-              direction="column"
-              py="0.5vw"
-              px="1.25vw"
-              w="50%"
-              v-show="view === 'parallel'"
-            >
-              <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
-                AR
-              </c-text>
-              <c-text :fontSize="filters.fontSize">
-                <span
-                  v-for="(verse, index) in verses"
-                  :key="index + verse.arabic_text"
-                >
-                  <strong> {{ verse.id + ". " }} </strong
-                  >{{ verse.arabic_text }}</span
-                >
-              </c-text>
+            <c-flex w="50%" v-show="view === 'parallel'">
+              <VerseContent
+                :verses="verses"
+                :fontSize="filters.fontSize"
+                :languageKey="'arabic_text'"
+                :languageLabel="'AR'"
+                pl="1.25vw"
+              />
             </c-flex>
           </c-flex>
         </c-flex>
@@ -287,7 +301,6 @@
             />
           </c-simple-grid>
         </c-flex>
-
         <c-flex class="subscribe-form-container">
           <SubscribeForm />
         </c-flex>
@@ -296,74 +309,16 @@
   </mq-layout>
 </template>
 <style>
-.filter-label {
-  font-size: 0.85vw;
-  font-weight: 900;
-  margin-bottom: 2px;
-}
-
-.filter-container {
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  height: 4vw;
-  align-items: center;
-  justify-content: space-evenly;
-  border-radius: 1vw;
-}
-.filter-container > select {
-  text-align: center;
-  font-size: 1vw;
-  font-weight: 900;
-  padding-left: 0;
-  padding-right: 0;
-  height: 100%;
-  border-radius: 1vw;
-}
-.filter-value {
-  font-size: 1.15vw;
-  font-weight: 600;
-  text-align: center;
-}
-.icons-sbd {
-  object-fit: contain;
-  width: 1vw;
-  height: 1vw;
-  margin-left: 0.5vw;
-}
-.sbd-container {
-  justify-content: center;
-  margin-left: 0.75vw;
-  margin-right: 0.75vw;
-  align-items: center;
-}
-
-.custom-select {
-  display: flex;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  border-color: #fff;
-}
-
-.reading-select {
-  display: flex;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  border-color: #fff;
-}
-
-.custom-select .css-1oh9bp8 {
-  display: none;
-}
+@import "./styles.css";
 </style>
 <script>
 import { CFlex, CAccordionIcon } from "@chakra-ui/vue";
-import SubscribeForm from "@/components/Desktopview/Layout/SubscribeForm.vue";
+import SubscribeForm from "@/components/Layout/Desktopview/SubscribeForm.vue";
 import Tile from "@/components/CustomComponents/Tile.vue";
 import ShareModal from "@/components/CustomComponents/Modals/Share.vue";
 import DownloadModal from "@/components/CustomComponents/Modals/Download.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
+import VerseContent from "@/components/CustomComponents/VerseContent/index.vue";
 
 export default {
   name: "Verse",
@@ -378,7 +333,7 @@ export default {
       view: "paragraph",
       filters: {
         chapterName: this.chapter.name_english,
-        fontSize: "18px",
+        fontSize: "16px",
         language: "EN",
       },
       state: {
@@ -390,7 +345,7 @@ export default {
           { value: "24px", font: 24 },
           { value: "26px", font: 26 },
         ],
-        languages: ["EN", "EN", "EN"],
+        languages: ["EN", "AR", "HI"],
         allChapters: [
           "The Opening (Al-Fatihah)",
           "Al-Fatihah The Cow",
@@ -431,6 +386,7 @@ export default {
     Tile,
     DownloadModal,
     Loading,
+    VerseContent,
   },
   computed: {
     verses() {

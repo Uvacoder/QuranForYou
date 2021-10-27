@@ -2,27 +2,27 @@
   <c-box>
     <mq-layout mq="desktop">
       <c-heading class="heading">Subscribe</c-heading>
-      <c-simple-grid :columns="2" :spacing="1">
-        <c-text pr="1vw" pt="1vw">
+      <c-flex>
+        <c-text pr="5vw" pt="1vw" width="60%">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
           dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium
           convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Sem ipsum lorem pretium convallis.
         </c-text>
-        <c-flex direction="column">
-          <c-flex justify="space-start" width="100%" mb="1vw">
-            <c-flex direction="column" width="45%" mr="1vw">
-              <c-text>Name</c-text>
-              <c-input size="md" borderColor="gray.400" />
-            </c-flex>
-            <c-flex direction="column" width="45%">
-              <c-text>Email</c-text>
-              <c-input size="md" borderColor="gray.400" />
-            </c-flex>
+        <c-flex direction="column" width="40%" pr="5vw">
+          <c-flex direction="column" width="100%" mr="1vw" mb="1vw">
+            <c-text>Name</c-text>
+            <c-input size="md" borderColor="gray.400" />
           </c-flex>
-          <CustomButton text="Subscribe" padding="1.5vw" fontSize="1.5vw" />
+          <c-flex direction="column" width="100%" mb="1vw">
+            <c-text>Email</c-text>
+            <c-input size="md" borderColor="gray.400" />
+          </c-flex>
+          <c-flex justify="center" align="center">
+            <CustomButton text="Subscribe" padding="1.5vw" fontSize="1.5vw"
+          /></c-flex>
         </c-flex>
-      </c-simple-grid>
+      </c-flex>
     </mq-layout>
     <mq-layout mq="mobile"></mq-layout>
   </c-box>

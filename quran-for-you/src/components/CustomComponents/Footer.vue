@@ -56,6 +56,5 @@ export default {
   name: "Footer",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   props: ["text", "borderRadius", "height", "width", "padding", "fontSize"],
-  components: {},
 };
 </script>

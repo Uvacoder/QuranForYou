@@ -7,8 +7,8 @@
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Desktopview/Layout/Header.vue";
-import Login from "@/components/Desktopview/Layout/Login.vue";
+import Header from "@/components/Layout/Desktopview/Header.vue";
+import Login from "@/components/Layout/Desktopview/Login.vue";
 
 export default {
   name: "LoginPage",

@@ -11,8 +11,8 @@
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Desktopview/Layout/Header.vue";
-import Verse from "@/components/Desktopview/Layout/Verse.vue";
+import Header from "@/components/Layout/Desktopview/Header.vue";
+import Verse from "@/components/Layout/Desktopview/Verse/index.vue";
 import Footer from "@/components/CustomComponents/Footer.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
 
@@ -23,7 +23,7 @@ export default {
   data: function() {
     return { chapter: undefined, isLoadingChapter: true };
   },
-  mounted: async function() {
+  created: async function() {
     await getChapters(this.$route.params.chapterId, undefined).then(
       (result) => {
         this.chapter = result.data.chapters[0];

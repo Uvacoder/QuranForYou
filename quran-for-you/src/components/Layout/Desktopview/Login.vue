@@ -55,7 +55,7 @@
 </style>
 <script>
 import { CFlex, CHeading, CSimpleGrid, CText } from "@chakra-ui/vue";
-import LoginForm from "@/components/Desktopview/Layout/LoginForm.vue";
+import LoginForm from "@/components/Layout/Desktopview/LoginForm.vue";
 export default {
   name: "Login",
   inject: ["$chakraColorMode", "$toggleColorMode"],

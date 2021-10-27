@@ -55,7 +55,7 @@
 </style>
 <script>
 import { CFlex, CHeading, CSimpleGrid, CText } from "@chakra-ui/vue";
-import SignupForm from "@/components/Desktopview/Layout/SignupForm.vue";
+import SignupForm from "@/components/Layout/Desktopview/SignupForm.vue";
 export default {
   name: "Signup",
   inject: ["$chakraColorMode", "$toggleColorMode"],

@@ -6,6 +6,7 @@
         :on-close="close"
         :closeOnOverlayClick="false"
         padding="5"
+        size="xl"
       >
         <c-modal-content>
           <c-modal-header>DOWNLOAD</c-modal-header>

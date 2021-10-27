@@ -7,14 +7,14 @@
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Desktopview/Layout/Header.vue";
-import ForgotPassword from "@/components/Desktopview/Layout/ForgotPassword.vue";
+import Header from "@/components/Layout/Desktopview/Header.vue";
+import ForgotPassword from "@/components/Layout/Desktopview/ForgotPassword.vue";
 
 export default {
   name: "ForgotPasswordPage",
   components: {
     Header,
-    ForgotPassword
+    ForgotPassword,
   },
 };
 </script>

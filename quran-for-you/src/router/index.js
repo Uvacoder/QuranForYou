@@ -5,7 +5,6 @@ import LoginPage from "../views/LoginPage.vue";
 import ForgotPasswordPage from "../views/ForgotPasswordPage.vue";
 import ReadChapters from "../views/ReadChapters.vue";
 import ReadVerse from "../views/ReadVerse.vue";
-import Loading from "../components/CustomComponents/Loading.vue";
 
 Vue.use(VueRouter);
 
@@ -36,7 +35,6 @@ const routes = [{
         component: ReadVerse,
         props: true,
     },
-    { path: "/loading", name: Loading, component: Loading },
     {
         path: "/about",
         name: "About",

@@ -15,6 +15,7 @@ body,
 
 .heading {
   font-size: 3vw;
+  text-transform: uppercase;
 }
 .container {
   flex-direction: column;

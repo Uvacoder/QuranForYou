@@ -11,8 +11,8 @@
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Desktopview/Layout/Header.vue";
-import AllChapters from "@/components/Desktopview/Layout/AllChapters.vue";
+import Header from "@/components/Layout/Desktopview/Header.vue";
+import AllChapters from "@/components/Layout/Desktopview/AllChapters.vue";
 import Footer from "@/components/CustomComponents/Footer.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
 import { getChapters } from "../apis";

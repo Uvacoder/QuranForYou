@@ -52,7 +52,7 @@
 </style>
 <script>
 import { CFlex, CHeading, CSimpleGrid, CText } from "@chakra-ui/vue";
-import ForgotPasswordForm from "@/components/Desktopview/Layout/ForgotPasswordForm.vue";
+import ForgotPasswordForm from "@/components/Layout/Desktopview/ForgotPasswordForm.vue";
 export default {
   name: "ForgotPassword",
   inject: ["$chakraColorMode", "$toggleColorMode"],
