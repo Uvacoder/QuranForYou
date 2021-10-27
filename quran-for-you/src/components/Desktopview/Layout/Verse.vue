@@ -3,7 +3,9 @@
     <c-flex class="container">
       <div v-if="chapter !== undefined">
         <c-flex justify="space-between" mb="1vw">
-          <c-heading class="heading">Quran Chapter 1</c-heading>
+          <c-heading class="heading"
+            >Quran Chapter {{ chapter.chapter_id }}</c-heading
+          >
           <c-flex>
             <c-flex align="center" justify="center" mx="2">
               <c-switch color="black" size="lg" />
