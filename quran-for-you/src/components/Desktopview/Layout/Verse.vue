@@ -129,7 +129,7 @@
 
               <c-select
                 class="filter-container custom-select"
-                v-model="filters.view"
+                v-model="view"
                 textTransform="capitalize"
               >
                 >
@@ -197,9 +197,7 @@
             <c-flex
               direction="column"
               :style="
-                filters.view === 'parallel'
-                  ? { width: '50%' }
-                  : { width: '100%' }
+                view === 'parallel' ? { width: '50%' } : { width: '100%' }
               "
             >
               <c-text
@@ -221,7 +219,7 @@
               </c-text>
             </c-flex>
             <c-divider
-              v-show="filters.view === 'parallel'"
+              v-show="view === 'parallel'"
               orientation="vertical"
               borderWidth="0.35vw"
               borderColor="palettes.primary"
@@ -231,7 +229,7 @@
               py="1vw"
               px="1.25vw"
               w="50%"
-              v-show="filters.view === 'parallel'"
+              v-show="view === 'parallel'"
             >
               <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
                 AR
@@ -374,11 +372,11 @@ export default {
       isDownloadOpen: false,
       searchFocus: false,
       verse: "all",
+      view: "paragraph",
       filters: {
         chapterName: this.chapter.name_english,
         fontSize: "18px",
         language: "EN",
-        view: "paragraph",
       },
       state: {
         fontSizes: [
@@ -437,19 +435,18 @@ export default {
         return this.chapter.verses;
       } else {
         const indexes = this.verse.split(" - ");
-        console.log(indexes);
-        const retval = this.chapter.verses.slice(
+        return this.chapter.verses.slice(
           Number(indexes[0]),
           Number(indexes[1]) + 1
         );
-        console.log("Retval here: ", retval);
-        return retval;
       }
     },
   },
   watch: {
-    verse(newFilters, oldFilters) {
-      console.log(newFilters, "  ", oldFilters);
+    verse(newVerse, oldVerse) {
+      if (newVerse === "all") {
+        this.view = "paragraph";
+      }
     },
   },
 
