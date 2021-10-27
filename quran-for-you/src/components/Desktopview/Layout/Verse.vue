@@ -198,6 +198,7 @@
           <c-flex w="100%">
             <c-flex
               direction="column"
+              py="0.5vw"
               :style="
                 view === 'parallel' ? { width: '50%' } : { width: '100%' }
               "
@@ -228,7 +229,7 @@
             />
             <c-flex
               direction="column"
-              py="1vw"
+              py="0.5vw"
               px="1.25vw"
               w="50%"
               v-show="view === 'parallel'"
