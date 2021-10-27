@@ -7,7 +7,7 @@
             >Quran Chapter {{ chapter.chapter_id }}</c-heading
           >
           <c-flex>
-            <c-flex align="center" justify="center" mx="2">
+            <c-flex align="center" justify="center" mx="2"> 
               <c-switch color="black" size="lg" />
             </c-flex>
             <c-flex class="sbd-container">
@@ -184,7 +184,6 @@
               :w="searchFocus ? '100%' : '20%'"
               :style="{ transition: searchFocus ? '0.2s' : '1s' }"
               class="search-box"
-              backgroundColor="red"
             >
               <c-text class="filter-label">Search</c-text>
               <c-flex class="filter-container" w="100%" p="3">

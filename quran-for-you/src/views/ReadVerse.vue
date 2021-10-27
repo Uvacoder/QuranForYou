@@ -15,21 +15,28 @@ import Header from "@/components/Layout/Desktopview/Header.vue";
 import Verse from "@/components/Layout/Desktopview/Verse/index.vue";
 import Footer from "@/components/CustomComponents/Footer.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
-
-import { getChapters } from "../apis";
+import { mapGetters } from "vuex";
 
 export default {
   name: "ReadVerse",
-  data: function() {
-    return { chapter: undefined, isLoadingChapter: true };
+  data() {
+    return { isLoadingChapter: true };
   },
-  created: async function() {
-    await getChapters(this.$route.params.chapterId, undefined).then(
-      (result) => {
-        this.chapter = result.data.chapters[0];
-        this.isLoadingChapter = false;
-      }
-    );
+  computed: {
+    ...mapGetters(["getChapter"]),
+    chapter() {
+      return this.getChapter;
+    },
+  },
+  created() {
+    // await getChapters(this.$route.params.chapterId, undefined).then(
+    //   (result) => {
+    //     this.chapter = result.data.chapters[0];
+    //     this.isLoadingChapter = false;
+    //   }
+    // );
+    this.$store.dispatch("loadChapters", [this.$route.params.chapterId]);
+    this.isLoadingChapter = false;
   },
   components: {
     Header,

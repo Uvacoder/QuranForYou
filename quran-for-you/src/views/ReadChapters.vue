@@ -15,15 +15,20 @@ import Header from "@/components/Layout/Desktopview/Header.vue";
 import AllChapters from "@/components/Layout/Desktopview/AllChapters.vue";
 import Footer from "@/components/CustomComponents/Footer.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
-import { getChapters } from "../apis";
+import { mapGetters } from "vuex";
 
 export default {
   name: "ReadChapters",
   data() {
     return {
       isLoadingChapters: true,
-      chaptersList: null,
     };
+  },
+  computed: {
+    ...mapGetters(["getChapterList"]),
+    chaptersList() {
+      return this.getChapterList;
+    },
   },
   components: {
     Header,
@@ -31,16 +36,10 @@ export default {
     Footer,
     Loading,
   },
-  methods: {
-    async getChaptersList() {
-      await getChapters().then((result) => {
-        this.chaptersList = result.data.Chapters;
-        this.isLoadingChapters = false;
-      });
-    },
-  },
+  methods: {},
   created() {
-    this.getChaptersList();
+    this.$store.dispatch("loadChapters", [1, 7]);
+    this.isLoadingChapters = false;
   },
 };
 </script>
