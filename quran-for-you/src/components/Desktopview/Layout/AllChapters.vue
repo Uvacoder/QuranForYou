@@ -24,15 +24,14 @@
 import SubscribeForm from "@/components/Desktopview/Layout/SubscribeForm.vue";
 
 export default {
-  name: "ReadingChapters",
+  name: "AllChapters",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   props: ["chaptersList"],
   methods: {
     routeToChapter(chapter) {
-      console.log("Chapter here: ", chapter);
       this.$router.push({
-        name: "ReadChaptersVersePage",
-        params: { chapterId: chapter.chapter_id, groupId: "all", chapter },
+        name: "ReadVerse",
+        params: { chapterId: chapter.chapter_id, groupId: "all" },
       });
     },
   },

@@ -3,8 +3,9 @@ import VueRouter from "vue-router";
 import SignupPage from "../views/SignupPage.vue";
 import LoginPage from "../views/LoginPage.vue";
 import ForgotPasswordPage from "../views/ForgotPasswordPage.vue";
-import ReadChaptersPage from "../views/ReadChaptersPage.vue";
-import ReadChaptersVersePage from "../views/ReadChaptersVersePage.vue";
+import ReadChapters from "../views/ReadChapters.vue";
+import ReadVerse from "../views/ReadVerse.vue";
+import Loading from "../components/CustomComponents/Loading.vue";
 
 Vue.use(VueRouter);
 
@@ -25,16 +26,17 @@ const routes = [{
     },
     {
         path: "/chapters",
-        name: "ReadChaptersPage",
-        component: ReadChaptersPage,
-        props: true
+        name: "ReadChapters",
+        component: ReadChapters,
+        props: true,
     },
     {
         path: "/chapters/:chapterId/verse/:groupId",
-        name: "ReadChaptersVersePage",
-        component: ReadChaptersVersePage,
+        name: "ReadVerse",
+        component: ReadVerse,
         props: true,
     },
+    { path: "/loading", name: Loading, component: Loading },
     {
         path: "/about",
         name: "About",
