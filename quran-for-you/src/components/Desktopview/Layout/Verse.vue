@@ -62,14 +62,15 @@
                 ><c-icon name="chevron-down" size="18px" color="black"
               /></c-flex>
 
-              <c-select
-                class="filter-container custom-select"
-                v-model="filters.verse"
-              >
+              <c-select class="filter-container custom-select" v-model="verse">
                 <option value="all">All</option>
                 <option
                   v-for="(verse_end, index) in chapter.verse_group_list"
-                  :value="verse_end"
+                  :value="
+                    index === 0
+                      ? `1 - ${verse_end}`
+                      : `${chapter.verse_group_list[index - 1]} - ${verse_end}`
+                  "
                   :key="verse_end + index"
                   >{{
                     index === 0
@@ -119,7 +120,7 @@
               direction="column"
               mx="2"
               w="15%"
-              v-if="!searchFocus && filters.verse !== 'all'"
+              v-if="!searchFocus && verse !== 'all'"
             >
               <c-flex align="center"
                 ><c-text class="filter-label">View Options</c-text
@@ -188,8 +189,8 @@
           </c-flex>
         </c-flex>
         <c-flex direction="column" mt="1.25vw">
-          <c-heading class="heading" v-if="filters.verse !== 'all'"
-            >Verse {{ filters.verse }}</c-heading
+          <c-heading class="heading" v-if="verse !== 'all'"
+            >Verse {{ verse }}</c-heading
           >
 
           <c-flex w="100%">
@@ -205,7 +206,7 @@
                 fontSize="24px"
                 fontWeight="semibold"
                 py="0.5vw"
-                v-if="filters.verse !== 'all'"
+                v-if="verse !== 'all'"
               >
                 {{ filters.language }}
               </c-text>
@@ -214,7 +215,7 @@
                   v-for="(verse, index) in this.verses"
                   :key="index + verse.english_text"
                 >
-                  <strong> {{ index + ". " }} </strong
+                  <strong> {{ verse.id + ". " }} </strong
                   >{{ verse.english_text }}</span
                 >
               </c-text>
@@ -237,10 +238,10 @@
               </c-text>
               <c-text :fontSize="filters.fontSize">
                 <span
-                  v-for="(verse, index) in this.chapter.verses"
+                  v-for="(verse, index) in verses"
                   :key="index + verse.arabic_text"
                 >
-                  <strong> {{ index + ". " }} </strong
+                  <strong> {{ verse.id + ". " }} </strong
                   >{{ verse.arabic_text }}</span
                 >
               </c-text>
@@ -272,7 +273,7 @@
             </c-accordion-panel>
           </c-accordion-item>
         </c-accordion>
-        <c-flex my="2vw" direction="column" v-if="filters.verse !== 'all'">
+        <c-flex my="2vw" direction="column" v-if="verse !== 'all'">
           <c-heading class="heading" my="1vw">Related Media</c-heading>
           <c-simple-grid :columns="3" :spacing="30">
             <Tile
@@ -372,10 +373,9 @@ export default {
       isShareOpen: false,
       isDownloadOpen: false,
       searchFocus: false,
-      verses: this.chapter.verses,
+      verse: "all",
       filters: {
         chapterName: this.chapter.name_english,
-        verse: "all",
         fontSize: "18px",
         language: "EN",
         view: "paragraph",
@@ -430,6 +430,27 @@ export default {
     Tile,
     DownloadModal,
     Loading,
+  },
+  computed: {
+    verses() {
+      if (this.verse === "all") {
+        return this.chapter.verses;
+      } else {
+        const indexes = this.verse.split(" - ");
+        console.log(indexes);
+        const retval = this.chapter.verses.slice(
+          Number(indexes[0]),
+          Number(indexes[1]) + 1
+        );
+        console.log("Retval here: ", retval);
+        return retval;
+      }
+    },
+  },
+  watch: {
+    verse(newFilters, oldFilters) {
+      console.log(newFilters, "  ", oldFilters);
+    },
   },
 
   methods: {
