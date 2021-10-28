@@ -5,5 +5,6 @@ module.exports = {
 		plugins: [
 			new ChakraLoaderPlugin()
 		]
-	}
+	},
+	transpileDependencies: ['vuex-persist']
 }
