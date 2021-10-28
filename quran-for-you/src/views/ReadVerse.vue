@@ -2,7 +2,7 @@
   <c-flex w="100%" h="100%">
     <div class="home" v-if="isLoadingChapter === false">
       <Header />
-      <Verse :chapter="chapter" />
+      <Verse :chapter="chapter" :getChapter="this.getChapter" />
       <Footer />
     </div>
     <Loading v-if="isLoadingChapter === true" />
@@ -26,11 +26,20 @@ export default {
       chapter: null,
     };
   },
+  methods: {
+    getChapter(id) {
+      this.isLoadingChapter === false && (this.isLoadingChapter = true);
+      getChapters(id)
+        .then((result) => {
+          console.log("Result.data.: ", result.data.chapters[0]);
+          this.chapter = result.data.chapters[0];
+        })
+        .then(() => (this.isLoadingChapter = false));
+    },
+  },
 
   created() {
-    getChapters(this.$route.params.chapterId)
-      .then((result) => (this.chapter = result.data.chapters[0]))
-      .then(() => (this.isLoadingChapter = false));
+    this.getChapter(this.$route.params.chapterId);
   },
   components: {
     Header,

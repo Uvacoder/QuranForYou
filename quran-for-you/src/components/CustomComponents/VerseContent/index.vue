@@ -1,5 +1,5 @@
 <template>
-  <mq-layout mq="desktop">
+  <mq-layout mq="desktop" style="width:100%;">
     <c-flex
       direction="column"
       py="0.5vw"
@@ -12,6 +12,7 @@
         fontWeight="semibold"
         py="0.5vw"
         :align="content === 'right' ? 'right' : 'left'"
+        textDecoration="underline"
       >
         {{ this.languageLabel }}
       </c-text>
@@ -54,8 +55,7 @@ export default {
     "content",
   ],
   mounted: function() {
-    console.log("Hello");
-    console.log("langu: ", this.verseGroupList);
+    console.log("Hello: ", this.languageKey);
   },
   computed: {
     key: function() {

@@ -17,3 +17,5 @@ export const MAIN_STYLES = {
         color: "gray.900",
     },
 };
+
+export const LANGUAGES = { EN: "english", AR: "arabic" };

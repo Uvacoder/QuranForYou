@@ -68,7 +68,7 @@
                       colorMode == 'dark' ? 'box-dark' : '',
                       'filter-container custom-select',
                     ]"
-                    v-model="filters.chapterIdFilters"
+                    v-model="chapterIdFilters"
                   >
                     <option
                       v-for="(chapterFilter, index) in allChapters"
@@ -137,7 +137,7 @@
                     v-model="filters.language"
                   >
                     <option
-                      v-for="(language, index) in state.languages"
+                      v-for="(language, index) in Object.keys(state.languages)"
                       :value="language"
                       :key="language + index"
                       >{{ language }}</option
@@ -283,8 +283,10 @@
                 <VerseContent
                   :verses="verses"
                   :fontSize="filters.fontSize"
-                  :languageKey="'english_text'"
-                  :languageLabel="'EN'"
+                  :languageKey="
+                    `${state.languages[this.filters.language]}_text`
+                  "
+                  :languageLabel="this.filters.language"
                   :verseGroupList="
                     verse === 'all' ? this.chapter.verse_group_list : []
                   "
@@ -367,12 +369,16 @@ import DownloadModal from "@/components/CustomComponents/Modals/Download.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
 import VerseContent from "@/components/CustomComponents/VerseContent/index.vue";
 import { mapGetters } from "vuex";
+import {
+  FONT_SIZES,
+  LANGUAGES,
+  MAIN_STYLES,
+} from "../../../../constants/index";
 
 export default {
   name: "Verse",
   inject: ["$chakraColorMode", "$toggleColorMode"],
-  props: ["chapter", "groupId"],
-
+  props: ["chapter", "groupId", "getChapter"],
   data: function() {
     return {
       isShareOpen: false,
@@ -380,32 +386,15 @@ export default {
       searchFocus: false,
       verse: "all",
       view: "paragraph",
-      mainStyles: {
-        dark: {
-          bg: "black",
-          color: "whiteAlpha.900",
-        },
-        light: {
-          bg: "white",
-          color: "gray.900",
-        },
-      },
+      mainStyles: MAIN_STYLES,
+      chapterIdFilters: this.chapter.chapter_id,
       filters: {
-        chapterIdFilters: this.chapter.chapter_id,
         fontSize: "16px",
         language: "EN",
       },
       state: {
-        fontSizes: [
-          { value: "16px", font: 16 },
-          { value: "18px", font: 18 },
-          { value: "20px", font: 20 },
-          { value: "22px", font: 22 },
-          { value: "24px", font: 24 },
-          { value: "26px", font: 26 },
-        ],
-        languages: ["EN", "AR", "HI"],
-
+        fontSizes: FONT_SIZES,
+        languages: LANGUAGES,
         relatedMedia: [
           {
             image: "images/reading",
@@ -484,6 +473,10 @@ export default {
     },
   },
   watch: {
+    chapterIdFilters(newId, oldId) {
+      this.verse = "all";
+      this.getChapter(newId);
+    },
     verse(newVerse, oldVerse) {
       if (newVerse === "all") {
         this.view = "paragraph";
