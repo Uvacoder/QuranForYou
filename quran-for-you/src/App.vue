@@ -1,8 +1,5 @@
 <template>
-  <c-theme-provider>
-    <c-reset />
-    <router-view />
-  </c-theme-provider>
+  <router-view />
 </template>
 
 <style>
@@ -31,8 +28,32 @@ body,
   margin-bottom: 2vw;
 }
 </style>
+
 <script>
+import { CThemeProvider, CReset } from "@chakra-ui/vue";
 export default {
   name: "App",
+  inject: ["$chakraColorMode", "$toggleColorMode"],
+  components: {
+    CThemeProvider,
+    CReset,
+  },
+  data() {
+    return {
+      showModal: false,
+    };
+  },
+  computed: {},
+  methods: {
+    showToast() {
+      this.$toast({
+        title: "Account created.",
+        description: "We've created your account for you.",
+        status: "success",
+        duration: 10000,
+        isClosable: true,
+      });
+    },
+  },
 };
 </script>

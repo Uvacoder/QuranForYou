@@ -19,22 +19,21 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "ReadVerse",
+  inject: ["$chakraColorMode", "$toggleColorMode"],
   data() {
-    return { isLoadingChapter: true };
+    return {
+      isLoadingChapter: true,
+      
+    };
   },
   computed: {
     ...mapGetters(["getChapter"]),
     chapter() {
       return this.getChapter;
     },
+    
   },
   created() {
-    // await getChapters(this.$route.params.chapterId, undefined).then(
-    //   (result) => {
-    //     this.chapter = result.data.chapters[0];
-    //     this.isLoadingChapter = false;
-    //   }
-    // );
     this.$store.dispatch("loadChapters", [this.$route.params.chapterId]);
     this.isLoadingChapter = false;
   },

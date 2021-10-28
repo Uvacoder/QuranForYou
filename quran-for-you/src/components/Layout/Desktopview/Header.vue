@@ -1,12 +1,12 @@
 <template>
   <c-box height="10%">
-    <mq-layout mq="desktop" style="height:100%">
+    <mq-layout mq="desktop">
       <c-flex
         align="center"
         bg="palettes.background"
         boxShadow="md"
         w="100"
-        h="100%"
+        h="10vh"
       >
         <c-heading fontSize="24px" mx="5" fontWeight="400">Logo</c-heading>
       </c-flex>
