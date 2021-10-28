@@ -2,11 +2,9 @@
   <mq-layout mq="desktop">
     <c-flex class="container">
       <c-heading class="heading">Read Chapter</c-heading>
-      <c-simple-grid :columns="3" mt="1vw">
+      <c-simple-grid :columns="3" mt="2vw" :spacing="10">
         <c-link
-          fontSize="1vw"
-          p="1vw"
-          class="chapter-link"
+          fontSize="1.25vw"
           v-for="(chapter, index) in chaptersList"
           @click="routeToChapter(chapter)"
           :key="chapter.chapter_id"
