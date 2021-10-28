@@ -10,7 +10,7 @@
               color="palettes.primary"
               class="link"
               as="router-link"
-              to="/auth/login"
+              to="/login"
               >Login</c-link
             ></c-text
           >
@@ -37,7 +37,7 @@
           <c-heading fontSize="18px">Forgot Password</c-heading>
           <c-text my="2" fontSize="12px"
             >Already have an account?
-            <c-link color="palettes.primary" as="router-link" to="/auth/login"
+            <c-link color="palettes.primary" as="router-link" to="/login"
               >Login</c-link
             ></c-text
           >

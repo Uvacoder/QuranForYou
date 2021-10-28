@@ -396,21 +396,21 @@ export default {
           {
             image: "images/reading",
             title: "Title / Article",
-            subTitle: "Sub-text",
+            subTitle: "Sub-Text",
             content:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
           },
           {
             image: "images/reading",
             title: "Title / Article",
-            subTitle: "Sub-text",
+            subTitle: "Sub-Text",
             content:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
           },
           {
             image: "images/reading",
             title: "Title / Article",
-            subTitle: "Sub-text",
+            subTitle: "Sub-Text",
             content:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
           },

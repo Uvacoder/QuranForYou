@@ -10,7 +10,7 @@
               color="palettes.primary"
               class="link"
               as="router-link"
-              to="/auth/signup"
+              to="/signup"
               >Create an Account</c-link
             ></c-text
           >
@@ -35,7 +35,7 @@
           <c-link
             color="palettes.primary"
             as="router-link"
-            to="/auth/forgotpassword"
+            to="/forgotpassword"
             justify="center"
             align="center"
             my="1em"
@@ -54,7 +54,7 @@
           <c-heading fontSize="18px">Login</c-heading>
           <c-text my="2" fontSize="12px"
             >New here?
-            <c-link color="palettes.primary" as="router-link" to="/auth/signup"
+            <c-link color="palettes.primary" as="router-link" to="/signup"
               >Create an Account</c-link
             ></c-text
           >
@@ -79,7 +79,7 @@
           <c-link
             color="palettes.primary"
             as="router-link"
-            to="/auth/forgotpassword"
+            to="/forgotpassword"
             justify="center"
             align="center"
             my="1.5em"
