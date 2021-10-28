@@ -1,5 +1,5 @@
 <template>
-  <mq-layout mq="desktop" style="margin-top:10px;">
+  <mq-layout mq="desktop" style="margin-top:5px;">
     <c-flex direction="column" v-bind="mainStyles[colorMode]">
       <c-flex class="container">
         <div v-if="chapter !== undefined">
