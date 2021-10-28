@@ -1,12 +1,12 @@
 <template>
-  <div w="100%" h="100%">
+  <c-flex w="100%" h="100%">
     <div class="home" v-if="isLoadingChapter === false">
       <Header />
       <Verse :chapter="chapter" />
       <Footer />
     </div>
     <Loading v-if="isLoadingChapter === true" />
-  </div>
+  </c-flex>
 </template>
 
 <script>
