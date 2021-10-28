@@ -1,10 +1,21 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import VuexPersist from "vuex-persist";
 import { getChapters } from "../apis";
 import { ACTION_TYPES } from "../constants/action-types";
 Vue.use(Vuex);
 
+const vuexLocalStorage = new VuexPersist({
+    key: 'chapters',
+    storage: window.localStorage,
+    reducer: state => ({
+        chapters: state.chapters,
+        isLoadingChapters: state.isLoadingChapters
+    })
+})
+
 export default new Vuex.Store({
+    plugins: [vuexLocalStorage.plugin],
     state: {
         chapters: [],
         isLoadingChapters: false,
