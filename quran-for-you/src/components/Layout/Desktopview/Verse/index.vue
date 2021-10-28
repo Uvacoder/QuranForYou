@@ -91,7 +91,7 @@
                   /></c-flex>
 
                   <c-select
-                     :class="[
+                    :class="[
                       colorMode == 'dark' ? 'box-dark' : '',
                       'filter-container custom-select',
                     ]"
@@ -130,7 +130,7 @@
                   /></c-flex>
 
                   <c-select
-                     :class="[
+                    :class="[
                       colorMode == 'dark' ? 'box-dark' : '',
                       'filter-container custom-select',
                     ]"
@@ -156,7 +156,7 @@
                   /></c-flex>
 
                   <c-select
-                     :class="[
+                    :class="[
                       colorMode == 'dark' ? 'box-dark' : '',
                       'filter-container custom-select',
                     ]"
@@ -183,7 +183,7 @@
                   /></c-flex>
 
                   <c-select
-                     :class="[
+                    :class="[
                       colorMode == 'dark' ? 'box-dark' : '',
                       'filter-container custom-select',
                     ]"
@@ -233,10 +233,13 @@
             </c-flex>
             <c-flex my="1vw" w="100%">
               <c-flex direction="column" mx="2" w="80%">
-                <c-flex  :class="[
-                      colorMode == 'dark' ? 'box-dark' : '',
-                      'filter-container',
-                    ]" w="100%">
+                <c-flex
+                  :class="[
+                    colorMode == 'dark' ? 'box-dark' : '',
+                    'filter-container',
+                  ]"
+                  w="100%"
+                >
                   <c-text class="filter-value">Audio</c-text>
                   <c-text class="filter-value">{{ filters.language }} </c-text>
                   <c-icon
@@ -254,10 +257,13 @@
                 </c-flex>
               </c-flex>
               <c-flex direction="column" mx="2" w="20%">
-                <c-flex  :class="[
-                      colorMode == 'dark' ? 'box-dark' : '',
-                      'filter-container',
-                    ]" w="100%">
+                <c-flex
+                  :class="[
+                    colorMode == 'dark' ? 'box-dark' : '',
+                    'filter-container',
+                  ]"
+                  w="100%"
+                >
                   <c-text class="filter-value">Read Introduction</c-text>
                 </c-flex>
               </c-flex>
@@ -307,7 +313,7 @@
           <c-accordion
             :allow-toggle="true"
             mt="2vw"
-            v-if="this.chapter.commentary && this.chapter.commentary.length > 0"
+            v-if="commentary && commentary.length > 0"
           >
             <c-accordion-item>
               <c-accordion-header px="0" my="1vw">
@@ -322,7 +328,7 @@
                 <c-text
                   mt="1em"
                   :fontSize="filters.fontSize"
-                  v-html="chapter.commentary[0].description"
+                  v-html="commentary"
                 >
                 </c-text>
               </c-accordion-panel>
@@ -438,6 +444,21 @@ export default {
   },
   computed: {
     ...mapGetters(["getChapterList"]),
+    commentary() {
+      try {
+        if (this.verse === "all") {
+          return [];
+        }
+        const retval = this.chapter.commentary.find(
+          (el) => Object.keys(el)[0] === this.verse.split(" - ")[1]
+        );
+        return Object.keys(retval) > 0
+          ? retval[this.verse.split(" - ")[1]]
+          : [];
+      } catch (error) {
+        return [];
+      }
+    },
     allChapters() {
       return this.getChapterList;
     },
