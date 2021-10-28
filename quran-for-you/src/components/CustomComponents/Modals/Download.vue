@@ -18,7 +18,7 @@
               <c-text>PDF</c-text>
             </c-flex>
             <c-flex mb="2vw">
-              <c-flex direction="column" mx="1" w="15vw">
+              <c-flex direction="column" mx="1" w="50%">
                 <c-flex w="100%"
                   ><c-text class="filter-label">Chapters</c-text
                   ><c-icon
@@ -40,7 +40,7 @@
                   </option>
                 </c-select>
               </c-flex>
-              <c-flex direction="column" mx="1" w="8vw">
+              <c-flex direction="column" mx="1" w="25%">
                 <c-flex align="center"
                   ><c-text class="filter-label">Verse No</c-text
                   ><c-icon name="chevron-down" size="18px" color="black"
@@ -58,7 +58,7 @@
                   >
                 </c-select>
               </c-flex>
-              <c-flex direction="column" mx="1" w="8vw">
+              <c-flex direction="column" mx="1" w="25%">
                 <c-flex align="center"
                   ><c-text class="filter-label">Language</c-text
                   ><c-icon name="chevron-down" size="18px" color="black"
