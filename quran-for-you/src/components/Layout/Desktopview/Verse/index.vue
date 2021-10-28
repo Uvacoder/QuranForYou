@@ -102,18 +102,16 @@
                       v-for="(verse_end, index) in chapter.verse_group_list"
                       :value="
                         index === 0
-                          ? `1 - ${verse_end}`
-                          : `${
-                              chapter.verse_group_list[index - 1]
-                            } - ${verse_end}`
+                          ? `0 - ${verse_end}`
+                          : `${chapter.verse_group_list[index - 1] +
+                              1} - ${verse_end}`
                       "
                       :key="verse_end + index"
                       >{{
                         index === 0
-                          ? `1 - ${verse_end}`
-                          : `${
-                              chapter.verse_group_list[index - 1]
-                            } - ${verse_end}`
+                          ? `0 - ${verse_end}`
+                          : `${chapter.verse_group_list[index - 1] +
+                              1} - ${verse_end}`
                       }}</option
                     >
                   </c-select>
@@ -314,7 +312,6 @@
 
           <c-accordion
             :allow-toggle="true"
-            mt="2vw"
             v-if="commentary && commentary.length > 0"
           >
             <c-accordion-item>
@@ -336,7 +333,7 @@
               </c-accordion-panel>
             </c-accordion-item>
           </c-accordion>
-          <c-flex mb="1vw" direction="column" v-if="verse !== 'all'">
+          <c-flex my="2vw" direction="column" v-if="verse !== 'all'">
             <c-heading class="heading" my="1vw">Related Media</c-heading>
             <c-simple-grid :columns="3" :spacing="30">
               <Tile

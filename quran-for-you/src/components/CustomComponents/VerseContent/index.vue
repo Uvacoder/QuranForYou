@@ -24,7 +24,7 @@
           mb="1vw"
         >
           <strong v-if="content !== 'right'" style="margin-right:0.5vw;">
-            {{ verse.id + ". " }} </strong
+            {{ verse.id }} </strong
           ><c-text
             :style="{
               textAlign: content === 'right' ? 'right' : 'justify',
