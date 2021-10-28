@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <color-mode-provider>
+    <router-view />
+  </color-mode-provider>
 </template>
 
 <style>
@@ -29,7 +31,7 @@ body,
 </style>
 
 <script>
-import { CThemeProvider, CReset } from "@chakra-ui/vue";
+import { CThemeProvider, CReset, ColorModeProvider } from "@chakra-ui/vue";
 export default {
   name: "App",
   inject: ["$chakraColorMode", "$toggleColorMode"],

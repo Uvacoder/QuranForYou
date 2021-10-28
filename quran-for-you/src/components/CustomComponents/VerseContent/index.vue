@@ -7,7 +7,8 @@
       :pl="pl || '0'"
       h="100%"
     >
-      <c-text
+    <c-flex justify="space-between">
+        <c-text
         fontSize="24px"
         fontWeight="semibold"
         py="0.5vw"
@@ -16,6 +17,9 @@
       >
         {{ this.languageLabel }}
       </c-text>
+       <CustomButton text="Read Commentary" padding="0.25vw" fontSize="1vw" />
+    </c-flex>
+    
       <c-text :fontSize="this.fontSize" h="95%">
         <c-flex
           v-for="(verse, index) in this.verses"
@@ -41,9 +45,14 @@
 </template>
 
 <script>
+import CustomButton from "@/components/CustomComponents/CustomButton.vue";
+
 export default {
   name: "VerseContent",
   inject: ["$chakraColorMode", "$toggleColorMode"],
+  components: {
+    CustomButton
+  },
   props: [
     "verses",
     "fontSize",

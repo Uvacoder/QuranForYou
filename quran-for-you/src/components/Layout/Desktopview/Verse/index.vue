@@ -9,7 +9,7 @@
             >
             <c-flex>
               <c-flex align="center" justify="center" mx="2">
-                <c-switch color="black" size="lg" @change="toggleColorMode" />
+                <c-switch size="md" @change="toggleColorMode"/>
               </c-flex>
               <c-flex class="sbd-container">
                 <c-link @click="shareOpen">
@@ -270,9 +270,11 @@
             </c-flex>
           </c-flex>
           <c-flex direction="column" mt="1.25vw">
-            <c-heading class="heading" v-if="verse !== 'all'"
-              >Verse {{ verse }}</c-heading
-            >
+            <c-flex justify="space-between">
+              <c-heading class="heading" v-if="verse !== 'all'"
+                >Verse {{ verse }}</c-heading
+              >
+            </c-flex>
 
             <c-flex w="100%">
               <c-flex
@@ -368,7 +370,7 @@ import ShareModal from "@/components/CustomComponents/Modals/Share.vue";
 import DownloadModal from "@/components/CustomComponents/Modals/Download.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
 import VerseContent from "@/components/CustomComponents/VerseContent/index.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import {
   FONT_SIZES,
   LANGUAGES,
@@ -432,7 +434,6 @@ export default {
     VerseContent,
   },
   computed: {
-    ...mapGetters(["getChapterList"]),
     commentary() {
       try {
         if (this.verse === "all") {
@@ -469,7 +470,7 @@ export default {
       return this.$chakraTheme();
     },
     toggleColorMode() {
-      return this.$toggleColorMode;
+       return this.$toggleColorMode;
     },
   },
   watch: {
