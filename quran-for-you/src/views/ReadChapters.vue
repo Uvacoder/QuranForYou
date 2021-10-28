@@ -19,7 +19,6 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "ReadChapters",
-
   computed: {
     ...mapGetters(["getChapterList", "getIsLoadingChapters"]),
     chaptersList() {

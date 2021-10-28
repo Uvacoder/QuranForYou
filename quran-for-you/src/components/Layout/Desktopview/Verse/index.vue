@@ -1,5 +1,5 @@
 <template>
-  <mq-layout mq="desktop">
+  <mq-layout mq="desktop" style="margin-top:10px;">
     <c-flex direction="column" v-bind="mainStyles[colorMode]">
       <c-flex class="container">
         <div v-if="chapter !== undefined">
@@ -65,14 +65,14 @@
                   /></c-flex>
                   <c-select
                     class="filter-container custom-select"
-                    v-model="filters.chapterName"
+                    v-model="filters.chapterIdFilters"
                   >
                     <option
-                      v-for="(chapterFilter, index) in state.allChapters"
-                      :value="chapterFilter"
-                      :key="chapterFilter + index"
+                      v-for="(chapterFilter, index) in allChapters"
+                      :value="chapterFilter.chapter_id"
+                      :key="chapterFilter.chapter_id + index"
                     >
-                      {{ chapterFilter }}
+                      {{ chapterFilter.name_english }}
                     </option>
                   </c-select>
                 </c-flex>
@@ -332,11 +332,13 @@ import ShareModal from "@/components/CustomComponents/Modals/Share.vue";
 import DownloadModal from "@/components/CustomComponents/Modals/Download.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
 import VerseContent from "@/components/CustomComponents/VerseContent/index.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Verse",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   props: ["chapter", "groupId"],
+
   data: function() {
     return {
       isShareOpen: false,
@@ -355,7 +357,7 @@ export default {
         },
       },
       filters: {
-        chapterName: this.chapter.name_english,
+        chapterIdFilters: this.chapter.chapter_id,
         fontSize: "16px",
         language: "EN",
       },
@@ -369,12 +371,7 @@ export default {
           { value: "26px", font: 26 },
         ],
         languages: ["EN", "AR", "HI"],
-        allChapters: [
-          "The Opening (Al-Fatihah)",
-          "Al-Fatihah The Cow",
-          "Al-Fatihah The Cow",
-          "Al-Fatihah The Cow",
-        ],
+
         relatedMedia: [
           {
             image: "images/reading",
@@ -412,6 +409,10 @@ export default {
     VerseContent,
   },
   computed: {
+    ...mapGetters(["getChapterList"]),
+    allChapters() {
+      return this.getChapterList;
+    },
     verses() {
       if (this.verse === "all") {
         return this.chapter.verses;

@@ -17,13 +17,13 @@ body,
   flex-direction: column;
   margin-left: 4vw;
   margin-right: 4vw;
-  margin-top: 1.5vw;
+  padding-top: 1vw;
   margin-bottom: 2vw;
 }
 .subscribe-form-container {
   flex-direction: column;
   width: 100%;
-  margin-top: 2vw;
+  margin-top: 4vw;
   margin-bottom: 2vw;
 }
 </style>
