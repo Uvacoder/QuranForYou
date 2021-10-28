@@ -64,7 +64,10 @@
                     ><c-icon name="chevron-down" size="1.45vw" color="black"
                   /></c-flex>
                   <c-select
-                    class="filter-container custom-select"
+                    :class="[
+                      colorMode == 'dark' ? 'box-dark' : '',
+                      'filter-container custom-select',
+                    ]"
                     v-model="filters.chapterIdFilters"
                   >
                     <option
@@ -88,7 +91,10 @@
                   /></c-flex>
 
                   <c-select
-                    class="filter-container custom-select"
+                     :class="[
+                      colorMode == 'dark' ? 'box-dark' : '',
+                      'filter-container custom-select',
+                    ]"
                     v-model="verse"
                   >
                     <option value="all">All</option>
@@ -124,7 +130,10 @@
                   /></c-flex>
 
                   <c-select
-                    class="filter-container custom-select"
+                     :class="[
+                      colorMode == 'dark' ? 'box-dark' : '',
+                      'filter-container custom-select',
+                    ]"
                     v-model="filters.language"
                   >
                     <option
@@ -147,7 +156,10 @@
                   /></c-flex>
 
                   <c-select
-                    class="filter-container custom-select"
+                     :class="[
+                      colorMode == 'dark' ? 'box-dark' : '',
+                      'filter-container custom-select',
+                    ]"
                     v-model="filters.fontSize"
                   >
                     <option
@@ -171,7 +183,10 @@
                   /></c-flex>
 
                   <c-select
-                    class="filter-container custom-select"
+                     :class="[
+                      colorMode == 'dark' ? 'box-dark' : '',
+                      'filter-container custom-select',
+                    ]"
                     v-model="view"
                     textTransform="capitalize"
                   >
@@ -190,10 +205,16 @@
                 mx="2"
                 :w="searchFocus ? '100%' : '20%'"
                 :style="{ transition: searchFocus ? '0.2s' : '1s' }"
-                class="search-box"
               >
                 <c-text class="filter-label">Search</c-text>
-                <c-flex class="filter-container" w="100%" p="3">
+                <c-flex
+                  w="100%"
+                  p="3"
+                  :class="[
+                    colorMode == 'dark' ? 'box-dark' : '',
+                    'filter-container',
+                  ]"
+                >
                   <c-input-group w="100%">
                     <c-input-left-element
                       ><c-image
@@ -212,7 +233,10 @@
             </c-flex>
             <c-flex my="1vw" w="100%">
               <c-flex direction="column" mx="2" w="80%">
-                <c-flex class="filter-container" w="100%">
+                <c-flex  :class="[
+                      colorMode == 'dark' ? 'box-dark' : '',
+                      'filter-container',
+                    ]" w="100%">
                   <c-text class="filter-value">Audio</c-text>
                   <c-text class="filter-value">{{ filters.language }} </c-text>
                   <c-icon
@@ -230,7 +254,10 @@
                 </c-flex>
               </c-flex>
               <c-flex direction="column" mx="2" w="20%">
-                <c-flex class="filter-container" w="100%">
+                <c-flex  :class="[
+                      colorMode == 'dark' ? 'box-dark' : '',
+                      'filter-container',
+                    ]" w="100%">
                   <c-text class="filter-value">Read Introduction</c-text>
                 </c-flex>
               </c-flex>
@@ -348,7 +375,7 @@ export default {
       view: "paragraph",
       mainStyles: {
         dark: {
-          bg: "gray.700",
+          bg: "black",
           color: "whiteAlpha.900",
         },
         light: {
