@@ -1,12 +1,12 @@
 <template>
-  <div w="100%" h="100%">
+  <c-flex w="100%" h="100%">
     <div class="home" v-if="isLoadingChapters === false">
       <Header />
       <AllChapters :chaptersList="chaptersList" />
       <Footer />
     </div>
     <Loading v-if="isLoadingChapters === true" />
-  </div>
+  </c-flex>
 </template>
 
 <script>
@@ -19,15 +19,14 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "ReadChapters",
-  data() {
-    return {
-      isLoadingChapters: true,
-    };
-  },
+
   computed: {
-    ...mapGetters(["getChapterList"]),
+    ...mapGetters(["getChapterList", "getIsLoadingChapters"]),
     chaptersList() {
       return this.getChapterList;
+    },
+    isLoadingChapters() {
+      return this.getIsLoadingChapters;
     },
   },
   components: {
@@ -36,10 +35,8 @@ export default {
     Footer,
     Loading,
   },
-  methods: {},
   created() {
-    this.$store.dispatch("loadChapters", [1, 7]);
-    this.isLoadingChapters = false;
+    this.$store.dispatch("loadChapters", [undefined, undefined]);
   },
 };
 </script>

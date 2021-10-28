@@ -23,7 +23,6 @@ export default {
   data() {
     return {
       isLoadingChapter: true,
-      
     };
   },
   computed: {
@@ -31,7 +30,6 @@ export default {
     chapter() {
       return this.getChapter;
     },
-    
   },
   created() {
     this.$store.dispatch("loadChapters", [this.$route.params.chapterId]);
