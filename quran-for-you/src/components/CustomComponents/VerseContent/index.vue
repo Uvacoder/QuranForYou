@@ -1,26 +1,39 @@
 <template>
   <mq-layout mq="desktop">
-    <c-flex direction="column" py="0.5vw" :pr="pr || '0'" :pl="pl || '0'">
-      <c-text fontSize="24px" fontWeight="semibold" py="0.5vw">
+    <c-flex
+      direction="column"
+      py="0.5vw"
+      :pr="pr || '0'"
+      :pl="pl || '0'"
+      h="100%"
+    >
+      <c-text
+        fontSize="24px"
+        fontWeight="semibold"
+        py="0.5vw"
+        :align="content === 'right' ? 'right' : 'left'"
+      >
         {{ this.languageLabel }}
       </c-text>
-      <c-text
-        :fontSize="this.fontSize"
-        style="text-align: justify;
-  text-justify: inter-word;"
-      >
-        <span v-for="(verse, index) in this.verses" :key="index + verse[key]">
-          <strong> {{ verse.id + ". " }} </strong>{{ verse[key] }}
-          <div
-            v-if="
-              breaOnVerseGroups &&
-                verseGroupList &&
-                verseGroupList.includes(index)
-            "
-          >
-            <br v-for="i in [1]" :key="'break' + i" />
-          </div>
-        </span>
+      <c-text :fontSize="this.fontSize" h="95%">
+        <c-flex
+          v-for="(verse, index) in this.verses"
+          :key="index + verse[key]"
+          :justify="content === 'right' ? 'flex-end' : 'flex-start'"
+          mb="1vw"
+        >
+          <strong v-if="content !== 'right'" style="margin-right:0.5vw;">
+            {{ verse.id + ". " }} </strong
+          ><c-text
+            :style="{
+              textAlign: content === 'right' ? 'right' : 'justify',
+              textJustify: 'inter-word',
+            }"
+            >{{ verse[key] }}</c-text
+          ><strong v-if="content === 'right'" style="margin-left:0.5vw;">
+            {{ verse.id }}
+          </strong>
+        </c-flex>
       </c-text>
     </c-flex>
   </mq-layout>
@@ -38,6 +51,7 @@ export default {
     "verseGroupList",
     "pr",
     "pl",
+    "content",
   ],
   mounted: function() {
     console.log("Hello");

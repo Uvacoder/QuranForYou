@@ -11,12 +11,12 @@ body,
 }
 
 .heading {
-  font-size: 3vw;
+  font-size: 2vw;
 }
 .container {
   flex-direction: column;
-  margin-left: 4vw;
-  margin-right: 4vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
   padding-top: 1vw;
   margin-bottom: 2vw;
 }

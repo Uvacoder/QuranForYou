@@ -20,7 +20,7 @@ export default new Vuex.Store({
                 .then((result) =>
                     commit(
                         ACTION_TYPES.CHAPTERS.SAVE_CHAPTERS_SUCCESS,
-                        result.data.Chapters
+                        result.data.chapters
                     )
                 )
                 .catch((error) => commit(ACTION_TYPES.CHAPTERS.SAVE_CHAPTERS_FAILURE));

@@ -298,6 +298,7 @@
                   :languageKey="'arabic_text'"
                   :languageLabel="'AR'"
                   pl="1.25vw"
+                  :content="'right'"
                 />
               </c-flex>
             </c-flex>
@@ -327,7 +328,7 @@
               </c-accordion-panel>
             </c-accordion-item>
           </c-accordion>
-          <c-flex my="2vw" direction="column" v-if="verse !== 'all'">
+          <c-flex mb="1vw" direction="column" v-if="verse !== 'all'">
             <c-heading class="heading" my="1vw">Related Media</c-heading>
             <c-simple-grid :columns="3" :spacing="30">
               <Tile
