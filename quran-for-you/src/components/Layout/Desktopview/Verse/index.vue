@@ -9,7 +9,11 @@
             >
             <c-flex>
               <c-flex align="center" justify="center" mx="2">
-                <c-switch size="md" @change="toggleColorMode"/>
+                <c-switch
+                  size="md"
+                  @change="toggleColorMode"
+                  :isChecked="colorMode == 'dark'"
+                />
               </c-flex>
               <c-flex class="sbd-container">
                 <c-link @click="shareOpen">
@@ -313,7 +317,8 @@
           </c-flex>
 
           <c-accordion
-            :allow-toggle="true"
+            :defaultIndex="-1"
+            :allowToggle="true"
             v-if="commentary && commentary.length > 0"
           >
             <c-accordion-item>
@@ -337,16 +342,20 @@
           </c-accordion>
           <c-flex my="2vw" direction="column" v-if="verse !== 'all'">
             <c-heading class="heading" my="1vw">Related Media</c-heading>
-            <c-simple-grid :columns="3" :spacing="30">
-              <Tile
+            <vue-horizontal>
+              <c-box
+              class="tiles"
                 v-for="(media, index) in state.relatedMedia"
                 v-bind:key="media.title + index"
-                v-bind:image="media.image"
-                v-bind:title="media.title"
-                v-bind:subTitle="media.subTitle"
-                v-bind:content="media.content"
-              />
-            </c-simple-grid>
+              >
+                <Tile
+                  v-bind:image="media.image"
+                  v-bind:title="media.title"
+                  v-bind:subTitle="media.subTitle"
+                  v-bind:content="media.content"
+                />
+              </c-box>
+            </vue-horizontal>
           </c-flex>
           <c-flex class="subscribe-form-container">
             <SubscribeForm />
@@ -367,7 +376,9 @@ import ShareModal from "@/components/CustomComponents/Modals/Share.vue";
 import DownloadModal from "@/components/CustomComponents/Modals/Download.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
 import VerseContent from "@/components/CustomComponents/VerseContent/index.vue";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
+import VueHorizontal from "vue-horizontal";
+import VueHorizontalList from "vue-horizontal-list";
 import {
   FONT_SIZES,
   LANGUAGES,
@@ -416,6 +427,34 @@ export default {
             content:
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
           },
+          {
+            image: "images/reading",
+            title: "Title / Article",
+            subTitle: "Sub-Text",
+            content:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
+          },
+          {
+            image: "images/reading",
+            title: "Title / Article",
+            subTitle: "Sub-Text",
+            content:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
+          },
+          {
+            image: "images/reading",
+            title: "Title / Article",
+            subTitle: "Sub-Text",
+            content:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
+          },
+          {
+            image: "images/reading",
+            title: "Title / Article",
+            subTitle: "Sub-Text",
+            content:
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sem ipsum lorem pretium convallis.",
+          },
         ],
       },
     };
@@ -429,8 +468,11 @@ export default {
     DownloadModal,
     Loading,
     VerseContent,
+    VueHorizontal,
+    VueHorizontalList,
   },
   computed: {
+    ...mapGetters(["getChapterList"]),
     commentary() {
       try {
         if (this.verse === "all") {
@@ -467,7 +509,7 @@ export default {
       return this.$chakraTheme();
     },
     toggleColorMode() {
-       return this.$toggleColorMode;
+      return this.$toggleColorMode;
     },
   },
   watch: {

@@ -17,7 +17,7 @@
       >
         {{ this.languageLabel }}
       </c-text>
-       <CustomButton text="Read Commentary" padding="0.25vw" fontSize="1vw" />
+       <!-- <CustomButton text="Read Commentary" padding="0.25vw" fontSize="1vw" /> -->
     </c-flex>
     
       <c-text :fontSize="this.fontSize" h="95%">
