@@ -2,60 +2,21 @@
   <c-box height="90%">
     <mq-layout mq="desktop" style="height:100%;">
       <c-simple-grid :columns="2" height="100%">
-        <c-box class="left-box" color="white" height="100%">
-          <c-flex direction="column" height="100%">
-            <c-flex justify="center" align="center" my="1.5em" height="75%">
-              <c-image
-                w="280px"
-                h="350px"
-                :src="require(`@/assets/book.png`)"
-                size="16.2px"
-              />
-            </c-flex>
-            <c-flex
-              borderTop="2px"
-              borderColor="white"
-              justify="center"
-              height="25%"
-            >
-              <c-text
-                fontWeight="700"
-                fontSize="25px"
-                align="center"
-                justify="center"
-                style="margin:auto;"
-              >
-                The Love Of Power And The Age For Love
-              </c-text>
-            </c-flex>
-          </c-flex>
-        </c-box>
-        <c-flex align="center" justify="center" height="100%">
-          <LoginForm />
-        </c-flex>
+        <AuthenticationLeft />
+        <LoginForm />
       </c-simple-grid>
     </mq-layout>
     <mq-layout mq="mobile">
-      <c-flex direction="column">
-        <c-flex align="center" justify="center">
-          <LoginForm />
-        </c-flex>
-      </c-flex>
+      <LoginForm />
     </mq-layout>
   </c-box>
 </template>
 
-<style>
-.left-box {
-  background: linear-gradient(#27367b, #0272c4);
-}
-#__chakra-app > div:first-child {
-  height: 100%;
-}
-</style>
 <script>
 import { CFlex, CHeading, CSimpleGrid, CText } from "@chakra-ui/vue";
 import LoginForm from "@/components/Layout/Desktopview/LoginForm.vue";
+import AuthenticationLeft from "@/components/CustomComponents/AuthenticationLeft.vue";
+
 export default {
   name: "Login",
   inject: ["$chakraColorMode", "$toggleColorMode"],
@@ -65,6 +26,7 @@ export default {
     CSimpleGrid,
     CText,
     LoginForm,
+    AuthenticationLeft,
   },
 };
 </script>

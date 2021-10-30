@@ -320,6 +320,7 @@
             :defaultIndex="-1"
             :allowToggle="true"
             v-if="commentary && commentary.length > 0"
+            mt="1vw"
           >
             <c-accordion-item>
               <c-accordion-header px="0" my="1vw">

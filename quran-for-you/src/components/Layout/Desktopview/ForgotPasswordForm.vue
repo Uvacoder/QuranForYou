@@ -1,5 +1,5 @@
 <template>
-  <c-box>
+  <c-flex align="center" justify="center" height="100%">
     <mq-layout mq="desktop">
       <c-flex align="center" justify="center" mx="10" my="5">
         <c-flex direction="column" w="35em">
@@ -57,7 +57,7 @@
         </c-flex>
       </c-flex>
     </mq-layout>
-  </c-box>
+  </c-flex>
 </template>
 
 <script>

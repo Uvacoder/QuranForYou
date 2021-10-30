@@ -18,4 +18,4 @@ export const MAIN_STYLES = {
     },
 };
 
-export const LANGUAGES = { EN: "english", AR: "arabic" };
+export const LANGUAGES = { EN: "english" };
