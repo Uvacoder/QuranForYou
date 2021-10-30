@@ -344,7 +344,7 @@
             <c-heading class="heading" my="1vw">Related Media</c-heading>
             <vue-horizontal>
               <c-box
-              class="tiles"
+                class="tiles"
                 v-for="(media, index) in state.relatedMedia"
                 v-bind:key="media.title + index"
               >
@@ -365,9 +365,11 @@
     </c-flex>
   </mq-layout>
 </template>
+
 <style>
 @import "./styles.css";
 </style>
+
 <script>
 import { CFlex, CAccordionIcon } from "@chakra-ui/vue";
 import SubscribeForm from "@/components/Layout/Desktopview/SubscribeForm.vue";
