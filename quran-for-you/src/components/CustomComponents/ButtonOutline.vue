@@ -2,7 +2,7 @@
   <c-box>
     <mq-layout mq="desktop">
       <c-button
-        class="btn"
+        class="btn-outline"
         :p="padding"
         :borderRadius="borderRadius"
         color="black"
@@ -22,7 +22,7 @@
     </mq-layout>
     <mq-layout mq="mobile">
       <c-button
-        class="btn"
+        class="btn-outline"
         :height="height"
         :padding="padding"
         :borderRadius="borderRadius"
@@ -37,7 +37,7 @@
 </template>
 
 <style>
-.btn {
+.btn-outline {
   background: rgba(255, 255, 255, 0.87);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }   
