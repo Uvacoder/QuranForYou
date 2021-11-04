@@ -5,8 +5,10 @@
         class="btn"
         :p="padding"
         :borderRadius="borderRadius"
-        color="white"
+        color="black"
         :size="size"
+        :mx="marginx"
+        variant="ghost"
       >
         <c-image
           :src="require(`@/assets/${link}.png`)"
@@ -24,8 +26,9 @@
         :height="height"
         :padding="padding"
         :borderRadius="borderRadius"
-        color="white"
+        color="black"
         :size="size"
+        variant="ghost"
       >
         <c-text :fontSize="fontSize" mx="2">{{ text }}</c-text>
       </c-button>
@@ -35,14 +38,15 @@
 
 <style>
 .btn {
-  background: linear-gradient(#348dcf, #27367b);
-}
+  background: rgba(255, 255, 255, 0.87);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}   
 </style>
 <script>
 import { CButton } from "@chakra-ui/vue";
 
 export default {
-  name: "CustomButton",
+  name: "ButtonOutline",
   inject: ["$chakraColorMode", "$toggleColorMode"],
   props: [
     "text",
@@ -54,6 +58,7 @@ export default {
     "link",
     "setIcon",
     "size",
+    "marginx"
   ],
   components: {
     CButton,

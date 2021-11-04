@@ -64,7 +64,6 @@ export default {
     "content",
   ],
   mounted: function() {
-    console.log("Hello: ", this.languageKey);
   },
   computed: {
     key: function() {

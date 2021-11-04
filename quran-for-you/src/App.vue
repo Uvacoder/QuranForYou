@@ -13,8 +13,9 @@ body,
 }
 
 .heading {
-  font-size: 2vw;
+  font-size: 3vw;
 }
+
 .container {
   flex-direction: column;
   margin-left: 5vw;
@@ -27,6 +28,12 @@ body,
   width: 100%;
   margin-top: 4vw;
   margin-bottom: 2vw;
+}
+
+@media (max-width: 400px) {
+  .heading {
+    font-size: 5vw;
+  }
 }
 </style>
 

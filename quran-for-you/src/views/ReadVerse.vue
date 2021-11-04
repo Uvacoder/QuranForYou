@@ -31,7 +31,6 @@ export default {
       this.isLoadingChapter === false && (this.isLoadingChapter = true);
       getChapters(id)
         .then((result) => {
-          console.log("Result.data.: ", result.data.chapters[0]);
           this.chapter = result.data.chapters[0];
         })
         .then(() => (this.isLoadingChapter = false));

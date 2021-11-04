@@ -1,12 +1,24 @@
 <template>
-  <c-flex w="100%" h="100%">
-    <div class="home" v-if="isLoadingChapters === false">
-      <Header />
-      <AllChapters :chaptersList="chaptersList" />
-      <Footer />
-    </div>
-    <Loading v-if="isLoadingChapters === true" />
-  </c-flex>
+  <c-box>
+    <mq-layout mq="desktop">
+      <c-flex w="100%" h="100%">
+        <div class="home" v-if="isLoadingChapters === false">
+          <Header />
+          <AllChapters :chaptersList="chaptersList" />
+          <Footer />
+        </div>
+        <Loading v-if="isLoadingChapters === true" />
+      </c-flex>
+    </mq-layout>
+    <mq-layout mq="mobile">
+      <div class="home" v-if="isLoadingChapters === false">
+        <Header />
+        <AllChapters :chaptersList="chaptersList" />
+        <Footer />
+      </div>
+      <Loading v-if="isLoadingChapters === true" />
+    </mq-layout>
+  </c-box>
 </template>
 
 <script>
