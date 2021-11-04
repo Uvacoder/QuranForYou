@@ -67,7 +67,6 @@ export default {
     "content",
   ],
   mounted: function() {
-    console.log("Hello: ", this.verseGroupList);
   },
   computed: {
     key: function() {

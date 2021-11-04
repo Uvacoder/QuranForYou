@@ -75,6 +75,69 @@
     rgba(243, 245, 247, 0.2) 0px 2px 6px 2px;
 }
 
+
+@media (max-width:400px)  { 
+  .icons-sbd {
+    object-fit: contain;
+    width: 3.5vw;
+    height: 3.5vw;
+    margin-left: 1vw;
+  }
+
+  .filter-label {
+    font-size: 2.5vw;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .filter-container {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    height: 12vw;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 1vw;
+  }
+  
+  .filter-container > select {
+    text-align: center;
+    font-size: 1.6vw;
+    font-weight: 900;
+    padding-left: 0;
+    padding-right: 0;
+    height: 100%;
+    border-radius: 2vw;
+  }
+
+  .filter-value {
+    font-size: 1.75vw;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .box-dark {
+    box-shadow: rgba(241, 242, 243, 0.35) 0px 1px 2px 0px,
+      rgba(243, 245, 247, 0.2) 0px 2px 6px 2px;
+  }
+
+  .custom-select {
+    display: flex;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    border-color: #fff;
+  }
+
+  .custom-select .css-1oh9bp8 {
+    display: none;
+  }
+
+  .option-text {
+    font-size: 5vw;
+  }
+}
+
+
 @media (min-width: 640px) {
   .tiles {
     width: calc((100% - (24px)) / 2);
