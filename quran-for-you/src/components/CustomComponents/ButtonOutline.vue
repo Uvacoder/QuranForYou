@@ -40,7 +40,12 @@
 .btn-outline {
   background: rgba(255, 255, 255, 0.87);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}   
+}
+/* .btn-outline:hover {
+  background: rgba(41, 39, 39, 0.87);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  color: #ffff;
+}    */
 </style>
 <script>
 import { CButton } from "@chakra-ui/vue";
