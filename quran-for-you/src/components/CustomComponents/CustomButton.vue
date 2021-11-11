@@ -1,41 +1,43 @@
 <template>
-  <c-box>
-    <mq-layout mq="desktop">
-      <c-button
-        class="btn"
-        :p="padding"
-        :borderRadius="borderRadius"
-        color="white"
-        :size="size"
-      >
-        <c-image
-          :src="require(`@/assets/${link}.png`)"
-          size="30px"
-          mx="2"
-          v-if="setIcon"
-        />
+  <c-button
+    class="custom-button"
+    :p="padding"
+    :borderRadius="borderRadius"
+    h="100%"
+    w="100%"
+    :isLoading="isLoading"
+    @click="click"
+    :fontSize="fontSize"
+  >
+    <c-image
+      :src="require(`@/assets/${link}.png`)"
+      size="30px"
+      mx="2"
+      v-if="setIcon"
+    />
 
-        <c-text :fontSize="fontSize" mx="2">{{ text }}</c-text>
-      </c-button>
-    </mq-layout>
-    <mq-layout mq="mobile">
-      <c-button
-        class="btn"
-        :height="height"
-        :padding="padding"
-        :borderRadius="borderRadius"
-        color="white"
-        :size="size"
-      >
-        <c-text :fontSize="fontSize" mx="2">{{ text }}</c-text>
-      </c-button>
-    </mq-layout>
-  </c-box>
+    {{ text }}
+  </c-button>
 </template>
 
 <style>
-.btn {
+.custom-button {
+  color: white;
   background: linear-gradient(#348dcf, #27367b);
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-button {
+    font-size: 3vw;
+    padding: 3vw 4vw;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .custom-button {
+    font-size: 1.25vw;
+    padding: 1.25vw 4vw;
+  }
 }
 </style>
 <script>
@@ -54,6 +56,8 @@ export default {
     "link",
     "setIcon",
     "size",
+    "click",
+    "isLoading",
   ],
   components: {
     CButton,

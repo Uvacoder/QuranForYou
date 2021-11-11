@@ -24,7 +24,7 @@ const routes = [{
         component: ForgotPasswordPage,
     },
     {
-        path: "/chapters",
+        path: "/",
         name: "ReadChapters",
         component: ReadChapters,
         props: true,

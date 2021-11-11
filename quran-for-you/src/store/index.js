@@ -1,76 +1,86 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import VuexPersist from "vuex-persist";
-import { getChapters, getRelatedMedia } from "../apis";
+import actions from "./actions";
 import { ACTION_TYPES } from "../constants/action-types";
+
 Vue.use(Vuex);
 
 const vuexLocalStorage = new VuexPersist({
-  key: "chapters",
-  storage: window.localStorage,
-  reducer: (state) => ({
-    chapters: state.chapters,
-    isLoadingChapters: state.isLoadingChapters,
-    mode: state.mode,
-  }),
+    storage: window.localStorage,
+    reducer: (state) => ({
+        chapters: state.chapters,
+        isLoadingChapters: state.isLoadingChapters,
+        mode: state.mode,
+        introduction: state.introduction,
+        isLoggingIn: state.isLoggingIn,
+        isSigningUp: state.isSigningUp,
+        user: state.user,
+    }),
 });
 
 export default new Vuex.Store({
-  plugins: [vuexLocalStorage.plugin],
-  state: {
-    chapters: [],
-    isLoadingChapters: false,
-    relatedMedia: [],
-  },
-  getters: {
-    getChapterList: (state) => state.chapters,
-    getIsLoadingChapters: (state) => state.isLoadingChapters,
-    getRelatedMedia: (state) => state.relatedMedia,
-  },
-  actions: {
-    loadChapters({ commit }, [chapterId, groupId]) {
-      commit(ACTION_TYPES.CHAPTERS.SAVE_CHAPTERS_REQUEST);
-      getChapters(chapterId, groupId)
-        .then((result) =>
-          commit(
-            ACTION_TYPES.CHAPTERS.SAVE_CHAPTERS_SUCCESS,
-            result.data.chapters
-          )
-        )
-        .catch((error) => commit(ACTION_TYPES.CHAPTERS.SAVE_CHAPTERS_FAILURE));
+    plugins: [vuexLocalStorage.plugin],
+    state: {
+        chapters: [],
+        isLoadingChapters: false,
+        introduction: {},
+        loggedIn: false,
+        isLoggingIn: false,
+        user: undefined,
+        loginError: undefined,
+        isSigningUp: false,
+        signupError: undefined,
+        user: undefined,
     },
-
-    loadRelatedMedia({ commit }, [chapterId, groupId]) {
-      getRelatedMedia(chapterId, groupId)
-        .then((result) =>
-          commit(
-            ACTION_TYPES.RELATED_MEDIA.SAVE_RELATED_MEDIA_SUCCESS,
-            result.data
-          )
-        )
-        .catch((error) =>
-          commit(ACTION_TYPES.RELATED_MEDIA.SAVE_RELATED_MEDIA_FAILURE, error)
-        );
+    getters: {
+        getChapterList: (state) => state.chapters,
+        getIsLoadingChapters: (state) => state.isLoadingChapters,
+        introduction: (state) => state.introduction,
+        isUserLoggedIn: (state) => state.loggedIn,
+        isLoggingIn: (state) => state.isLoggingIn,
+        isSigningUp: (state) => state.isSigningUp,
+        user: (state) => state.user,
+        loginError: (state) => state.loginError,
     },
-  },
-  mutations: {
-    SAVE_CHAPTERS_REQUEST(state) {
-      state.isLoadingChapters = true;
+    actions,
+    mutations: {
+        SAVE_CHAPTERS_REQUEST(state) {
+            state.isLoadingChapters = true;
+        },
+        SAVE_CHAPTERS_SUCCESS(state, data) {
+            state.chapters = data.chapters;
+            state.introduction = data.read_introduction[0];
+            state.isLoadingChapters = false;
+        },
+        SAVE_CHAPTERS_FAILURE(state) {
+            state.isLoadingChapters = false;
+        },
+        [ACTION_TYPES.LOGIN.LOGIN_REQUEST](state) {
+            state.loginError = undefined;
+            state.isLoggingIn = true;
+        },
+        [ACTION_TYPES.LOGIN.LOGIN_SUCCESS](state, user) {
+            state.loginError = undefined;
+            state.user = user;
+            state.isLoggingIn = false;
+        },
+        [ACTION_TYPES.LOGIN.LOGIN_FAILURE](state, error) {
+            state.loginError = error;
+            state.isLoggingIn = false;
+        },
+        [ACTION_TYPES.SIGNUP.SIGNUP_REQUEST](state) {
+            state.signupError = undefined;
+            state.isSigningUp = true;
+        },
+        [ACTION_TYPES.SIGNUP.SIGNUP_SUCCESS](state, user) {
+            state.signupError = undefined;
+            state.user = user;
+            state.isSigningUp = false;
+        },
+        [ACTION_TYPES.SIGNUP.SIGNUP_FAILURE](state, error) {
+            state.loginError = error;
+            state.isSigningUp = false;
+        },
     },
-    SAVE_CHAPTERS_SUCCESS(state, chapters) {
-      state.chapters = chapters;
-      state.isLoadingChapters = false;
-    },
-    SAVE_CHAPTERS_FAILURE(state) {
-      state.isLoadingChapters = false;
-    },
-
-    SAVE_RELATED_MEDIA_SUCCESS(state, relatedMedia) {
-      console.log(relatedMedia)
-      state.relatedMedia = relatedMedia;
-    },
-    SAVE_RELATED_MEDIA_FAILURE(state, error) {
-      console.log(error)
-    }
-  },
 });

@@ -11,15 +11,14 @@
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Layout/Desktopview/Header.vue";
 import Verse from "@/components/Layout/Desktopview/Verse/index.vue";
 import Footer from "@/components/CustomComponents/Footer.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
 import { getChapters } from "../apis";
+import Header from "../components/CustomComponents/Header.vue";
 
 export default {
   name: "ReadVerse",
-  inject: ["$chakraColorMode", "$toggleColorMode"],
   data() {
     return {
       isLoadingChapter: true,
@@ -41,10 +40,11 @@ export default {
     this.getChapter(this.$route.params.chapterId);
   },
   components: {
-    Header,
     Verse,
     Footer,
     Loading,
+
+    Header,
   },
 };
 </script>

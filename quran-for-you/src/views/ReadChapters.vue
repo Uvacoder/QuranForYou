@@ -1,33 +1,20 @@
 <template>
-  <c-box>
-    <mq-layout mq="desktop">
-      <c-flex w="100%" h="100%">
-        <div class="home" v-if="isLoadingChapters === false">
-          <Header />
-          <AllChapters :chaptersList="chaptersList" />
-          <Footer />
-        </div>
-        <Loading v-if="isLoadingChapters === true" />
-      </c-flex>
-    </mq-layout>
-    <mq-layout mq="mobile">
-      <div class="home" v-if="isLoadingChapters === false">
-        <Header />
-        <AllChapters :chaptersList="chaptersList" />
-        <Footer />
-      </div>
-      <Loading v-if="isLoadingChapters === true" />
-    </mq-layout>
+  <c-box h="100%">
+    <div class="home" v-if="isLoadingChapters === false">
+      <Header />
+      <AllChapters :chaptersList="chaptersList" />
+      <Footer />
+    </div>
+    <Loading v-if="isLoadingChapters === true" />
   </c-box>
 </template>
 
 <script>
-// @ is an alias to /src
-import Header from "@/components/Layout/Desktopview/Header.vue";
 import AllChapters from "@/components/Layout/Desktopview/AllChapters.vue";
 import Footer from "@/components/CustomComponents/Footer.vue";
 import Loading from "@/components/CustomComponents/Loading.vue";
 import { mapGetters } from "vuex";
+import Header from "../components/CustomComponents/Header.vue";
 
 export default {
   name: "ReadChapters",
@@ -41,10 +28,10 @@ export default {
     },
   },
   components: {
-    Header,
     AllChapters,
     Footer,
     Loading,
+    Header,
   },
   created() {
     this.$store.dispatch("loadChapters", [undefined, undefined]);

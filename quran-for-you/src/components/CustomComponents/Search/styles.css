@@ -1,0 +1,65 @@
+pre.selected {
+    margin: 8px 0;
+    height: 295px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    border: 1px solid #cde;
+    border-radius: 4px;
+}
+
+.v-model-event {
+    background-color: white;
+    border: 1px solid #cde;
+    border-radius: 4px;
+}
+
+.v-model-event.selected {
+    color: red;
+}
+
+.v-model-event:hover {
+    border: 1px solid #2874d5;
+    background-color: #2874d5;
+    color: white;
+}
+
+.vue-simple-suggest .suggest-item {
+    border-top: 1px solid #cdcdcd;
+}
+
+.vue-simple-suggest .suggest-item .text {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: text-bottom;
+    overflow: hidden;
+    max-width: 72%;
+    text-overflow: ellipsis;
+    z-index: 100000;
+}
+
+.vue-simple-suggest .suggest-item .text span {
+    white-space: nowrap;
+    z-index: 100000;
+}
+
+.vue-simple-suggest .suggest-item button {
+    float: right;
+    line-height: 1;
+    margin-left: 4px;
+}
+
+.vue-simple-suggest-enter-active.suggestions,
+.vue-simple-suggest-leave-active.suggestions {
+    transition: opacity 0.2s;
+}
+
+.vue-simple-suggest-enter.suggestions,
+.vue-simple-suggest-leave-to.suggestions {
+    opacity: 0 !important;
+}
+
+.suggestions {
+    z-index: 100000;
+    height: 30vw;
+    overflow: auto;
+}

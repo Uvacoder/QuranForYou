@@ -7,14 +7,14 @@
 
 <script>
 // @ is an alias to /src
-import Header from "@/components/Layout/Desktopview/Header.vue";
 import Login from "@/components/Layout/Desktopview/Login.vue";
+import Header from "../components/CustomComponents/Header.vue";
 
 export default {
   name: "LoginPage",
   components: {
-    Header,
     Login,
+    Header,
   },
 };
 </script>

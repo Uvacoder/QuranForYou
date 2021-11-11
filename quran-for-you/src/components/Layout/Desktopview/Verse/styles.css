@@ -1,164 +1,119 @@
 .filter-label {
-  font-size: 0.85vw;
-  font-weight: 900;
-  margin-bottom: 2px;
+    font-size: 0.85vw;
+    font-weight: 900;
+    margin-bottom: 2px;
 }
 
 .fixed {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  border: 1px slid black;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    border: 1px slid black;
 }
 
 .filter-container {
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  height: 4vw;
-  align-items: center;
-  justify-content: space-evenly;
-  border-radius: 1vw;
-}
-
-.filter-container > select {
-  text-align: center;
-  font-size: 1vw;
-  font-weight: 900;
-  padding-left: 0;
-  padding-right: 0;
-  height: 100%;
-  border-radius: 1vw;
-}
-
-.filter-value {
-  font-size: 1.15vw;
-  font-weight: 600;
-  text-align: center;
-}
-
-.icons-sbd {
-  object-fit: contain;
-  width: 1vw;
-  height: 1vw;
-  margin-left: 0.5vw;
-}
-
-.sbd-container {
-  justify-content: center;
-  margin-left: 0.75vw;
-  margin-right: 0.75vw;
-  align-items: center;
-}
-
-.custom-select {
-  display: flex;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  border-color: #fff;
-}
-
-.reading-select {
-  display: flex;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  border-color: #fff;
-}
-
-.custom-select .css-1oh9bp8 {
-  display: none;
-}
-
-.box-dark {
-  box-shadow: rgba(241, 242, 243, 0.35) 0px 1px 2px 0px,
-    rgba(243, 245, 247, 0.2) 0px 2px 6px 2px;
-}
-
-
-@media (max-width:400px)  { 
-  .icons-sbd {
-    object-fit: contain;
-    width: 3.5vw;
-    height: 3.5vw;
-    margin-left: 1vw;
-  }
-
-  .filter-label {
-    font-size: 2.5vw;
-    font-weight: 700;
-    margin-bottom: 2px;
-  }
-
-  .filter-container {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    height: 12vw;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     align-items: center;
     justify-content: space-evenly;
-    border-radius: 1vw;
-  }
-  
-  .filter-container > select {
+}
+
+.filter-container>select {
     text-align: center;
-    font-size: 1.6vw;
     font-weight: 900;
     padding-left: 0;
     padding-right: 0;
     height: 100%;
-    border-radius: 2vw;
-  }
+    border-radius: 1vw;
+}
 
-  .filter-value {
-    font-size: 1.75vw;
+.filter-value {
+    font-size: 90%;
     font-weight: 600;
     text-align: center;
-  }
+}
 
-  .box-dark {
-    box-shadow: rgba(241, 242, 243, 0.35) 0px 1px 2px 0px,
-      rgba(243, 245, 247, 0.2) 0px 2px 6px 2px;
-  }
+.icons-sbd {
+    object-fit: contain;
+}
 
-  .custom-select {
+.sbd-container {
+    justify-content: center;
+    margin-left: 0.75vw;
+    margin-right: 0.75vw;
+    align-items: center;
+}
+
+.custom-select {
     display: flex;
     outline: none;
     padding: 0;
     margin: 0;
     border-color: #fff;
-  }
+}
 
-  .custom-select .css-1oh9bp8 {
+.reading-select {
+    display: flex;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    border-color: #fff;
+}
+
+.custom-select .css-1oh9bp8 {
     display: none;
-  }
-
-  .option-text {
-    font-size: 5vw;
-  }
 }
 
-
-@media (min-width: 640px) {
-  .tiles {
-    width: calc((100% - (24px)) / 2);
-    margin-right: 24px;
-  }
+.box-dark {
+    box-shadow: rgba(241, 242, 243, 0.35) 0px 1px 2px 0px, rgba(243, 245, 247, 0.2) 0px 2px 6px 2px;
 }
 
-@media (min-width: 768px) {
-  .tiles {
-    width: calc((100% - (4 * 14px)) / 3);
-  }
+.bottom-nav-container {
+    box-shadow: 2px 0px 9px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
 }
 
-@media (min-width: 1024px) {
-  .tiles {
-    width: calc((100% - (4 * 14px)) / 3);
-  }
+.vue-simple-suggest {
+    width: 100%;
 }
 
-@media (min-width: 1280px) {
-  .tiles {
-    width: calc((100% - (4 * 14px)) / 3);
-  }
+@media only screen and (max-width: 600px) {
+    .tiles {
+        font-size: 6vw;
+    }
+    .filter-container>select {
+        font-size: 3vw;
+    }
+    .filter-label {
+        font-size: 3.5vw;
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+    .icons-sbd {
+        width: 5vw;
+        height: 5vw;
+        margin-left: 1vw;
+    }
+    .filter-container {
+        height: 12vw;
+        border-radius: 1vw;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .tiles {
+        width: 33vw;
+        margin-right: 2vw;
+    }
+    .filter-container {
+        border-radius: 1vw;
+        height: 4vw;
+    }
+    .filter-container>select {
+        font-size: 0.85vw;
+    }
+    .icons-sbd {
+        width: 1vw;
+        height: 1vw;
+        margin-left: 0.5vw;
+    }
 }

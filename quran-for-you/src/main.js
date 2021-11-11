@@ -5,6 +5,8 @@ import store from "./store";
 import VueMq from "vue-mq";
 import customTheme from "./custom-theme";
 import axios from "./axios";
+import AudioVisual from "vue-audio-visual";
+import VideoPlayer from "vue-video-player";
 
 import Chakra, {
     CThemeProvider,
@@ -25,6 +27,8 @@ Vue.use(VueMq, {
         desktop: Infinity,
     },
 });
+Vue.use(VideoPlayer);
+Vue.use(AudioVisual);
 
 Vue.config.productionTip = false;
 

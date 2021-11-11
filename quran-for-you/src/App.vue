@@ -1,57 +1,27 @@
 <template>
-  <color-mode-provider>
+  <CColorModeProvider>
     <router-view />
-  </color-mode-provider>
+  </CColorModeProvider>
 </template>
 
 <style>
-html,
-#__chakra-app,
-body,
-.home {
-  height: 100%;
-}
-
-.heading {
-  font-size: 3vw;
-}
-
-.container {
-  flex-direction: column;
-  margin-left: 5vw;
-  margin-right: 5vw;
-  padding-top: 1vw;
-  margin-bottom: 2vw;
-}
-.subscribe-form-container {
-  flex-direction: column;
-  width: 100%;
-  margin-top: 4vw;
-  margin-bottom: 2vw;
-}
-
-@media (max-width: 400px) {
-  .heading {
-    font-size: 5vw;
-  }
-}
+@import "./App.css";
 </style>
 
 <script>
-import { CThemeProvider, CReset, ColorModeProvider } from "@chakra-ui/vue";
+import { CThemeProvider, CReset, CColorModeProvider } from "@chakra-ui/vue";
 export default {
   name: "App",
-  inject: ["$chakraColorMode", "$toggleColorMode"],
   components: {
     CThemeProvider,
     CReset,
+    CColorModeProvider,
   },
   data() {
     return {
       showModal: false,
     };
   },
-  computed: {},
   methods: {
     showToast() {
       this.$toast({

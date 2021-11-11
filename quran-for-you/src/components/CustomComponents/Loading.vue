@@ -15,7 +15,6 @@ import { CSpinner } from "@chakra-ui/vue";
 
 export default {
   name: "Loading",
-  inject: ["$chakraColorMode", "$toggleColorMode"],
   components: {
     CSpinner,
   },

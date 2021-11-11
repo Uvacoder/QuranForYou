@@ -38,11 +38,10 @@
     <mq-layout mq="mobile">
       <c-flex
         direction="column"
-        backgroundColor="palettes.primary"  
+        backgroundColor="palettes.primary"
         color="white"
         align="center"
         justify="space-evenly"
-        position="absolute"
         bottom="0"
         p="3vw"
       >
@@ -75,23 +74,39 @@
   </c-box>
 </template>
 <style>
-.footer-link {
-  margin-top: 2%;
-  font-size: 2vw;
+@media only screen and (max-width: 600px) {
+  .footer-link {
+    margin-bottom: 12.5%;
+    font-size: 3vw;
+  }
+  .footer-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .footer-link-heading {
+    font-size: 4vw;
+    margin-bottom: 12.5%;
+  }
 }
-.footer-link:hover {
-  cursor: pointer;
-  text-decoration: underline;
-}
-.footer-link-heading {
-  font-size: 2.5vw;
-  margin-bottom: 2%;
+
+@media only screen and (min-width: 601px) {
+  .footer-link {
+    margin-top: 2%;
+    font-size: 1vw;
+  }
+  .footer-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .footer-link-heading {
+    font-size: 1.5vw;
+    margin-bottom: 1%;
+  }
 }
 </style>
 <script>
 export default {
   name: "Footer",
-  inject: ["$chakraColorMode", "$toggleColorMode"],
   props: ["text", "borderRadius", "height", "width", "padding", "fontSize"],
 };
 </script>
