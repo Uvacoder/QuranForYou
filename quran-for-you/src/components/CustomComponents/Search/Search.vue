@@ -25,6 +25,16 @@
         color: colorMode === 'dark' ? 'white' : 'black',
       }"
     />
+    <c-spinner
+      v-if="loading"
+      thickness="2px"
+      speed="0.65s"
+      empty-color="green.200"
+      color="vue.500"
+      size="md"
+      position="absolute"
+      right="2"
+    />
     <template slot="misc-item-above" slot-scope="{ suggestions }">
       <!-- <div class="misc-item">
         <span>You're searching for '{{ query }}'.</span>
@@ -45,11 +55,11 @@
         <span v-html="boldenSuggestion(scope)"></span>
       </div>
       <div>
-        <p
+        <c-text
           v-html="
-            `${scope.suggestion.title_eng} Chapter ${scope.suggestion.chapter_no} Verse ${scope.suggestion.verse_number}`
+            `${scope.suggestion.title_eng} Chapter ${scope.suggestion.chapter_id} Verse ${scope.suggestion.verse_number}`
           "
-        ></p>
+        />
       </div>
     </div>
     <hr />
@@ -67,11 +77,12 @@
 import VueSimpleSuggest from "vue-simple-suggest";
 import "vue-simple-suggest/dist/styles.css";
 import { search } from "../../../apis";
+import { CSpinner } from "@chakra-ui/vue";
 
 export default {
   name: "Search",
-  props: ["setFocus", "colorMode"],
-  components: { VueSimpleSuggest },
+  props: ["setFocus", "colorMode", "setChapterId"],
+  components: { VueSimpleSuggest, CSpinner },
   data: function() {
     return { loading: false };
   },
@@ -84,6 +95,7 @@ export default {
     },
     onSuggestClick(suggest, e) {
       console.log("Suggest click here: ", suggest);
+      this.setChapterId(suggest.chapter_id);
     },
     onSuggestSelect(suggest) {
       console.log("Suggest here: ", suggest);

@@ -28,9 +28,6 @@
 .left-box {
   background: linear-gradient(#27367b, #0272c4);
 }
-#__chakra-app > div:first-child {
-  height: 100%;
-}
 </style>
 
 <script>

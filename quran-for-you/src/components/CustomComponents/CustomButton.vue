@@ -3,11 +3,12 @@
     class="custom-button"
     :p="padding"
     :borderRadius="borderRadius"
-    h="100%"
-    w="100%"
+    :h="height || '100%'"
+    :w="width || '100%'"
     :isLoading="isLoading"
     @click="click"
     :fontSize="fontSize"
+    :disabled="disabled"
   >
     <c-image
       :src="require(`@/assets/${link}.png`)"
@@ -58,6 +59,7 @@ export default {
     "size",
     "click",
     "isLoading",
+    "disabled",
   ],
   components: {
     CButton,

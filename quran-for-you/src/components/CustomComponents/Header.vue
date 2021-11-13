@@ -10,13 +10,47 @@
         justify="space-between"
         px="5"
       >
-        <c-heading fontWeight="400">Logo</c-heading>
-        <c-flex
-          ><custom-button
-            :click="handleGoToLogin"
-            :text="!loggedIn ? 'Login' : 'Logout'"
-            :padding="'0.5vw 3vw !important'"
-        /></c-flex>
+        <c-flex align="center">
+          <c-heading fontWeight="400">Logo</c-heading>
+          <c-box
+            mx="2vw"
+            v-for="(i, index) in [
+              { title: 'Home', route: '/' },
+              {
+                title: 'Read Quran',
+                route: `/chapters/${chapterId || '1'}/verse/all`,
+              },
+              { title: 'Articles', route: '/articles' },
+            ]"
+            :key="index"
+          >
+            <c-link
+              :class="
+                `link ${i.title === currentRouteName ? 'active-link' : ''}`
+              "
+              as="router-link"
+              :to="i.route"
+            >
+              {{ i.title }}
+            </c-link>
+          </c-box>
+        </c-flex>
+        <c-flex align="center">
+          <c-link mr="2vw" @click="routeToProfile" v-if="isUserLoggedIn">
+            <c-image
+              class="profile-header-icon"
+              :src="require(`@/assets/icons/profile.png`)"
+              w="3vw"
+              h="3vw"
+          /></c-link>
+          <custom-button
+            :fontSize="'1.25vw !important'"
+            :click="!isUserLoggedIn ? handleGoToLogin : logout"
+            :text="!isUserLoggedIn ? 'Login' : 'Logout'"
+            :width="'12vw !important'"
+            :height="'3vw !important'"
+          />
+        </c-flex>
       </c-flex>
     </mq-layout>
     <mq-layout mq="mobile">
@@ -34,10 +68,11 @@
           <c-image :src="require(`@/assets/hamburger.png`)" size="50%" />
           <c-heading fontWeight="400">Logo</c-heading></c-flex
         >
-        <c-flex h="50%"
+        <c-flex
           ><custom-button
-            fontSize="1vw !important"
+            fontSize="2.5vw !important"
             :click="handleGoToLogin"
+            :padding="'2vw 6vw !important'"
             text="Login"
         /></c-flex>
       </c-flex>
@@ -64,18 +99,22 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["isUserLoggedIn"]),
-    loggedIn() {
-      return this.isUserLoggedIn;
+    ...mapGetters(["isUserLoggedIn", "chapterId"]),
+    currentRouteName() {
+      return this.$route.name;
     },
-  },
-  props: {
-    msg: ["msg"],
   },
 
   methods: {
+    routeToProfile() {
+      this.$router.push({
+        name: "Profile",
+      });
+    },
+    logout() {
+      this.$store.dispatch("logout");
+    },
     handleGoToLogin() {
-      console.log(this.$$router);
       this.$router.push({
         name: "LoginPage",
       });

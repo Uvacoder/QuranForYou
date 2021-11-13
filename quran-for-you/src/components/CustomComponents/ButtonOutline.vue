@@ -4,11 +4,19 @@
       class="outline-btn"
       :p="padding"
       :borderRadius="borderRadius"
-      color="black"
       :size="size"
+      :color="colorMode === 'dark' ? 'red' : 'black'"
+      borderColor="white"
+      borderWidth="1px"
       :mx="marginx"
+      :fontSize="fontSize"
       variant="ghost"
       @click="click"
+      :boxShadow="
+        colorMode === 'dark'
+          ? 'rgba(0, 0, 0, 0.2) 0px 2px 8px 0px'
+          : 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px'
+      "
     >
       <c-image
         :src="require(`@/assets/${link}.png`)"
@@ -23,13 +31,12 @@
 
 <style>
 .outline-btn {
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  height: 100%;
+  height: 100% !important;
   width: 100%;
 }
 @media only screen and (max-width: 600px) {
   .outline-btn {
-    font-size: 2.5vw;
+    font-size: 2.5vw !important;
   }
 }
 
@@ -44,7 +51,6 @@ import { CButton } from "@chakra-ui/vue";
 
 export default {
   name: "ButtonOutline",
-  inject: ["$chakraColorMode", "$toggleColorMode"],
   props: [
     "text",
     "borderRadius",
@@ -56,6 +62,8 @@ export default {
     "size",
     "marginx",
     "click",
+    "colorMode",
+    "fontSize",
   ],
   components: {
     CButton,

@@ -1,10 +1,8 @@
-const { ChakraLoaderPlugin } = require('chakra-loader')
+const { ChakraLoaderPlugin } = require("chakra-loader");
 
 module.exports = {
-	configureWebpack: {
-		plugins: [
-			new ChakraLoaderPlugin()
-		]
-	},
-	transpileDependencies: ['vuex-persist']
-}
+    configureWebpack: {
+        plugins: [new ChakraLoaderPlugin()],
+    },
+    transpileDependencies: ["vuex-persist"],
+};

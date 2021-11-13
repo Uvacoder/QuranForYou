@@ -1,11 +1,15 @@
 <template>
   <c-flex w="100%" h="100%">
-    <div class="home" v-if="isLoadingChapter === false">
+    <div class="home" v-if="!isLoadingChapter">
       <Header />
-      <Verse :chapter="chapter" :getChapter="this.getChapter" />
+      <Verse
+        :chapter="chapter"
+        :getChapter="this.getChapter"
+        :groupId="this.$route.params.groupId"
+      />
       <Footer />
     </div>
-    <Loading v-if="isLoadingChapter === true" />
+    <Loading v-else />
   </c-flex>
 </template>
 

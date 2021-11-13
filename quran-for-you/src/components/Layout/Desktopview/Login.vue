@@ -3,11 +3,11 @@
     <mq-layout mq="desktop" style="height:100%;">
       <c-simple-grid :columns="2" class="grid" height="100%">
         <AuthenticationLeft />
-        <c-flex h="70%" w="85%" m="auto"> <login-form /> </c-flex>
+        <c-flex w="85%" m="auto"> <login-form /> </c-flex>
       </c-simple-grid>
     </mq-layout>
     <mq-layout mq="mobile" style="height:100%; width:100%">
-      <c-flex h="80%" w="90%" m="auto">
+      <c-flex pt="15vw" w="90%" m="auto">
         <login-form />
       </c-flex>
     </mq-layout>
@@ -18,9 +18,12 @@
 import { CFlex, CHeading, CSimpleGrid, CText } from "@chakra-ui/vue";
 import AuthenticationLeft from "@/components/CustomComponents/AuthenticationLeft.vue";
 import LoginForm from "../../CustomComponents/LoginForm.vue";
+import { mapGetters } from "vuex";
+import { isAccesTokenExpired } from "../../../helper";
 
 export default {
   name: "Login",
+  computed: { ...mapGetters(["user", "isUserLoggedIn"]) },
   components: {
     CFlex,
     CHeading,
@@ -28,6 +31,28 @@ export default {
     CText,
     LoginForm,
     AuthenticationLeft,
+  },
+  created() {
+    this.$store.dispatch("clearLoginReducer");
+    this.isUserLoggedIn && this.routeToHome();
+  },
+  methods: {
+    routeToHome() {
+      this.$router.push({
+        name: "Home",
+      });
+    },
+  },
+  watch: {
+    user(newVal, oldVal) {
+      if (
+        !oldVal &&
+        newVal &&
+        newVal.access_token &&
+        !isAccesTokenExpired(newVal.access_token)
+      )
+        this.routeToHome();
+    },
   },
 };
 </script>

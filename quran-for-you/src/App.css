@@ -6,6 +6,10 @@ body,
     width: 100%;
 }
 
+#__chakra-app>div:first-child {
+    height: 100%;
+}
+
 .container {
     flex-direction: column;
     margin-left: 5vw;
@@ -26,9 +30,62 @@ span[id^="modal-portal"]>div {
     border-color: black;
 }
 
+.heading {
+    text-transform: capitalize;
+}
+
+.active-link {
+    padding-top: 5vw;
+    border-bottom: 3px solid #348dcf;
+    transition: 0.1s;
+}
+
+.profile-header-icon {
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.link {
+    padding-bottom: 1vw;
+}
+
+.link:hover {
+    text-decoration: none;
+    border-bottom: 3px solid #348dcf;
+}
+
+.active-settings-tabs {
+    background: linear-gradient(#348dcf, #27367b);
+    color: white;
+    cursor: pointer;
+}
+
+.settings-tab {
+    transition: 0.5s;
+}
+
+.profile-details-container {
+    background: rgba(239, 239, 239, 0.35);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 1vw;
+    padding: 3vw;
+}
+
+.settings-tab:hover {
+    cursor: pointer;
+    background: linear-gradient(#348dcf, #27367b);
+    color: white;
+}
+
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media only screen and (max-width: 600px) {
     .heading {
-        font-size: 5vw;
+        font-size: 5vw !important;
         margin-bottom: 2vw;
     }
     .container {
@@ -36,6 +93,7 @@ span[id^="modal-portal"]>div {
         padding-bottom: 0vw;
     }
     .subscribe-form-container {
+        margin-top: 7.5vw;
         padding-top: 4vw;
     }
     .auth-form-container {
@@ -49,16 +107,16 @@ span[id^="modal-portal"]>div {
 
 @media only screen and (min-width: 601px) {
     .heading {
-        font-size: 2vw;
+        font-size: 2vw !important;
         margin-bottom: 0.5vw;
     }
     .container {
         padding-top: 1vw;
-        margin-bottom: 2vw;
+        padding-bottom: 2vw;
     }
     .subscribe-form-container {
         margin-top: 2vw;
-        padding-top: 1vw;
+        padding-top: 2vw;
     }
     .auth-form-container {
         margin-bottom: 1.5vw;

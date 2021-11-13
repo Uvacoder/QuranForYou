@@ -2,7 +2,7 @@
   <c-box h="100%">
     <div class="home" v-if="isLoadingChapters === false">
       <Header />
-      <AllChapters :chaptersList="chaptersList" />
+      <AllChapters :chaptersList="chapters" />
       <Footer />
     </div>
     <Loading v-if="isLoadingChapters === true" />
@@ -19,22 +19,13 @@ import Header from "../components/CustomComponents/Header.vue";
 export default {
   name: "ReadChapters",
   computed: {
-    ...mapGetters(["getChapterList", "getIsLoadingChapters"]),
-    chaptersList() {
-      return this.getChapterList;
-    },
-    isLoadingChapters() {
-      return this.getIsLoadingChapters;
-    },
+    ...mapGetters(["chapters", "isLoadingChapters"]),
   },
   components: {
     AllChapters,
     Footer,
     Loading,
     Header,
-  },
-  created() {
-    this.$store.dispatch("loadChapters", [undefined, undefined]);
   },
 };
 </script>

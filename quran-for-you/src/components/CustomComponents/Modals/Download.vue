@@ -16,10 +16,10 @@
         </c-flex>
         <c-flex mb="2vw">
           <c-flex direction="column" mx="1" w="50%">
-            <c-flex w="100%"
-              ><c-text class="filter-label">Chapters</c-text
-              ><c-icon name="chevron-down" size="1.35vw" color="black" mx="1"
-            /></c-flex>
+            <c-flex w="100%">
+              <c-text class="filter-label">Chapters</c-text>
+              <c-icon name="chevron-down" size="1.35vw" color="black" mx="1" />
+            </c-flex>
             <c-select
               class="filter-container custom-select"
               v-model="state.chapter"

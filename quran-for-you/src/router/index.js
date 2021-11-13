@@ -5,6 +5,8 @@ import LoginPage from "../views/LoginPage.vue";
 import ForgotPasswordPage from "../views/ForgotPasswordPage.vue";
 import ReadChapters from "../views/ReadChapters.vue";
 import ReadVerse from "../views/ReadVerse.vue";
+import Articles from "../views/Articles.vue";
+import Profile from "../views/Profile.vue";
 
 Vue.use(VueRouter);
 
@@ -25,16 +27,23 @@ const routes = [{
     },
     {
         path: "/",
-        name: "ReadChapters",
+        name: "Home",
         component: ReadChapters,
         props: true,
     },
     {
         path: "/chapters/:chapterId/verse/:groupId",
-        name: "ReadVerse",
+        name: "Read Quran",
         component: ReadVerse,
         props: true,
     },
+    {
+        path: "/articles",
+        name: "Articles",
+        component: Articles,
+        props: true,
+    },
+    { path: "/profile", name: "Profile", component: Profile },
     {
         path: "/about",
         name: "About",

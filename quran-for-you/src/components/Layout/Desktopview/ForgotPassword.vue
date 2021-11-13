@@ -7,7 +7,7 @@
       </c-simple-grid>
     </mq-layout>
     <mq-layout mq="mobile" style="height:100%; width:100%">
-      <c-flex h="80%" w="90%" m="auto">
+      <c-flex pt="15vw" w="90%" m="auto">
         <forgot-password-form />
       </c-flex>
     </mq-layout>

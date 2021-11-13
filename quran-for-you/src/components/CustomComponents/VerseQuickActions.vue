@@ -19,11 +19,13 @@
             <button-outline
               text="Beginning Of Surah"
               :click="this.goToBeginningOfSurah"
+              :colorMode="this.colorMode"
           /></c-flex>
           <c-flex w="45%" h="100%">
             <button-outline
               text="Read Full Chapter"
               :click="this.goToFullChapter"
+              :colorMode="this.colorMode"
           /></c-flex>
         </c-flex>
         <div style="width:2vw ; height:2vw;" @click="goToNextVerse">
@@ -50,11 +52,13 @@
             <button-outline
               text="Beginning Of Surah"
               :click="this.goToBeginningOfSurah"
+              :colorMode="colorMode"
           /></c-flex>
           <c-flex w="47.5%" h="100%">
             <button-outline
               text="Read Full Chapter"
               :click="this.goToFullChapter"
+              :colorMode="this.colorMode"
           /></c-flex>
         </c-flex>
         <div style="width:5vw ; height:5vw;" @click="goToNextVerse">
@@ -86,6 +90,7 @@
 <script>
 import ButtonOutline from "./ButtonOutline.vue";
 export default {
+  inject: ["$chakraColorMode"],
   components: { ButtonOutline },
   name: "VerseQuickActions",
   props: [
@@ -94,6 +99,10 @@ export default {
     "goToNextVerse",
     "goToPreviousVerse",
   ],
-  methods: {},
+  computed: {
+    colorMode() {
+      return this.$chakraColorMode();
+    },
+  },
 };
 </script>

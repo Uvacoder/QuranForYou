@@ -48,7 +48,7 @@
                         <c-icon
                           name="chevron-down"
                           size="1.45vw"
-                          color="black"
+                          :color="colorMode === 'dark' ? 'white' : 'black'"
                         />
                       </c-flex>
                       <c-select
@@ -59,7 +59,7 @@
                         v-model="chapterIdFilters"
                       >
                         <option
-                          v-for="(chapterFilter, index) in allChapters"
+                          v-for="(chapterFilter, index) in chapters"
                           :value="String(chapterFilter.chapter_id)"
                           :key="`${chapterFilter.chapter_id}-${index}`"
                         >
@@ -73,11 +73,14 @@
                       :w="verse === 'all' ? '20%' : '15%'"
                       :style="{ display: searchFocus ? 'none' : 'flex' }"
                     >
-                      <c-flex align="center"
-                        ><c-text class="filter-label">Verse No</c-text
-                        ><c-icon name="chevron-down" size="1.45vw" color="black"
-                      /></c-flex>
-
+                      <c-flex align="center">
+                        <c-text class="filter-label">Verse No</c-text>
+                        <c-icon
+                          name="chevron-down"
+                          size="1.45vw"
+                          :color="colorMode === 'dark' ? 'light' : 'black'"
+                        />
+                      </c-flex>
                       <c-select
                         :class="[
                           colorMode == 'dark' ? 'box-dark' : '',
@@ -90,14 +93,17 @@
                           v-for="(verse_end, index) in chapter.verse_group_list"
                           :value="
                             index === 0
-                              ? `0 - ${verse_end}`
+                              ? `1 - ${verse_end}`
                               : `${chapter.verse_group_list[index - 1] +
                                   1} - ${verse_end}`
                           "
                           :key="`${verse_end}-${index}`"
                           >{{
-                            index === 0
-                              ? `0 - ${verse_end}`
+                            verse_end - 1 ===
+                            chapter.verse_group_list[index - 1]
+                              ? verse_end
+                              : index === 0
+                              ? `1 - ${verse_end}`
                               : `${chapter.verse_group_list[index - 1] +
                                   1} - ${verse_end}`
                           }}</option
@@ -110,10 +116,14 @@
                       :w="verse === 'all' ? '20%' : '15%'"
                       :style="{ display: searchFocus ? 'none' : 'flex' }"
                     >
-                      <c-flex align="center"
-                        ><c-text class="filter-label">Language</c-text
-                        ><c-icon name="chevron-down" size="1.45vw" color="black"
-                      /></c-flex>
+                      <c-flex align="center">
+                        <c-text class="filter-label">Language</c-text>
+                        <c-icon
+                          name="chevron-down"
+                          size="1.45vw"
+                          :color="colorMode === 'dark' ? 'light' : 'black'"
+                        />
+                      </c-flex>
 
                       <c-select
                         :class="[
@@ -136,10 +146,14 @@
                       :w="verse === 'all' ? '20%' : '15%'"
                       :style="{ display: searchFocus ? 'none' : 'flex' }"
                     >
-                      <c-flex align="center"
-                        ><c-text class="filter-label">Font Size</c-text
-                        ><c-icon name="chevron-down" size="1.45vw" color="black"
-                      /></c-flex>
+                      <c-flex align="center">
+                        <c-text class="filter-label">Font Size</c-text>
+                        <c-icon
+                          name="chevron-down"
+                          size="1.45vw"
+                          :color="colorMode === 'dark' ? 'light' : 'black'"
+                        />
+                      </c-flex>
 
                       <c-select
                         :class="[
@@ -163,10 +177,14 @@
                       v-if="verse !== 'all'"
                       :style="{ display: searchFocus ? 'none' : 'flex' }"
                     >
-                      <c-flex align="center"
-                        ><c-text class="filter-label">View Options</c-text
-                        ><c-icon name="chevron-down" size="1.45vw" color="black"
-                      /></c-flex>
+                      <c-flex align="center">
+                        <c-text class="filter-label">View Options</c-text>
+                        <c-icon
+                          name="chevron-down"
+                          size="1.45vw"
+                          :color="colorMode === 'dark' ? 'light' : 'black'"
+                        />
+                      </c-flex>
 
                       <c-select
                         :class="[
@@ -204,7 +222,11 @@
                         'filter-container',
                       ]"
                     >
-                      <search :setFocus="setFocus" :colorMode="colorMode" />
+                      <search
+                        :setFocus="setFocus"
+                        :colorMode="colorMode"
+                        :setChapterId="setChapterId"
+                      />
                     </c-flex>
                   </c-flex>
                 </c-flex>
@@ -226,15 +248,25 @@
                       w="100%"
                     >
                       <c-text class="filter-value">Audio</c-text>
-                      <av-circle
-                        style="width:80%"
-                        :outline-width="0"
-                        :outline-meter-space="5"
-                        :playtime="true"
-                        :cors-anonym="true"
-                        :audio-src="audio"
-                        :canv-class="'commentary-visual'"
-                      ></av-circle>
+                      <c-text class="filter-value" v-if="audio">{{
+                        language
+                      }}</c-text>
+                      <c-box style="width:80%" textAlign="center">
+                        <av-circle
+                          v-if="audio"
+                          :outline-width="0"
+                          :outline-meter-space="5"
+                          :playtime="true"
+                          :cors-anonym="true"
+                          :audio-src="audio"
+                          :canv-class="'commentary-visual'"
+                        />
+                        <c-text v-else>
+                          <c-text fontSize="1vw" fontWeight="bold">
+                            No Audio Available
+                          </c-text>
+                        </c-text>
+                      </c-box>
                     </c-flex>
                   </c-flex>
                   <c-link
@@ -261,7 +293,12 @@
                     class="heading"
                     mb="0 !important"
                     v-if="verse !== 'all'"
-                    >Verse {{ verse }}</c-heading
+                    >Verse
+                    {{
+                      verse.split(" - ")[0] === verse.split(" - ")[1]
+                        ? verse.split(" - ")[1]
+                        : verse
+                    }}</c-heading
                   >
                 </c-flex>
                 <c-flex w="100%">
@@ -278,7 +315,7 @@
                       :verseGroupList="
                         verse === 'all' ? this.chapter.verse_group_list : []
                       "
-                      :pr="view === 'parallel' ? '0' : '1.25vw'"
+                      :pr="view === 'parallel' ? '1.25vw' : '0'"
                     />
                   </c-flex>
                   <c-divider
@@ -313,7 +350,10 @@
                   verse !== 'all' && relatedMedia && relatedMedia.length > 0
                 "
               >
-                <related-media :relatedMedia="relatedMedia" :verse="verse" />
+                <related-media
+                  :relatedMedia="relatedMedia"
+                  :showSeeAll="true"
+                />
               </c-flex>
             </div>
           </c-flex>
@@ -350,7 +390,7 @@
             mt="10vw"
             v-if="verse !== 'all' && relatedMedia && relatedMedia.length > 0"
           >
-            <related-media :verse="verse" :relatedMedia="relatedMedia" />
+            <related-media :relatedMedia="relatedMedia" :showSeeAll="true" />
           </c-flex>
         </c-flex>
 
@@ -369,7 +409,7 @@
         <chapter-options
           :close="closeChapterOptionsModal"
           :show="showChapterOptions"
-          :allChapters="allChapters"
+          :chapters="chapters"
           :chapterIdFilters="chapterIdFilters"
           :setChapterId="setChapterId"
           :verse_group_list="this.chapter.verse_group_list"
@@ -409,6 +449,7 @@
             text="Chapters"
             :click="showChapterOptionsModal"
             :backgroundColor="'black !important'"
+            :height="'100%'"
         /></c-flex>
         <c-flex justify="center" align="center" position="relative">
           <c-image
@@ -417,10 +458,14 @@
             objectFit="contain"
             position="absolute"
             zIndex="1000"
-            left="2vw"/><button-outline
+            left="2vw"
+          />
+          <button-outline
             text="Options"
             :click="showViewOptionsModal"
-        /></c-flex> </c-simple-grid
+            :height="'100%'"
+          />
+        </c-flex> </c-simple-grid
     ></mq-layout>
   </c-box>
 </template>
@@ -469,7 +514,6 @@ export default {
       verse: "all",
       view: "paragraph",
       mainStyles: MAIN_STYLES,
-      chapterIdFilters: String(this.chapter.chapter_id),
       isLoadingRelatedMedia: false,
       relatedMedia: [],
       fontSize: "16px",
@@ -502,15 +546,28 @@ export default {
     ButtonOutline,
   },
   computed: {
-    ...mapGetters(["getChapterList"]),
-    ...mapGetters(["introduction"]),
+    ...mapGetters(["introduction", "chapters", "chapterId"]),
+    chapterIdFilters: {
+      get() {
+        return this.chapterId;
+      },
+      set(newId) {
+        console.log("new: ", newId);
+        this.$store.dispatch("saveChapter", [newId]);
+        this.verse = "all";
+        this.getChapter(newId);
+        updateParams(this.$router, {
+          chapterId: newId,
+          groupId: "all",
+        });
+        return newId;
+      },
+    },
     audio() {
       const audio =
         this.chapter.audio_file &&
         this.chapter.audio_file[this.verse.split(" - ")[1]];
-      console.log(audio && audio.audio_arabic);
-
-      return audio && audio.audio_arabic;
+      return audio ? audio.audio_arabic : undefined;
     },
     commentary() {
       try {
@@ -535,17 +592,15 @@ export default {
         return [];
       }
     },
-    allChapters() {
-      return this.getChapterList;
-    },
+
     verses() {
       if (this.verse === "all") {
         return this.chapter.verses;
       } else {
         const indexes = this.verse.split(" - ");
         return this.chapter.verses.slice(
-          Number(indexes[0]),
-          Number(indexes[1]) + 1
+          Number(indexes[0]) - 1,
+          Number(indexes[1])
         );
       }
     },
@@ -554,13 +609,10 @@ export default {
     },
   },
   watch: {
-    chapterIdFilters(newId, oldId) {
-      this.verse = "all";
-      this.getChapter(newId);
-      updateParams(this.$router, {
-        chapterId: newId,
-      });
+    audio(newValue, oldVale) {
+      console.log("new val here: ", newValue);
     },
+    chapterIdFilters(newId, oldId) {},
     verse(newVerse, oldVerse) {
       updateParams(this.$router, {
         groupId: newVerse === "all" ? newVerse : newVerse.split(" - ")[1],
@@ -575,16 +627,25 @@ export default {
           .then(() => (this.isLoadingRelatedMedia = false))
           .catch(() => (this.isLoadingRelatedMedia = false));
       }
+      if (newVerse !== oldVerse) {
+        this.scrollToTop();
+      }
     },
   },
   created() {
-    updateParams(this.$router, {
-      groupId: this.verse,
-      chapterId: this.chapterIdFilters,
-    });
+    if (String(this.chapter.chapter_id) !== this.chapterId) {
+      this.$store.dispatch("saveChapter", [String(this.chapter.chapter_id)]);
+    }
+    this.verse = this.groupId;
   },
 
   methods: {
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
     setFontSize(value) {
       this.fontSize = value;
     },
@@ -622,8 +683,9 @@ export default {
           1} - ${activeGroup}`;
       }
     },
+
     goToBeginningOfSurah() {
-      this.verse = `0 - ${this.chapter.verse_group_list[0]}`;
+      this.verse = `1 - ${this.chapter.verse_group_list[0]}`;
     },
     showChapterOptionsModal() {
       this.showChapterOptions = "open";

@@ -21,5 +21,28 @@ export const search = async(search, pageNo = 0, perPage = 10) =>
 export const login = async(username, password) =>
     await axios.post("users/login", { email: username, password });
 
-export const signup = async(email, password, name, phone, type = "reg") =>
-    await axios.post("users/signup", { email, password, phone, name, type });
+export const signup = async(
+        email,
+        password,
+        firstName,
+        lastName,
+        phone,
+        type = "reg"
+    ) =>
+    await axios.post("users/signup", {
+        email,
+        password,
+        phone,
+        first_name: firstName,
+        last_name: lastName,
+        type,
+    });
+
+export const forgotPassword = async(email) =>
+    await axios.post("users/forgot-pass", { email });
+
+export const getRelatedMediaAll = async(chapter, groupId) =>
+    await axios.get(`/related-media-all?chapter=${chapter}&group=${groupId}`);
+
+export const updateUser = async(userId, obj) =>
+    await axios.post(`/userprofile/${userId}`, obj);

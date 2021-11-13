@@ -65,7 +65,6 @@ export default {
   props: ["isOpen", "close", "media"],
   data() {
     return {
-      // videojs options
       playerOptions: {
         playbackRates: [0.7, 1.0, 1.5, 2.0],
         techOrder: ["youtube"],
@@ -90,6 +89,7 @@ export default {
     CImage,
   },
   created() {
+    console.log("This media here: ", this.media);
     this.media && this.media.media_video
       ? console.log(this.media.media_video)
       : undefined;

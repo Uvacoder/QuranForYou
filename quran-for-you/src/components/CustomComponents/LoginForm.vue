@@ -4,28 +4,26 @@
       <c-heading class="heading">Login</c-heading>
       <c-text my="2"
         >New here?
-        <c-link
-          color="palettes.primary"
-          class="link"
-          as="router-link"
-          to="/signup"
+        <c-link color="palettes.primary" as="router-link" to="/signup"
           >Create an Account</c-link
         ></c-text
       >
-      <c-flex>
+      <c-flex justify="space-evenly">
         <SocialButton link="google" text="Continue with Google" />
         <SocialButton link="facebook" text="Continue with Facebook" />
       </c-flex>
       <c-flex direction="column" class="auth-form-container">
         <c-input
-          v-for="i in [
-            { placeholder: 'Email Address*', value: email, type: 'email' },
-            { placeholder: 'Password*', value: password, type: 'password' },
-          ]"
-          :key="i.placeholder"
-          v-model="i.value"
-          :placeholder="i.placeholder"
-          :type="i.type"
+          v-model="email"
+          placeholder="Email Address*"
+          type="email"
+          variant="flushed"
+          class="auth-input"
+        />
+        <c-input
+          v-model="password"
+          placeholder="Password*"
+          type="password"
           variant="flushed"
           class="auth-input"
         />
@@ -42,7 +40,7 @@
         <custom-button
           text="Login"
           :click="handleLogin"
-          :isLoading="loggingIn"
+          :isLoading="isLoggingIn"
         />
       </c-flex>
     </c-flex>
@@ -63,11 +61,6 @@ export default {
   computed: {
     ...mapGetters(["isLoggingIn"]),
     ...mapGetters(["loginError"]),
-
-    loggingIn() {
-      console.log(this.isLoggingIn);
-      return this.isLoggingIn;
-    },
     error() {
       return this.loginError;
     },
@@ -80,7 +73,6 @@ export default {
   },
   watch: {
     error(newValue, oldValue) {
-      console.log("New login error: ", newValue);
       newValue &&
         this.$toast({
           title: "Signup.",

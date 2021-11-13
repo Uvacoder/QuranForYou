@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import VuexPersist from "vuex-persist";
 import actions from "./actions";
 import { ACTION_TYPES } from "../constants/action-types";
+import { isAccesTokenExpired } from "../helper";
 
 Vue.use(Vuex);
 
@@ -16,6 +17,11 @@ const vuexLocalStorage = new VuexPersist({
         isLoggingIn: state.isLoggingIn,
         isSigningUp: state.isSigningUp,
         user: state.user,
+        forgettingPasswordError: state.forgettingPasswordError,
+        isForgettingPassword: state.isForgettingPassword,
+        signupError: state.signupError,
+        chapterId: state.chapterId,
+        groupId: state.groupId,
     }),
 });
 
@@ -27,21 +33,37 @@ export default new Vuex.Store({
         introduction: {},
         loggedIn: false,
         isLoggingIn: false,
-        user: undefined,
         loginError: undefined,
         isSigningUp: false,
         signupError: undefined,
+        isForgettingPassword: false,
+        forgettingPasswordError: undefined,
         user: undefined,
+        chapterId: undefined,
+        groupId: undefined,
     },
     getters: {
-        getChapterList: (state) => state.chapters,
-        getIsLoadingChapters: (state) => state.isLoadingChapters,
+        chapters: (state) => state.chapters,
+        isLoadingChapters: (state) => state.isLoadingChapters,
         introduction: (state) => state.introduction,
-        isUserLoggedIn: (state) => state.loggedIn,
+        isUserLoggedIn: (state) => {
+            // console.log(state.user.access_token)
+            const loggedIn =
+                state.user &&
+                state.user.access_token &&
+                !isAccesTokenExpired(state.user.access_token);
+            !loggedIn && (state.user = undefined);
+            return loggedIn;
+        },
         isLoggingIn: (state) => state.isLoggingIn,
         isSigningUp: (state) => state.isSigningUp,
         user: (state) => state.user,
         loginError: (state) => state.loginError,
+        isForgettingPassword: (state) => state.isForgettingPassword,
+        forgettingPasswordError: (state) => state.forgettingPasswordError,
+        signupError: (state) => state.signupError,
+        chapterId: (state) => state.chapterId,
+        groupId: (state) => state.groupId,
     },
     actions,
     mutations: {
@@ -79,8 +101,38 @@ export default new Vuex.Store({
             state.isSigningUp = false;
         },
         [ACTION_TYPES.SIGNUP.SIGNUP_FAILURE](state, error) {
-            state.loginError = error;
+            console.log("Error here: ", error);
+            state.signupError = error;
             state.isSigningUp = false;
+        },
+        [ACTION_TYPES.FORGOT_PASSOWRD.FORGOT_PASSOWRD_REQUEST](state) {
+            state.forgettingPasswordError = undefined;
+            state.isForgettingPassword = true;
+        },
+        [ACTION_TYPES.FORGOT_PASSOWRD.FORGOT_PASSOWRD_SUCCESS](state, data) {
+            state.forgettingPasswordError = undefined;
+            state.isForgettingPassword = false;
+        },
+        [ACTION_TYPES.FORGOT_PASSOWRD.FORGOT_PASSOWRD_FAILURE](state, error) {
+            state.forgettingPasswordError = error;
+            state.isForgettingPassword = false;
+        },
+        [ACTION_TYPES.LOGOUT.LOGOUT_REQUEST](state) {
+            state.user = undefined;
+        },
+        [ACTION_TYPES.LOGIN.LOGIN_CLEAR](state) {
+            state.isLoggingIn = false;
+            state.loginError = false;
+        },
+        [ACTION_TYPES.SIGNUP.SIGNUP_CLEAR](state) {
+            state.isSigningUp = false;
+            state.signupError = false;
+        },
+        [ACTION_TYPES.SAVE_CHAPTER_ID](state, chapterId) {
+            state.chapterId = chapterId;
+        },
+        [ACTION_TYPES.SAVE_GROUP_ID](state, groupId) {
+            state.groupId = groupId;
         },
     },
 });

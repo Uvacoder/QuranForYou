@@ -37,7 +37,7 @@ export default {
   methods: {
     routeToChapter(chapter) {
       this.$router.push({
-        name: "ReadVerse",
+        name: "Read Quran",
         params: { chapterId: chapter.chapter_id, groupId: "all" },
       });
     },

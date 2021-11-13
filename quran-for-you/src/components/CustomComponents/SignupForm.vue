@@ -4,44 +4,32 @@
       <c-heading class="heading">Create an Account</c-heading>
       <c-text my="2"
         >Already have an account?
-        <c-link
-          color="palettes.primary"
-          class="link"
-          as="router-link"
-          to="/login"
+        <c-link color="palettes.primary" as="router-link" to="/login"
           >Login</c-link
         ></c-text
       >
-      <c-flex>
+      <c-flex justify="space-evenly">
         <SocialButton link="google" text="Continue with Google" />
         <SocialButton link="facebook" text="Continue with Facebook" />
       </c-flex>
       <c-flex direction="column" class="auth-form-container">
-        <c-flex>
-          <c-input
-            v-model="firstName"
-            :key="'Enter First Name*'"
-            :placeholder="'Enter First Name*'"
-            type="text"
-            variant="flushed"
-            :mr="1"
-            :ml="1"
-            class="auth-input"
-          />
-          <c-input
-            v-model="lastName"
-            :key="'Enter Last Name*'"
-            :placeholder="'Last Name*'"
-            type="text"
-            variant="flushed"
-            :mr="1"
-            :ml="1"
-            class="auth-input"
-          />
-        </c-flex>
+        <c-input
+          v-model="firstName"
+          :placeholder="'First Name*'"
+          type="text"
+          variant="flushed"
+          class="auth-input"
+        />
+        <c-input
+          v-model="lastName"
+          :placeholder="'Last Name*'"
+          type="text"
+          variant="flushed"
+          class="auth-input"
+        />
         <c-input
           v-model="email"
-          :placeholder="'Enter Email Address*'"
+          :placeholder="'Email Address*'"
           type="email"
           variant="flushed"
           :mr="1"
@@ -50,7 +38,7 @@
         />
         <c-input
           v-model="password"
-          :placeholder="'Enter Password*'"
+          :placeholder="'Password*'"
           type="password"
           variant="flushed"
           :mr="1"
@@ -59,7 +47,7 @@
         />
         <c-input
           v-model="confirmPassword"
-          :placeholder="'Enter Confirm Password*'"
+          :placeholder="'Confirm Password*'"
           type="password"
           variant="flushed"
           :mr="1"
@@ -71,7 +59,7 @@
         <custom-button
           text="Create Account"
           :click="handleSignup"
-          :isLoading="signingUp"
+          :isLoading="isSigningUp"
         />
       </c-flex>
       <!-- <c-text>
@@ -103,10 +91,6 @@ export default {
   },
   computed: {
     ...mapGetters(["isSigningUp"]),
-    signingUp() {
-      console.log(this.isSigningUp);
-      return this.isSigningUp;
-    },
   },
   components: {
     CFlex,
@@ -114,24 +98,17 @@ export default {
     SocialButton,
     CustomButton,
   },
-  watch: {
-    email(newEmail, oldEmail) {
-      console.log(newEmail);
-    },
+
+  created() {
+    this.$store.dispatch("clearSignupReducer");
   },
   methods: {
     handleSignup() {
-      console.log({
-        email: this.email,
-        password: this.password,
-        phone: this.phone,
-        firstName: this.firstName,
-        lastName: this.lastName,
-      });
       this.$store.dispatch("handleSignup", [
         this.email,
         this.password,
-        `${this.firstName}${this.lastName}`,
+        this.firstName,
+        this.lastName,
         this.phone,
       ]);
     },

@@ -8,7 +8,7 @@
     <c-modal-content class="read-introduction-modal-content">
       <c-modal-header>Quran Introduction</c-modal-header>
       <c-modal-close-button />
-      <c-modal-body pb="2vw">
+      <c-modal-body pb="2vw" px="1rem" pt="0">
         <c-simple-grid :columns="2">
           <c-box mx="1vw">
             <c-text fontWeight="bold">Heading</c-text>
@@ -116,7 +116,6 @@ export default {
         const totalSubIntroductions = this.introduction[
           this.introductionHeadings[`${Number(this.selectedIntroduction) - 1}`]
         ].length;
-        console.log(totalSubIntroductions);
         this.selectedIntroduction =
           this.selectedIntroduction === "0"
             ? "0"

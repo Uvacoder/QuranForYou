@@ -74,6 +74,9 @@
   </c-box>
 </template>
 <style>
+.footer-link-heading {
+  text-align: center;
+}
 @media only screen and (max-width: 600px) {
   .footer-link {
     margin-bottom: 12.5%;
@@ -84,7 +87,7 @@
     text-decoration: underline;
   }
   .footer-link-heading {
-    font-size: 4vw;
+    font-size: 4vw !important;
     margin-bottom: 12.5%;
   }
 }

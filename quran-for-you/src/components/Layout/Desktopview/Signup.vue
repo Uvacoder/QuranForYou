@@ -7,7 +7,7 @@
       </c-simple-grid>
     </mq-layout>
     <mq-layout mq="mobile" style="height:100%; width:100%;">
-      <c-flex h="80%" w="90%" m="auto">
+      <c-flex pt="15vw" w="90%" m="auto">
         <signup-form />
       </c-flex>
     </mq-layout>
@@ -18,15 +18,14 @@
 .left-box {
   background: linear-gradient(#27367b, #0272c4);
 }
-#__chakra-app > div:first-child {
-  height: 100%;
-}
 </style>
 
 <script>
 import { CFlex, CHeading, CSimpleGrid, CText } from "@chakra-ui/vue";
 import AuthenticationLeft from "@/components/CustomComponents/AuthenticationLeft.vue";
 import SignupForm from "../../CustomComponents/SignupForm.vue";
+import { mapGetters } from "vuex";
+
 export default {
   name: "Signup",
   components: {
@@ -36,6 +35,19 @@ export default {
     CText,
     SignupForm,
     AuthenticationLeft,
+  },
+  computed: { ...mapGetters(["signupError"]) },
+  watch: {
+    signupError(newValue, oldValue) {
+      newValue &&
+        this.$toast({
+          title: "Signup.",
+          description: newValue,
+          status: "error",
+          duration: 5000,
+          position: "top",
+        });
+    },
   },
 };
 </script>

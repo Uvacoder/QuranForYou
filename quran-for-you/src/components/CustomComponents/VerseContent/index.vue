@@ -1,17 +1,15 @@
 <template>
   <c-flex direction="column" py="0.5vw" :pr="pr || '0'" :pl="pl || '0'">
-    <c-flex justify="space-between">
-      <c-text
-        :fontSize="fontSize"
-        fontWeight="semibold"
-        py="0.5vw"
-        :align="content === 'right' ? 'right' : 'left'"
-        textDecoration="underline"
-      >
-        {{ this.languageLabel }}
-      </c-text>
-      <!-- <CustomButton text="Read Commentary" padding="0.25vw" fontSize="1vw" /> -->
-    </c-flex>
+    <c-text
+      :fontSize="fontSize"
+      fontWeight="semibold"
+      py="0.5vw"
+      :align="content === 'right' ? 'right' : 'left'"
+      textDecoration="underline"
+    >
+      {{ this.languageLabel }}
+    </c-text>
+    <!-- <CustomButton text="Read Commentary" padding="0.25vw" fontSize="1vw" /> -->
     <c-text
       :style="{
         textAlign: content === 'right' ? 'right' : 'justify',

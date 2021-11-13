@@ -2,11 +2,17 @@
   <c-box>
     <mq-layout mq="desktop">
       <c-flex>
-        <c-flex align="center" justify="center" mx="2">
+        <c-flex
+          align="center"
+          justify="center"
+          mx="2"
+          class="toggle-color-mode"
+        >
           <c-switch
-            size="md"
+            size="lg"
             @change="toggleColorMode"
             :isChecked="colorMode === 'dark'"
+            color="grey.500"
           />
         </c-flex>
         <c-flex class="sbd-container">
@@ -14,13 +20,29 @@
             Share
           </c-link>
           <share :isOpen="isShareOpen" :close="shareClose" />
-          <c-image :src="require(`@/assets/share.svg`)" class="icons-sbd" />
+          <c-image
+            :src="require(`@/assets/share.svg`)"
+            class="icons-sbd"
+            :filter="
+              colorMode === 'dark'
+                ? 'invert(100%) sepia(100%) saturate(0%) hue-rotate(357deg) brightness(104%) contrast(104%)'
+                : 'invert(0%) sepia(6%) saturate(7500%) hue-rotate(328deg) brightness(94%) contrast(106%);'
+            "
+          />
         </c-flex>
         <c-flex class="sbd-container">
           <c-link>
             Bookmark
           </c-link>
-          <c-image :src="require(`@/assets/bookmark.png`)" class="icons-sbd" />
+          <c-image
+            :src="require(`@/assets/bookmark.svg`)"
+            class="icons-sbd"
+            :filter="
+              colorMode === 'dark'
+                ? 'invert(100%) sepia(100%) saturate(0%) hue-rotate(357deg) brightness(104%) contrast(104%)'
+                : 'invert(0%) sepia(6%) saturate(7500%) hue-rotate(328deg) brightness(94%) contrast(106%);'
+            "
+          />
         </c-flex>
         <c-flex class="sbd-container">
           <c-link @click="downloadOpen">
